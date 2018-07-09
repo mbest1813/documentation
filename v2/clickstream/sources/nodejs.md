@@ -21,7 +21,7 @@ Initialize this package with the Source ID found in the settings section of your
 
 ```js
 var Analytics = require('astronomer');
-var analytics = new Analytics('ASTRONOMER_SOURCE_ID')
+var analytics = new Analytics('ASTRONOMER_SOURCE_ID');
 ```
 
 #### Step 3

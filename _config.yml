@@ -106,3 +106,6 @@ description: "Documentation site for Astronomer.io product features."
 
 # needed for sitemap.xml file only
 url: https://astronomerio.github.io/
+
+plugins:
+  - jekyll-redirect-from

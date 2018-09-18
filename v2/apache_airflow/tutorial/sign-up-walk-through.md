@@ -1,13 +1,15 @@
 ---
 title: Sign-up Walkthrough
 sidebar: platform_sidebar
+redirect_to:
+ - https://www.astronomer.io/guides/getting-started-with-new-cloud/
 ---
 
 # Astronomer Airflow Set-Up Instructions
 
-## 1. Sign up at app.astronomer.io 
+## 1. Sign up at app.astronomer.io
 
-Once you've verified your email address, you'll be set to log in. 
+Once you've verified your email address, you'll be set to log in.
 
 ![airflow-signup1](../../../images/airflow-signup1.png)
 
@@ -16,11 +18,11 @@ Once you've verified your email address, you'll be set to log in.
 
 To provision an instance, go right ahead to the Airflow tab on the left side bar of our interface.
 
-![airflow-signup2.1](../../../images/airflow-signup2.1.png) 
+![airflow-signup2.1](../../../images/airflow-signup2.1.png)
 
 ## 3. Input your Billing Information
 
-You'll now be prompted to input your billing information. Don't worry, you won't be charged until you select a plan and actually provision your Airflow instance. 
+You'll now be prompted to input your billing information. Don't worry, you won't be charged until you select a plan and actually provision your Airflow instance.
 
 ![airflow-signup3.1](../../../images/airflow-billing-info.png)
 
@@ -44,25 +46,25 @@ It'll take a couple of seconds for your Webserver and Scheduler to start kickin'
 
 Now, you're ready to install the CLI. Here are some instructions, depending on your operating system:
 
-**iOS or Linux users**: Download the CLI by copying this into your Terminal command line: 
+**iOS or Linux users**: Download the CLI by copying this into your Terminal command line:
 
 ```
 curl -o- https://cli.astronomer.io/install.sh | bash
 ```
 
-**Windows users**: Check out our [GitHub README](https://github.com/astronomerio/astro) to manually download the CLI. 
+**Windows users**: Check out our [GitHub README](https://github.com/astronomerio/astro) to manually download the CLI.
 
 *Note: While we support Windows, our product is optimized for Linux and iOS users. Consider making the switch if you can, and reach out if you have any trouble.*
 
-[Here's](https://docs.astronomer.io/v2/apache_airflow/cli.html) more documentation on our CLI. 
+[Here's](https://docs.astronomer.io/v2/apache_airflow/cli.html) more documentation on our CLI.
 
 ![airflow-signup6.1](../../../images/airflow-signup6.1.png)
 
-## 7. Sign into the CLI 
+## 7. Sign into the CLI
 
 ## 8. Push DAGs
 
-With that, you're all set up to start pushing DAGs. Don't know where to start? Check out these docs: 
+With that, you're all set up to start pushing DAGs. Don't know where to start? Check out these docs:
 
 - [DAG Example](https://docs.astronomer.io/v2/apache_airflow/tutorial/sample-dag.html)
 - [DAG Deployment Documentation](https://docs.astronomer.io/v2/apache_airflow/tutorial/dag-deployment.html)
@@ -70,24 +72,3 @@ With that, you're all set up to start pushing DAGs. Don't know where to start? C
 - [Airflow Connections Documentation](https://docs.astronomer.io/v2/apache_airflow/tutorial/connections.html)
 
 Not finding what you're looking for? Reach out to our team at support@astronomer.io
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

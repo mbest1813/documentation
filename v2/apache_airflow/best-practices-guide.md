@@ -1,6 +1,8 @@
 ---
 title: Airflow Best Practices Guide
 sidebar: platform_sidebar
+redirect_to:
+ - https://www.astronomer.io/guides/dag-best-practices/
 ---
 
 # Airflow Best Practices and Development Guide

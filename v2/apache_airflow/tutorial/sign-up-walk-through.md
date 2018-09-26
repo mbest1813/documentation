@@ -1,6 +1,8 @@
 ---
 title: Sign-up Walkthrough
 sidebar: platform_sidebar
+redirect_to:
+ - https://www.astronomer.io/guides/getting-started-with-new-cloud/
 ---
 
 # Astronomer Airflow Set-Up Instructions

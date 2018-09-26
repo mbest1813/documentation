@@ -1,6 +1,8 @@
 ---
 title: Standard Available Packages
 sidebar: platform_sidebar
+redirect_to:
+ - https://www.astronomer.io/guides/using-airflow-plugins/
 ---
 Because each task is run in an individual Docker container, the available Python packages are set at the platform level. While you can add custom packages and remove unnecessary packages in our Enterprise Edition, our Cloud Edition comes with a standard set of packages available to all customers.
 

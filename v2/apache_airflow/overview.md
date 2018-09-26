@@ -1,6 +1,8 @@
 ---
 title: Apache Airflow Module Overview
 sidebar: platform_sidebar
+redirect_to:
+ - https://www.astronomer.io/guides/airflow-components/
 ---
 
 As data gets bigger and faster, many organizations struggle to centralize and prepare unwieldy data sets for analytics.

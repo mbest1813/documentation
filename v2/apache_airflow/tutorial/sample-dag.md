@@ -1,6 +1,8 @@
 ---
 title: Simple Sample DAG
 sidebar: platform_sidebar
+redirect_to:
+ - https://www.astronomer.io/guides/salesforce-to-redshift/
 ---
 
 This tutorial walks through some of the [core Apache Airflow concepts](/v2/apache_airflow/tutorial/core-airflow-concepts) and how they fit into a simple, sample Airflow DAG.

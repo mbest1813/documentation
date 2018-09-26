@@ -1,6 +1,8 @@
 ---
 title: Apache Airflow Connections
 sidebar: platform_sidebar
+redirect_to:
+ - https://www.astronomer.io/guides/airflow-ui/
 ---
 
 This document covers how to set up various connections in Airflow. Connections defined by this process are used by [Hooks](https://airflow.apache.org/concepts.html#hooks) in order to encapsulate authentication code and common functions that are used by [Operators](https://airflow.apache.org/concepts.html#operators).

@@ -1,8 +1,6 @@
 ---
 title: Using Airflow with Singer
 sidebar: platform_sidebar
-redirect_to:
- - https://www.astronomer.io/guides/airflow-ui/
 ---
 
 ## Singer

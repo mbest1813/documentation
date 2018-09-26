@@ -1,8 +1,6 @@
 ---
 title: Monitoring Apache Airflow
 sidebar: platform_sidebar
-redirect_to:
- - https://www.astronomer.io/guides/astronomer-features/
 ---
 
 ## Home Screen

@@ -1,8 +1,6 @@
 ---
 title: DAG Writing Best Practices
 sidebar: platform_sidebar
-redirect_to:
- - https://www.astronomer.io/guides/dag-best-practices/
 ---
 
 ### Idempotency

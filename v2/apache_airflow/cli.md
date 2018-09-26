@@ -1,8 +1,6 @@
 ---
 title: Astro CLI
 sidebar: platform_sidebar
-redirect_to:
- - https://www.astronomer.io/guides/cli
 ---
 The Astro CLI helps users create and test activities and deploy those activities and Astronomer/community pre-built activities in actual DAGs. Once DAGs have been tested locally, users can deploy them to our public cloud or their private installation.
 

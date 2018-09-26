@@ -1,8 +1,6 @@
 ---
 title: Sources and Destinations
 sidebar: platform_sidebar
-redirect_to:
- - https://www.astronomer.io/guides/using-airflow-plugins/
 ---
 ## Astronomer Hooks and Operators
 

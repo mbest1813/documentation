@@ -1,8 +1,6 @@
 ---
 title: Sample DAG Deployment
 sidebar: platform_sidebar
-redirect_to:
- - https://www.astronomer.io/guides/airflow-components/
 ---
 
 This is a step-by-step guide for using the Astronomer CLI (command line interface) to deploy a DAG to your Airflow instance.

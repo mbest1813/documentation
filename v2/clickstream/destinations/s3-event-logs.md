@@ -39,7 +39,7 @@ Once you create the bucket, create a folder labeled `Astronomer-logs` inside of 
 
 #### Add our S3 Bucket Policy
 
-Add the following S3 bucket policy, which will grant Astronomer permission to copy events into your S3 bucket using `s3:PutObject`.  In the `Resource:` line of the policy, swap out `YOUR_BUCKET_NAME` for the exact name of your S3 bucket, but keep the `/*` on the end.
+Add the following S3 bucket policy, which will grant Astronomer permission to copy events into your S3 bucket using `s3:PutObject`.  In the `Resource:` line of each of the two policies below, swap out `YOUR_BUCKET_NAME` for the exact name of your S3 bucket, but keep the `/*` on the end.
 
 ```
 {
@@ -51,6 +51,15 @@ Add the following S3 bucket policy, which will grant Astronomer permission to co
             "Effect": "Allow",
             "Principal": {
                 "AWS": "arn:aws:iam::213824691356:user/s3-copy"
+            },
+            "Action": "s3:PutObject",
+            "Resource": "arn:aws:s3:::YOUR_BUCKET_NAME/*"
+        },
+        {
+            "Sid": "MetaRouterCopyAccess",
+            "Effect": "Allow",
+            "Principal": {
+                "AWS": "arn:aws:iam::325517132571:user/s3-copy"
             },
             "Action": "s3:PutObject",
             "Resource": "arn:aws:s3:::YOUR_BUCKET_NAME/*"

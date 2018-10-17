@@ -101,7 +101,7 @@ Redshift Dashboard > Clusters > Select Your Cluster
 
 4. Click on "Add Connection Type"
 
-5. Authorize Astronomer to write into your Redshift Port by inputting our IP Address: 52.20.96.13
+5. Authorize Astronomer to write into your Redshift Port by inputting our IP Addresses: 52.20.96.13 and 35.236.193.215
 
 **EC2-VPC**
 
@@ -114,7 +114,7 @@ Redshift Dashboard > Clusters > Select Your Cluster
 
 3. Select the "Inbound" tab and then "Edit"
 
-4. Authorize Astronomer to write into your Redshift Port by inputting our IP Address: 52.20.96.13
+4. Authorize Astronomer to write into your Redshift Port by inputting our IP Addresses: 52.20.96.13 and 35.236.193.215
 
 5. Navigate back to your Redshift Cluster Settings
 
@@ -125,7 +125,7 @@ Redshift Dashboard > Clusters > Select Your Cluster
 
 
 ### Whitelist Astronomer's IP.
-Make sure that you whitelist 52.20.96.13 as an incoming IP Address so we can write to your Redshift instance without you exposing the database to everyone.
+Make sure that you whitelist 52.20.96.13 and 35.236.193.215 as an incoming IP Addresses so we can write to your Redshift instance without you exposing the database to everyone.
 
 ---
 

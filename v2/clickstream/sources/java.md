@@ -32,7 +32,9 @@ Add to `pom.xml`:
 
 Before you can start sending us events, you'll need to initialize an instance of the Analytics class. Do this using the `Analytics.builder` class, inputting the `Source ID` found in the source settings of your Astronomer UI.
 ```java
-Analytics analytics = Analytics.builder("Your Source ID").build()
+Analytics analytics = Analytics.builder("Your Source ID")
+        .endpoint("https://e.metarouter.io")
+        .build();
 ```
 Note that there exists an internal `AnalyticsClient` class, not to be confused with the public `Analytics` class.
 

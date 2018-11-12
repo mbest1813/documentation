@@ -32,6 +32,7 @@ We recommend initializing the client in your `Application` subclass.
 Analytics analytics = new Analytics.Builder(context, YOUR_SOURCE_ID)
   .trackApplicationLifecycleEvents() // Enable this to record certain application events automatically!
   .recordScreenViews() // Enable this to record screen views automatically!
+  .endpoint("https://e.metarouter.io") // Required - Specify that events go to the MetaRouter Event Ingestion API
   .build();
 
 // Set the initialized instance as a globally accessible instance.

@@ -31,7 +31,7 @@ Check out our 'Calls' section for information on when you should use each call. 
 
 #### Identify
 
-Post `https://api.astronomer.io/v1/identify`
+Post `https://e.metarouter.io/v1/identify`
 
 ```
 {
@@ -48,7 +48,7 @@ Post `https://api.astronomer.io/v1/identify`
 
 #### Track
 
-Post `https://api.astronomer.io/v1/track`
+Post `https://e.metarouter.io/v1/track`
 
 ```
 {
@@ -66,7 +66,7 @@ Post `https://api.astronomer.io/v1/track`
 
 #### Page
 
-Post `https://api.astronomer.io/v1/page`
+Post `https://e.metarouter.io/v1/page`
 
 ```
 {
@@ -82,7 +82,7 @@ Post `https://api.astronomer.io/v1/page`
 
 #### Group
 
-Post `https://api.astronomer.io/v1/group`
+Post `https://e.metarouter.io/v1/group`
 
 ```
 {
@@ -98,7 +98,7 @@ Post `https://api.astronomer.io/v1/group`
 
 #### Alias
 
-Post  `https://api.astronomer.io/v1/alias`
+Post  `https://e.metarouter.io/v1/alias`
 
 ```
 {

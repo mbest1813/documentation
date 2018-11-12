@@ -32,7 +32,9 @@ Initialize the module with the Source ID found in the setting sections of your A
 
 ```php
 class_alias('Segment', 'analytics');
-analytics::init("ASTRONOMER_APP_ID");
+analytics::init("ASTRONOMER_APP_ID", array(
+  "host" => "e.metarouter.io"
+));
 ```
 
 After this initialization, you have a ready-to-use instance with all calls built in.

@@ -33,7 +33,8 @@ Inside your Ruby application, you'll want to set your `Source ID` inside an inst
 
 ```ruby
 analytics = Segment::Analytics.new({
-  app_id: 'YOUR_SOURCE_ID'
+  app_id: 'YOUR_SOURCE_ID',
+  host: 'e.metarouter.io'
 })
 ```
 

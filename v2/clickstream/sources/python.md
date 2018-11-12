@@ -25,6 +25,7 @@ Inside your python app, set you Source ID inside an instance of the Analytics ob
 
 ~~~ python
 import analytics
+analytics.host = 'https://e.metarouter.io'
 analytics.app_id = ‘astronomer_source_id’
 ~~~
 

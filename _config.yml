@@ -3,13 +3,13 @@ repository: astronomerio/documentation
 output: web
 # this property is useful for conditional filtering of content that is separate from the PDF.
 
-topnav_title: Astronomer Documentation
+topnav_title: MetaRouter Documentation
 # this appears on the top navigation bar next to the home button
 
-site_title: Astronomer Documentation
+site_title: MetaRouter Documentation
 # this appears in the html browser tab for the site title (seen mostly by search engines, not users)
 
-company_name: Astronomer, Inc.
+company_name: MetaRouter
 # this appears in the footer
 
 github_editme_path: astronomerio/documentation/blob/master
@@ -35,9 +35,9 @@ exclude:
   - .gitignore
 # these are the files and directories that jekyll will exclude from the build
 
-feedback_subject_line: Astronomer Documentation
+feedback_subject_line: MetaRouter Documentation
 
-feedback_email: support@astronomer.io
+feedback_email: hello@metarouter.io
 # used as a contact email for the Feedback link in the top navigation bar
 
 feedback_disable: true
@@ -101,7 +101,7 @@ defaults:
 sidebars:
 - platform_sidebar
 
-description: "Documentation site for Astronomer.io product features."
+description: "Documentation site for MetaRouter.io product features."
 # the description is used in the feed.xml file
 
 # needed for sitemap.xml file only

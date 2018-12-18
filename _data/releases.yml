@@ -1,4 +1,4 @@
 - release:
-  name: v2.0
-  image: docs.astronomer.io
+  name: v3.0
+  image: docs.metarouter.io
   current: true

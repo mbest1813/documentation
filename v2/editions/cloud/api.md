@@ -1,5 +1,5 @@
 ---
-title: 'Houston: Astronomer's GraphQL API'
+title: Houston - MetaRouter's GraphQL API
 sidebar: platform_sidebar
 summary: Houston is a GraphQL API (utilizing Apollo) that allows interaction with the Astronomer Data Engineering Platform. Named after NASA’s Johnson Space Center in Houston, it provides direct communication and orchestration over our platform services.
 ---

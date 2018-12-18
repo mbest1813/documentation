@@ -1,21 +1,21 @@
 ---
-title: Overview of the Astronomer Platform
+title: Overview of the MetaRouter Platform
 keywords: introduction homepage
 sidebar: platform_sidebar
-summary: Astronomer is a data engineering platform that that helps you collect, process, and route data. It is available in Cloud, Enterprise, and Open editions. It includes two modules, Clickstream and Apache Airflow.
+summary: MetaRouter is a data engineering platform that that helps you collect, process, and route streaming data.
 ---
 
 ## Purpose
 
-Astronomer is a data engineering platform that provides a highly integrated set of tools that helps you collect, process, and route data (i.e. data engineering). Astronomer is built on industry proven open-source technologies (Apache Mesos, Apache Kafka, Apache Spark, Apache Airflow), and takes care of orchestrating and managing cloud infrastructure. The goal is to increase your ability to focus on data analytics and data science initiatives.
+MetaRouter is a data engineering platform that helps you collect user events from any source, and stream that data to all of your favorite third-party tools, analytics platforms, and data warehouses. MetaRouter is built on industry proven open-source technologies, and takes care of all the complex orchestrating and managing of cloud infrastructure. The goal of our platform is to increase your ability to focus on data analytics and data science initiatives.
 
-[![Astronomer Overview](/images/how_it_works.png)](/images/how_it_works.png)
+[![MetaRouter Overview](/images/platform_overview.png)](/images/platform_overview.png)
 
 ## Editions
 
-* [Open](/v2/editions/open/overview.html) - run our Clickstream or Airflow module on your local machine, and adapt all oparts of it for your own use.
+* [Cloud](/v2/editions/cloud/overview.html) - we run enterprise edition for you - signup for an account at https://app.metarouter.io/ and get started with the platform quickly.
 * [Enterprise](/v2/editions/enterprise/overview.html) - our full platform deployable via Kubernetes to your preferred cloud (AWS, Google Cloud, Azure).
-* [Cloud](/v2/editions/cloud/overview.html) - we run enterprise edition for you - signup for an account at https://cloud.astronomer.io/ and get started with the platform quickly.
+
 
 ## Modules
 
@@ -32,23 +32,9 @@ Astronomer is a data engineering platform that provides a highly integrated set 
         - Marketing Automation
         - User data tracking and warehousing
 
-* [Apache Airflow](/v2/apache_airflow/tutorial/core-airflow-concepts.html) - Run and monitor Apache Airflow data workflows, with a [CLI](/v2/apache_airflow/cli.html) to make deployment easy.
-    - Best suited for those:
-        - Familiar with Airflow, but tired of running it themselves
-        - Already using Airflow but planning on adding more team members
-        - Wanting to collaborate on workflows
-        - Currently using a drag-and-drop or other ETL solution, but unhappy or have outgrown it
-        - Ready to invest in modern data infrastructure
-
-    - Use Cases for Airflow:
-        - Aggregating various data sources to a data lake, data warehouse or database
-        - Post-processing data (more of an ELT approach than ETL)
-        - Enhancing or enriching data mid-stream
-        - Automating workflows
-
 ## What it's not
 
-Astronomer doesn't include:
+MetaRouter doesn't include:
 
-* A data warehouse - There are a growing number of great data warehouse options. Astronomer integrates with all of them.
+* A data warehouse - There are a growing number of great data warehouse options. MetaRouter integrates with all of them.
 * Data visualization - Same deal, there are a growing number of great visualization tools, and we believe that you should "own your data" and handle all data processing outside of your visualization tools.

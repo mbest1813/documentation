@@ -4,6 +4,6 @@ topnav:
 - title: Topnav
   items:
     - title: GitHub
-      external_url: https://github.com/astronomerio/documentation
-    - title: Help 
-      external_url: https://support.astronomer.io
+      external_url: https://github.com/super-collider/documentation
+    - title: Help
+      external_url: https://metarouter.io/#contact

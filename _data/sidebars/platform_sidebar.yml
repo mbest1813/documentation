@@ -2,7 +2,7 @@
 
 entries:
 - title: sidebar
-  product: Astronomer
+  product: MetaRouter
   version: v2
   current: true
 
@@ -21,9 +21,9 @@ entries:
       url: /v2/editions/enterprise/overview.html
       output: web
 
-    - title: Open Edition
-      url: /v2/editions/open/overview.html
-      output: web
+    # - title: Open Edition
+    #   url: /v2/editions/open/overview.html
+    #   output: web
 
       subfolders:
       - title: Cloud Edition
@@ -290,66 +290,3 @@ entries:
         - title: VWO
           url: /v2/clickstream/destinations/VWO.html
           output: web
-
-  - title: Apache Airflow
-    output: web
-    folderitems:
-
-    - title: Overview
-      url: /v2/apache_airflow/overview.html
-      output: web
-    
-    - title: Airflow Best Practices Guide
-      url: /v2/apache_airflow/best-practices-guide.html
-      output: web
-
-    - title: Astro CLI
-      url: /v2/apache_airflow/cli.html
-      output: web
-
-    - title: Available Packages
-      url: /v2/apache_airflow/available-packages.html
-      output: web
-
-    - title: Sources & Destinations
-      url: /v2/apache_airflow/sources-and-destinations.html
-      output: web
-
-      subfolders:
-      - title: Tutorial
-        output: web
-        subfolderitems:
-
-        - title: Core Apache Airflow Concepts
-          url: /v2/apache_airflow/tutorial/core-airflow-concepts.html
-          output: web
-
-        - title: Sign-up Walkthrough
-          url: /v2/apache_airflow/tutorial/sign-up-walk-through.html
-          output: web
-
-        - title: Simple DAG Example
-          url: /v2/apache_airflow/tutorial/sample-dag.html
-          output: web
-
-        - title: Sample DAG Deployment
-          url: /v2/apache_airflow/tutorial/dag-deployment.html
-          output: web
-
-        - title: DAG Writing Best Practices
-          url:  /v2/apache_airflow/tutorial/best-practices.html
-          output: web
-
-        - title: Monitoring
-          url:  /v2/apache_airflow/tutorial/monitoring.html
-          output: web
-
-        - title: Airflow Connections
-          url:  /v2/apache_airflow/tutorial/connections.html
-          output: web
-
-        - title: Airflow with Singer
-          url:  /v2/apache_airflow/tutorial/airflow-with-singer.html
-          output: web
-      
-  

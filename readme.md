@@ -30,11 +30,11 @@ Install Jekyll.
 
 `gem install jekyll bundler`
 
-Clone the documentation site to your local machine to get started. 
+Clone the documentation site to your local machine to get started.
 
-`git clone https://github.com/astronomerio/documentation.git`
+`git clone https://github.com/super-collider/documentation.git`
 
-Change directories into the newly downloaded folder. 
+Change directories into the newly downloaded folder.
 
 `cd documentation`
 
@@ -52,7 +52,7 @@ Remember that others make frequent changes to the site. It's best to `git pull` 
 
 The hompage is located in the `root` directory in `index.md`.
 
-All additional content is located inside of the `v2` folder. 
+All additional content is located inside of the `v2` folder.
 
 Adding pages to the sidebar can be accomplished by editing `_data/sidebars/platform_sidebar.yml`
 
@@ -60,7 +60,7 @@ Adding pages to the sidebar can be accomplished by editing `_data/sidebars/platf
 
 We're embedding ALL images and GIFs on these new docs using relative paths rather than absolute ones. This protects us in the event of a url change; we will not need to re-upload and reference each individual image or GIF.
 
-Upload any image files with the appropriate names to https://github.com/astronomerio/documentation/tree/master/images
+Upload any image files with the appropriate names to https://github.com/super-collider/documentation/tree/master/images
 
 Once you have images in there, follow the guidelines below to reference them using a relative path in markdown:
 
@@ -70,11 +70,11 @@ Use `./` to reference the same level you are in, or `../` to go up a level. For 
 
 ## Commiting your changes
 
-To add your changes to the site. 
-* Add your changes to git. 
-* Check to make sure your changes were tracked. 
+To add your changes to the site.
+* Add your changes to git.
+* Check to make sure your changes were tracked.
 * Commit your code changes. Make sure to leave a nice message.
-* Push your changes to github. 
+* Push your changes to github.
 
 ```
 git add .

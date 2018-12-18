@@ -165,3 +165,7 @@ The speed of your queries depends on the capabilities of your hardware, the size
 Be sure that the `Database` field exactly matches your Redshift `Database Name`. Astronomer will create a new schema within this database, but will not automatically create a new database for you. 
 
 If you wish to create a completely new database for your clickstream data, you can read about how to do that [here](http://docs.aws.amazon.com/redshift/latest/dg/r_CREATE_DATABASE.html).
+
+### Static Data Types
+
+We create columns and store data as strings (VARCHAR) within Redshift and do not preserve the original data type of event attributes. Instead, we ask that you rely on Redshift's built in dynamic data type formatting features at query time in order to format the data into the correct type that you need. Learn more on these features on [AWS Documentation > Data Type Formatting Functions](https://docs.aws.amazon.com/redshift/latest/dg/r_Data_type_formatting.html)

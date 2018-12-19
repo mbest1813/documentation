@@ -1,15 +1,15 @@
 ---
-title: Clickstream Module Overview
+title: MetaRouter Cloud Platform Overview
 sidebar: platform_sidebar
 ---
 
 The key to delighting customers is understanding them. Since identifying what they do-or don't do-is crucial to understanding their actions, thousands of tools exist to help marketers and product managers analyze user engagement with a website or app. As if selecting the right tools isn't challenging enough, accessing the fast-accumulating data for internal analysis is often a struggle, and the cost of switching to a better tool down the road can result in a major loss of data.
 
-The Astronomer Clickstream module allows you to capture every user event from web, mobile, and server side sources. Once those events are ingested into our platform, we can push them to a data warehouse, CRM, or analytics tool of your choice. Implementing our Clickstream module in your current infrastructure allows you to better understand how exactly users are interacting with your web and mobile apps so that you can tailor marketing and product focus accordingly.
+The MetaRouter Cloud Platform allows you to capture every user event from web, mobile, and server side sources. Once those events are ingested into our platform, we can push them to a data warehouse, CRM, or analytics tool of your choice. Implementing our Cloud Platform allows you to better understand how exactly users are interacting with your web and mobile apps so that you can tailor marketing and product focus accordingly.
 
 # Getting Started
 
-Once you've [signed up](https://app.astronomer.io/signup) for an account, it only takes a few minutes to start collecting valuable behavior data with Astronomer.
+Once you've [signed up](https://app.metarouter.io/signup) for an account, it only takes a few minutes to start collecting valuable behavior data with MetaRouter.
 
 Use one of our library sources to record user data from your website, mobile app, or servers. We'll transform and route that data to all of the destinations you've enabled.
 
@@ -32,7 +32,7 @@ Check it out:
 
 ## Destinations
 
-Check out the list below to explore all of the destinations available with Astronomer Clickstream. From there, make your way to each destination's docs and setup guide to see how to use them!
+Check out the list below to explore all of the destinations available with MetaRouter. From there, make your way to each destination's docs and setup guide to see how to use them!
 
 * [Acquisio](/v2/clickstream/destinations/acquisio.html)
 * [Amazon Kinesis](/v2/clickstream/destinations/amazon-kinesis.html)

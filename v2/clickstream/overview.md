@@ -35,6 +35,7 @@ Check it out:
 Check out the list below to explore all of the destinations available with MetaRouter. From there, make your way to each destination's docs and setup guide to see how to use them!
 
 * [Acquisio](/v2/clickstream/destinations/acquisio.html)
+* [Adobe Analytics](/v2/clickstream/destinations/adobe-analytics.html)
 * [Amazon Kinesis](/v2/clickstream/destinations/amazon-kinesis.html)
 * [Amazon Redshift](/v2/clickstream/destinations/amazon-redshift.html)
 * [Amplitude](/v2/clickstream/destinations/amplitude.html)
@@ -76,6 +77,7 @@ Check out the list below to explore all of the destinations available with MetaR
 |            | Client | Server | Mobile |
 | ---------- | ------ | ------ | ------ |
 | Acquisio | ✔ | x | x |
+| Adobe Analytics | ✔ | ✔ | ✔ |
 | Amazon Kinesis | ✔ | ✔ | ✔ |
 | Amazon Redshift | ✔ | ✔ | ✔ |
 | Amplitude | ✔ | ✔ | ✔ |

@@ -127,6 +127,10 @@ entries:
         - title: Acquisio
           url: /v2/clickstream/destinations/acquisio.html
           output: web
+        
+        - title: Adobe Analytics
+          url: /v2/clickstream/destinations/adobe-analytics.html
+          output: web
 
         - title: Amazon Redshift
           url: /v2/clickstream/destinations/amazon-redshift.html

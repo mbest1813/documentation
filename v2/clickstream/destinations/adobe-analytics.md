@@ -3,7 +3,7 @@ title: Adobe Analytics
 sidebar: platform_sidebar
 ---
 
-Astronomer Clickstream makes it easy to send your data to Adobe Analytics. Once you follow the steps below, your data will be routed through our platform and pushed to Adobe Analytics in the appropriate format.
+MetaRouter makes it easy to send your data to Adobe Analytics. Once you follow the steps below, your data will be routed through our platform and pushed to Adobe Analytics in the appropriate format.
 
 ## What is Adobe Analytics and how does it work?
 
@@ -11,22 +11,22 @@ Adobe Analytics is a solution for applying real-time analytics and detailed segm
 A request is made to the web server when a visitor comes to your site. Your site's web server sends the page code information, and the page displays in the browser. When the page loads the JavaScript code will run and send an image request to the Adobe server, passing the variables, metrics, and page data that were defined in your implementation.
 
 
-## Why send data to Adobe Analytics using Astronomer Clickstream?
+## Why send data to Adobe Analytics using MetaRouter?
 
-With Astronomer Clickstream, you can use Adobe Analytics without having to install their JavaScript library on every page of your site. We also eliminate the need to write custom code to track user event data. Once your Adobe Analytics is routed through Astronomer, our platform translates page views and events into corresponding Adobe Analytics events.
+With MetaRouter, you can use Adobe Analytics without having to install their JavaScript library on every page of your site. We also eliminate the need to write custom code to track user event data. Once your Adobe Analytics is routed through MetaRouter, our platform translates page views and events into corresponding Adobe Analytics events.
 
 
-## Getting Started with Adobe Analytics and Astronomer Clickstream
+## Getting Started with Adobe Analytics and MetaRouter
 
 ### Initialization
 
-When using Adobe Analytics through `analytics.js`, we will check if you already have global properties such as `window.s_account` or any properties on the `window.s` object and use them. In the absence of any of these values, we will fallback on the **Report Suite ID**, **Tracking Server URL**, and **Tracking Server Secure URL**(optional) you have defined in the destination settings inside Astronomer Clickstream.
+When using Adobe Analytics through `analytics.js`, we will check if you already have global properties such as `window.s_account` or any properties on the `window.s` object and use them. In the absence of any of these values, we will fallback on the **Report Suite ID**, **Tracking Server URL**, and **Tracking Server Secure URL**(optional) you have defined in the destination settings inside MetaRouter.
 
 Once these required properties are set, we will load `appmeasurement.js` version 1.6.
 
 ### Marketing Cloud Visitor ID Service
 
-You can use Adobe’s Marketing Cloud Visitor ID Service, in witch case you will need to provide Astronomer Clickstream with your **Marketing Cloud Organization ID** - in the advanced options inside Astronomer Clickstream.
+You can use Adobe’s Marketing Cloud Visitor ID Service, in witch case you will need to provide MetaRouter with your **Marketing Cloud Organization ID** - in the advanced options inside MetaRouter.
 
 Our analytics.js destination will load their `visitorAPI.js` library, but will only initialize it if you provide your Marketing Cloud Organization ID - we will set `window.s.visitor` with the return value from `window.Visitor.getInstance(<Your Marketing Cloud Org Id>)`. See [their documentation](https://marketing.adobe.com/resources/help/en_US/mcvid/mcvid-setup-analytics.html) for more information.
 
@@ -34,17 +34,17 @@ Our analytics.js destination will load their `visitorAPI.js` library, but will o
 
 ### List Variables
 
-You can map your Astronomer Clickstream properties in your settings to any of your three list variables - `props`, `eVar`, `hVar`. You can either send the property value as a comma delimited string (ie. `'john,charlie,alfred'`) or as an Array (`['john', 'charlie', 'alfred']`). If the provided data will be an Array, we will join it into a comma delimited string and then sending to Adobe!
+You can map your MetaRouter properties in your settings to any of your three list variables - `props`, `eVar`, `hVar`. You can either send the property value as a comma delimited string (ie. `'john,charlie,alfred'`) or as an Array (`['john', 'charlie', 'alfred']`). If the provided data will be an Array, we will join it into a comma delimited string and then sending to Adobe!
 
 ### Sending Data to Adobe Analytics
 
-Our recommendation is to create both an Astronomer Clickstream and Adobe Analytics tracking plan before attempting to send any events/properties to Adobe, since you’ll have to map all your Astronomer Clickstream events to Adobe `events` and Astronomer Clickstream properties to Adobe `eVars` or `props` in both the Astronomer Clickstream settings UI and your Adobe Mobile Services dashboard.
+Our recommendation is to create both a MetaRouter and Adobe Analytics tracking plan before attempting to send any events/properties to Adobe, since you’ll have to map all your MetaRouter events to Adobe `events` and MetaRouter properties to Adobe `eVars` or `props` in both the MetaRouter settings UI and your Adobe Mobile Services dashboard.
 
 ### Page
 
-By default, the Astronomer Clickstream snippet includes an empty `page()` call. When `page()` is called, here's the things that will happen:
+By default, the MetaRouter snippet includes an empty `page()` call. When `page()` is called, here's the things that will happen:
 
-1. Set `window.s.pageName` to the `name` of the page call was. By default, the Astronomer Clickstream `.page()` call will set `window.s.pageName` to be the passed argument. Since the default `page()` call has no arguments, `window.s.pageName` will be set as `undefined`. For calls like `page('Homepage')`, the `window.s.pageName` property will be set to the String passed, in this example, `'Homepage'`.
+1. Set `window.s.pageName` to the `name` of the page call was. By default, the MetaRouter `.page()` call will set `window.s.pageName` to be the passed argument. Since the default `page()` call has no arguments, `window.s.pageName` will be set as `undefined`. For calls like `page('Homepage')`, the `window.s.pageName` property will be set to the String passed, in this example, `'Homepage'`.
 
    **Note**: For an empty `page()` call, Adobe Analytics will fallback by default to displaying the `url` as the name of the page.
 
@@ -105,9 +105,9 @@ By default, the Astronomer Clickstream snippet includes an empty `page()` call. 
 
 ### Track
 
-Event tracking for Adobe Analytics through Astronomer Clickstream requires you to predefine the `events` you want to collect.
+Event tracking for Adobe Analytics through MetaRouter requires you to predefine the `events` you want to collect.
 
-In *both* Adobe Analytics and Astronomer Clickstream destination settings UI, you must predefine a list of `.track()` events that you want to send and which properties you want to send as custom variables.
+In *both* Adobe Analytics and MetaRouter destination settings UI, you must predefine a list of `.track()` events that you want to send and which properties you want to send as custom variables.
 
 This means that you **must** map each event and property to a corresponding Adobe Analytics `event`, `prop`, or `eVar`.
 
@@ -126,13 +126,13 @@ analytics.track('Watched Video', {
 
 The following will happen:
 
-1. Check if the Astronomer Clickstream event name, `'Watched Video'`, is mapped in your Astronomer Clickstream settings. If it is, set `window.s.linkTrackEvents` and `window.s.events` to its corresponding Adobe Analytics event name, `'event1'`. If no matching event name is found in the Astronomer Clickstream settings, do nothing and abort.
+1. Check if the MetaRouter event name, `'Watched Video'`, is mapped in your MetaRouter settings. If it is, set `window.s.linkTrackEvents` and `window.s.events` to its corresponding Adobe Analytics event name, `'event1'`. If no matching event name is found in the MetaRouter settings, do nothing and abort.
 
-2. Attach `timestamp` to `window.s.timestamp` if your **Timestamp Option** setting inside Astronomer Clickstream is either **Timestamp Enabled** or **Timestamp Optional**.
+2. Attach `timestamp` to `window.s.timestamp` if your **Timestamp Option** setting inside MetaRouter is either **Timestamp Enabled** or **Timestamp Optional**.
 
 3. Update common variables such as `channel`, `campaign`, `state`, `zip` if their corresponding properties were included in the event or on your `window.s` object.
 
-4. Check if the Astronomer Clickstream event name, `Watched Video` is mapped to an `eVar`. Since it is in the example case above, set `window.s.eVar3` as `'Watched Video'`.
+4. Check if the MetaRouter event name, `Watched Video` is mapped to an `eVar`. Since it is in the example case above, set `window.s.eVar3` as `'Watched Video'`.
 
 5. Check if any of the properties are mapped to either a `prop`, `eVar`, or `hVar`. Thus for the example above, set `window.s.prop1` as `'free'` and `window.s.eVar4` as `'The Uptick Rule'`.
 
@@ -154,9 +154,9 @@ The following will happen:
 
 The Adobe Analytics destination works with our standard Ecommerce API.
 
-The following mapping between semantic ecommerce events for Astronomer Clickstream and Adobe Analytics are supported:
+The following mapping between semantic ecommerce events for MetaRouter and Adobe Analytics are supported:
 
-| Astronomer Clickstream Event Name | Adobe Analytics Event Name |
+| MetaRouter Event Name | Adobe Analytics Event Name |
 | --------------------------------- | -------------------------- |
 | Product Viewed                    | `prodView`                 |
 | Product List Viewed               | `prodView`                 |
@@ -166,13 +166,13 @@ The following mapping between semantic ecommerce events for Astronomer Clickstre
 | Checkout Started                  | `scCheckout`               |
 | Order Completed                   | `purchase`                 |
 
-For any of the above ecommerce events, data is sent similarly to `.track()` events. The difference here is that you do **NOT** need to predefine these Astronomer Clickstream event names in the Astronomer Clickstream settings. The above ecommerce events will automatically be mapped and sent to Adobe Analytics.
+For any of the above ecommerce events, data is sent similarly to `.track()` events. The difference here is that you do **NOT** need to predefine these MetaRouter event names in the MetaRouter settings. The above ecommerce events will automatically be mapped and sent to Adobe Analytics.
 
-**Note**: Ecommerce relevant properties such as `orderId`, `products` will be sent automatically. However, if you want to attach custom properties to Adobe’s `eVar`, `prop` or `hVar`, you need to predefine them in the Astronomer Clickstream settings. (just the properties, no need to map the event names, unless you want the event name to be set to an `eVar`).
+**Note**: Ecommerce relevant properties such as `orderId`, `products` will be sent automatically. However, if you want to attach custom properties to Adobe’s `eVar`, `prop` or `hVar`, you need to predefine them in the MetaRouter settings. (just the properties, no need to map the event names, unless you want the event name to be set to an `eVar`).
 
 For all ecommerce events listed, we will send product description data to Adobe Analytics.
 
-Given the sample `Order Completed` Astronomer Clickstream event:
+Given the sample `Order Completed` MetaRouter event:
 
 ```js
 analytics.track('Order Completed', {
@@ -207,7 +207,7 @@ analytics.track('Order Completed', {
 
 1. Set `window.s.products` with the product description string - a semi-colon delimited string per product which is additionally delimited by commas if you have multiple products. The string format per product is `[category];[name];[quantity];[total]`. Total is calculated by multiplying price and quantity for each product.
 
-   **Note**: you can optionally choose whether to map the `name`, `sku`, or `id` for each of item in the `products` array. So one could alternatively send product descriptions with `[category];[sku];[quantity];[total]` or `[category];[id];[quantity];[total]`. Select the mapping via the **Product Identifier** dropdown under Advanced Options in your Adobe Analytics Astronomer Clickstream settings. The default identifier is set to `name`.
+   **Note**: you can optionally choose whether to map the `name`, `sku`, or `id` for each of item in the `products` array. So one could alternatively send product descriptions with `[category];[sku];[quantity];[total]` or `[category];[id];[quantity];[total]`. Select the mapping via the **Product Identifier** dropdown under Advanced Options in your Adobe Analytics MetaRouter settings. The default identifier is set to `name`.
 
    Thus the above example would set `window.s.products` to `'Games;Monopoly: 3rd Edition;1;19,Electronics;Go Pro;2;99'`.
 
@@ -221,7 +221,7 @@ analytics.track('Order Completed', {
 
 4. Check if the event name is mapped as an `eVar` and if so, set it on the `window.s`.
 
-5. Check if any other top level properties have been mapped to a custom variable in the Astronomer Clickstream settings such as `eVar`, `prop`, and `hVar`. If so, set them on the `window.s`.
+5. Check if any other top level properties have been mapped to a custom variable in the MetaRouter settings such as `eVar`, `prop`, and `hVar`. If so, set them on the `window.s`.
 
 6. Set `window.s.purchaseID` and `window.s.transactionID` as the `orderId`, which for the example above would be `'50314b8e9bcf000000000000'`. **Note** that this is only for `Order Completed` events.
 

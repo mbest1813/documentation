@@ -2,13 +2,13 @@
 title: Amazon Redshift
 sidebar: platform_sidebar
 ---
-Astronomer Clickstream makes it easy to send your data to Amazon Redshift. Once you follow the steps below, your data will be routed through our platform and pushed to Redshift in the appropriate format. Before we get started, there are a few important things to note about our Redshift integration.
+MetaRouter makes it easy to send your data to Amazon Redshift. Once you follow the steps below, your data will be routed through our platform and pushed to Redshift in the appropriate format. Before we get started, there are a few important things to note about our Redshift integration.
 
 1. You will not immediately see events in your Redshift upon configuration. The first time your data is loaded into Redshift, it will take some added time to run DDL logic to create tables, add columns, etc.
 
 2. Data is not streamed into Redshift in real time as it is for our other destinations. Rather, our Redshift loader operates on an hourly basis and each hourly job is queued up 15 minutes after the next hour starts. For example, the load for 2-3 PM will queue at 3:15 PM.
 
-3. You will need to whitelist our IP address in order for us to load data into your Redshift. Contact us through the in-app webchat or email us at support@astronomer.io for that IP.
+3. You will need to whitelist our IP address in order for us to load data into your Redshift. The whitelist IP's are listed below.
 
 Now, to the good stuff!
 
@@ -16,9 +16,9 @@ Now, to the good stuff!
 
 Redshift is Amazon Web Services' custom take on a traditional Postgres database. In Amazon's words, it is "[A fully managed petabyte-scale data warehouse service in the cloud.](http://docs.aws.amazon.com/redshift/latest/mgmt/welcome.html)" It's cost-effective at nearly any level, capable of scaling from gigabytes to petabytes without a loss in performance, and uses [columnar storage](http://docs.aws.amazon.com/redshift/latest/dg/c_columnar_storage_disk_mem_mgmnt.html) (among other optimizations) for incredibly fast querying speeds.
 
-## Why send data to Amazon Redshift using Astronomer Clickstream?
+## Why send data to Amazon Redshift using MetaRouter?
 
-This guide will explain how to integrate Redshift into Astronomer's clickstream platform as a destination, allowing you to leverage Amazon's technology to access, store, and query your customer data.
+This guide will explain how to integrate Redshift into MetaRouter's platform as a destination, allowing you to leverage Amazon's technology to access, store, and query your customer data.
 
 Our connector periodically runs an ETL (Extract - Transform - Load) process that pulls raw event data in S3, processes and transforms those raw events into a structured format, and then inserts structured event data from our bucket into your Redshift cluster.
 
@@ -59,27 +59,27 @@ If you're having trouble, check out the configuration steps [here](http://docs.a
 
 ---
 
-## Step 3. Permission Astronomer to Redshift
+## Step 3. Permission MetaRouter to Redshift
 
-Once you provision your Redshift cluster, you'll need to configure your Redshift cluster to allow Astronomer to access it.
+Once you provision your Redshift cluster, you'll need to configure your Redshift cluster to allow MetaRouter to access it.
 
 ### Confirm and Insert Credentials
 
-The <i>Username</i> and <i>Password</i> you used to initially create the cluster are the credentials you'll put into your Astronomer account. You should NOT use your master AWS credentials here. If you want to switch clusters in the future, make sure you update your Username and Password as needed.
+The <i>Username</i> and <i>Password</i> you used to initially create the cluster are the credentials you'll put into your MetaRouter account. You should NOT use your master AWS credentials here. If you want to switch clusters in the future, make sure you update your Username and Password as needed.
 
-For Clickstream, having *distinct users* will allow you to (i) isolate queries from one another and (ii) perform audits more easily.
+For MetaRouter, having *distinct users* will allow you to (i) isolate queries from one another and (ii) perform audits more easily.
 
 To create a new user, you'll need to log into the Redshift database directly. Here's the SQL command:
 
 ```
--- create a user named "astronomer" that Astronomer will use when connecting to your Redshift cluster.
-CREATE USER astronomer PASSWORD "<enter password here>";
+-- create a user named "metarouter" that MetaRouter will use when connecting to your Redshift cluster.
+CREATE USER metarouter PASSWORD "<enter password here>";
 
--- allows the "astronomer" user to create new schemas on the specified database. (this is the name you chose when provisioning your cluster)
-GRANT CREATE ON DATABASE "<enter database name here>" TO "astronomer";
+-- allows the "metarouter" user to create new schemas on the specified database. (this is the name you chose when provisioning your cluster)
+GRANT CREATE ON DATABASE "<enter database name here>" TO "metarouter";
 ```
 
-**Note: Because we do not persist or store your data, Astronomer will be unable to recover any events lost due to improper Redshift credentials or configuration by the user.**
+**Note: Because we do not persist or store your data, MetaRouter will be unable to recover any events lost due to improper Redshift credentials or configuration by the user.**
 
 ### Configure Security Groups
 Redshift clusters can either be in a EC2 Classic subnet or VPC subnet
@@ -101,7 +101,7 @@ Redshift Dashboard > Clusters > Select Your Cluster
 
 4. Click on "Add Connection Type"
 
-5. Authorize Astronomer to write into your Redshift Port by inputting our IP Addresses: 52.20.96.13 and 35.236.193.215
+5. Authorize MetaRouter to write into your Redshift Port by inputting our IP Addresses: 52.20.96.13 and 35.236.193.215
 
 **EC2-VPC**
 
@@ -114,7 +114,7 @@ Redshift Dashboard > Clusters > Select Your Cluster
 
 3. Select the "Inbound" tab and then "Edit"
 
-4. Authorize Astronomer to write into your Redshift Port by inputting our IP Addresses: 52.20.96.13 and 35.236.193.215
+4. Authorize MetaRouter to write into your Redshift Port by inputting our IP Addresses: 52.20.96.13 and 35.236.193.215
 
 5. Navigate back to your Redshift Cluster Settings
 
@@ -124,7 +124,7 @@ Redshift Dashboard > Clusters > Select Your Cluster
 
 
 
-### Whitelist Astronomer's IP.
+### Whitelist MetaRouter's IP.
 Make sure that you whitelist 52.20.96.13 and 35.236.193.215 as an incoming IP Addresses so we can write to your Redshift instance without you exposing the database to everyone.
 
 ---
@@ -137,9 +137,9 @@ The Host and Port are found at the top beside the label 'Endpoint,' with Host co
 
 ---
 
-## Step 4: Activate Integration on Astronomer
+## Step 4: Activate Integration on MetaRouter
 
-After you've identified the <b>Username, Password, Host, Port,</b> and <b>Database Name</b>, put all of these credentials into your Astronomer account and give your new connection a unique name.
+After you've identified the <b>Username, Password, Host, Port,</b> and <b>Database Name</b>, put all of these credentials into your MetaRouter account and give your new connection a unique name.
 
 Note that your *Database* and *Schema* are kept separate from your other connection credentials. *Schema* is required, but it's up to you to decide what value to input - think of it as a folder to store your clickstream in. Example values include `analytics_ios`, `clickstream_web`, etc.
 
@@ -162,7 +162,7 @@ The speed of your queries depends on the capabilities of your hardware, the size
 
 ### Naming Conventions
 
-Be sure that the `Database` field exactly matches your Redshift `Database Name`. Astronomer will create a new schema within this database, but will not automatically create a new database for you. 
+Be sure that the `Database` field exactly matches your Redshift `Database Name`. MetaRouter will create a new schema within this database, but will not automatically create a new database for you. 
 
 If you wish to create a completely new database for your clickstream data, you can read about how to do that [here](http://docs.aws.amazon.com/redshift/latest/dg/r_CREATE_DATABASE.html).
 

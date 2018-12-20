@@ -32,7 +32,7 @@ Our connector periodically runs an ETL (Extract - Transform - Load) process that
  Once you've logged into your AWS account and Redshift console, it's time to pick and select your cluster.
 
  As you do this, remember that the capacity you'll need and utilize depends primarily on the number of unique tables and columns created in the cluster, not the number of events (database records).
- Each unique `track` event creates a new table, and each property sent creates a new column in that table. For this reason, think about creating a detailed tracking plan to make sure that all events being passed to Astronomer are necessary and consistent.
+ Each unique `track` event creates a new table, and each property sent creates a new column in that table. For this reason, think about creating a detailed tracking plan to make sure that all events being passed to MetaRouter are necessary and consistent.
 
  There are two kinds of Redshift clusters, Dense Compute and Dense Storage.
 

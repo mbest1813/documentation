@@ -5,7 +5,7 @@ sidebar: platform_sidebar
 
 # Common Fields of API Calls
 
-Every [API call](../calls.html) has a common structure. While some specific calls pass extra information, they will all pass the information detailed in this document. Note that, while Astronomer will send all of these fields, not every destination will accept every field listed below.
+Every [API call](../calls.html) has a common structure. While some specific calls pass extra information, they will all pass the information detailed in this document. Note that, while MetaRouter will send all of these fields, not every destination will accept every field listed below.
 
 ## General Structure
 
@@ -16,13 +16,13 @@ As mentioned above, there is a general structure that governs our API calls. Bel
   "context": {
     "active": true,
     "app": {
-      "name": "Astronomer",
+      "name": "MetaRouter",
       "version": "123",
       "build": "1.1.1.123",
-      "namespace": "com.production.astronomer"
+      "namespace": "com.production.metarouter"
     },
     "campaign": {
-      "name": "Astronomer Sunday Reads",
+      "name": "MetaRouter Sunday Reads",
       "source": "Newsletter",
       "medium": "email",
       "term": "tps reports",
@@ -65,8 +65,8 @@ As mentioned above, there is a general structure that governs our API calls. Bel
       "path": "/",
       "referrer": "",
       "search": "",
-      "title": "Astronomer",
-      "url": "https://www.astronomer.io/"
+      "title": "MetaRouter",
+      "url": "https://www.metarouter.io/"
     },
     "referrer": {
       "id": "exampleId",
@@ -101,8 +101,8 @@ Below is a chart detailing what the fields in the above sample payload mean.
 | `context` (optional) | object | Dictionary of extra information that provides useful context about a message that is not directly related to the API call |
 | `integrations` (optional) | string | Dictionary of destinations to either enable or disable |
 | `messageId` (implicit) | string | Automatically collected, this is a unique identifier for each message that lets you find an individual message across the API |
-| `receivedAt` (implicit) | date | The timestamp of when a message is received by Astronomer |
-| `sentAt` (optional) | date | The timestamp of when a message is sent to Astronomer |
+| `receivedAt` (implicit) | date | The timestamp of when a message is received by MetaRouter |
+| `sentAt` (optional) | date | The timestamp of when a message is sent to MetaRouter |
 | `type` (implicit) | strong |Type of message, according to the API method |
 | `userId` (required) | string | Unique string that identifies a user in your database |
 | `version` (implicit) | number | Version of th *****

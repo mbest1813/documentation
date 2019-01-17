@@ -2,7 +2,7 @@
 title: Acquisio
 sidebar: platform_sidebar
 ---
-Astronomer Clickstream makes it easy to send your data to Acquisio. Once you follow the steps below, your data will be routed through our platform and pushed to Acquisio in the appropriate format. Note that this connector supports client-side analytics.js only.
+MetaRouter Clickstream makes it easy to send your data to Acquisio. Once you follow the steps below, your data will be routed through our platform and pushed to Acquisio in the appropriate format. Note that this connector supports client-side analytics.js only.
 
 ## What is Acquisio and how does it work?
 
@@ -12,11 +12,11 @@ By tracking the efficiency of your search engine marketing/PPC campaigns, Acquis
 
 [Learn more about Acquisio](https://www.acquisio.com/)
 
-## Why send data to Acquisio using Astronomer Clickstream?
+## Why send data to Acquisio using MetaRouter Clickstream?
 
 Having your user event data incorporated into your marketing automation can be invaluable. Knowing exactly how your users are interacting with your site and mobile appplications can provide more robust A/B experimentation results, generate insights regarding ad effectiveness, and highlight your customer acquision data.
 
-## Getting Started with Acquisio and Astronomer Clickstream
+## Getting Started with Acquisio and MetaRouter Clickstream
 
 ### Acquisio Side
 
@@ -25,11 +25,11 @@ To get started sending events to Acquisio, you'll need to sign up for [Acquisio]
 * Create your company's specific campaign
 * Receive your `Advertiser ID` and any custom event names
 
-### Astronomer Side
+### MetaRouter Side
 
-Once you receive your `Advertiser ID` from your account manager, paste it into the `Advertiser ID` field in the Astronomer UI.  In the `Events` area, paste in any conversion event names given to you by Acquisio.  If you have more than one custom event, choose the `+` icon to add more.
+Once you receive your `Advertiser ID` from your account manager, paste it into the `Advertiser ID` field in the MetaRouter UI.  In the `Events` area, paste in any conversion event names given to you by Acquisio.  If you have more than one custom event, choose the `+` icon to add more.
 
-![acquisio1](../../../images/acquisio1.png)
+![acquisio1](../../../images/acquisio1v2.png)
 
 With your configuration entered, choose `Save.`
 

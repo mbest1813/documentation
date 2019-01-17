@@ -147,7 +147,7 @@ Click `Create Destination` and your pipeline will be activated.
 
 That's it! You'll now be receiving a livestream of data from your application into your private Redshift account.
 
-![amazon-redshift1](../../../images/amazon-redshift1.gif)
+![amazon-redshift1](../../../images/amazon-redshift1v2.gif)
 
 
 ## Things to note

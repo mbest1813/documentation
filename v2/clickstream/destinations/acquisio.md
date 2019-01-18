@@ -2,7 +2,7 @@
 title: Acquisio
 sidebar: platform_sidebar
 ---
-MetaRouter Clickstream makes it easy to send your data to Acquisio. Once you follow the steps below, your data will be routed through our platform and pushed to Acquisio in the appropriate format. Note that this connector supports client-side analytics.js only.
+MetaRouter makes it easy to send your data to Acquisio. Once you follow the steps below, your data will be routed through our platform and pushed to Acquisio in the appropriate format. Note that this connector supports client-side analytics.js only.
 
 ## What is Acquisio and how does it work?
 
@@ -12,11 +12,11 @@ By tracking the efficiency of your search engine marketing/PPC campaigns, Acquis
 
 [Learn more about Acquisio](https://www.acquisio.com/)
 
-## Why send data to Acquisio using MetaRouter Clickstream?
+## Why send data to Acquisio using MetaRouter?
 
 Having your user event data incorporated into your marketing automation can be invaluable. Knowing exactly how your users are interacting with your site and mobile appplications can provide more robust A/B experimentation results, generate insights regarding ad effectiveness, and highlight your customer acquision data.
 
-## Getting Started with Acquisio and MetaRouter Clickstream
+## Getting Started with Acquisio and MetaRouter
 
 ### Acquisio Side
 

@@ -3,7 +3,7 @@ title: Amplitude
 sidebar: platform_sidebar
 ---
 
-MetaRouter Clickstream makes it easy to send your data to Amplitude. Once you follow the steps below, your data will be routed through our platform and pushed to Amplitude in the appropriate format.
+MetaRouter makes it easy to send your data to Amplitude. Once you follow the steps below, your data will be routed through our platform and pushed to Amplitude in the appropriate format.
 
 ## What is Amplitude and how does it work?
 
@@ -13,13 +13,13 @@ Implementing Amplitude natively in your stack requires a good amount of develope
 
 [Learn more about Amplitude](https://amplitude.com/)
 
-## Why send data to Amplitude using MetaRouter Clickstream?
+## Why send data to Amplitude using MetaRouter?
 
 If you want to try out any other analytics application, implementing native event tracking for Amplitude is a waste of time. Going through the process of selecting and installing libraries and SDKs just for one tool will take your engineers a lot of time. Furthermore, if you plan to add more tools to your stack, the event tracking and custom coding work is going to be redundant and frustrating.
 
-Integrating Amplitude with MetaRouter Clickstream means that you will just need to install MetaRouter and enable Amplitude in your MetaRouter UI. You will only need to set up one event tracking library (MetaRouter's), and then you will be able to route and send data to Amplitude and any other destination of your choice without writing custom code for each one.
+Integrating Amplitude with MetaRouter means that you will just need to install MetaRouter and enable Amplitude in your MetaRouter UI. You will only need to set up one event tracking library (MetaRouter's), and then you will be able to route and send data to Amplitude and any other destination of your choice without writing custom code for each one.
 
-## Getting Started with Amplitude and MetaRouter Clickstream
+## Getting Started with Amplitude and MetaRouter
 
 ### Amplitude Side
 

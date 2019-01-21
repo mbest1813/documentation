@@ -123,7 +123,7 @@ The fields outlined above are explained here:
 | callback | Optional | Function | A function that is executed after a short timeout. This gives the browser time to make outbound requests.|
 
 
-# Group
+## Group
 
 The `group` method associates an identified user with a company, organization, project, etc. Here's the basic `group` definition:
 ```
@@ -140,7 +140,7 @@ The fields outlined above are explained here:
 | callback | Optional | Function | A function that is executed after a short timeout. This gives the browser time to make outbound requests.|
 
 
-# Alias
+## Alias
 
 The `alias` method combines two unassociated User IDs. Here's the basic `alias` definition:
 
@@ -156,3 +156,16 @@ The fields outlined above are explained here:
 | previousId | Optional | String | The previous ID that was assigned to the user. |
 | options | Optional | Object | A library of options that you might want to pass with your call.|
 | callback | Optional | Function | A function that is executed after a short timeout. This gives the browser time to make outbound requests.|
+
+## FAQ
+
+### Can I run both MetaRouter's snippet and other analytics tools at the same time?
+
+Depending on the tools, there could be conflicts in where functionality is overwritten by our snippet or the tracking tools logic. This is beacuse the names of the functions are the same, regardless of who loads it, and Javascript will overwrite one part of data with another if they share the same name.
+
+There are three types of conflict resolution to expect across all destinations that we offer:
+1) **Automatic Conflict Resolution** - These are destinations that expect that a separate, duplicate copy can exist at the same time. Google Analytics is an example of this.
+2) **Manual Conflict Resolution** - These are destinations that require a setting to be specified in order to prevent conflicts. Facebook Pixel's [Send All Events as Single Events](https://docs.metarouter.io/v2/clickstream/destinations/facebook-pixel.html#additional-features) is an example of this.
+3) **No Conflict Resolution** - These destinations do not have any functionality to handle multiple versions of themselves being loaded in at the same time.
+
+**We do not support using Segment Analytics and this SDK at the same time**. Because both products use the same open-source project as the basis of their functionality, there are unavoidable conflicts for functionality. Instead, we recommend using an A/B test to send a portion of traffic to each snippet (for comparison reasons) or by leveraging the Webhooks Destination to forward a copy of the event from our system to Segment (this will only work for Segment's Cloud-Enabled Destinations)

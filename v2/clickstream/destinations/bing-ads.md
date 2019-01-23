@@ -3,7 +3,7 @@ title: Bing Ads
 sidebar: platform_sidebar
 ---
 
-Astronomer Clickstream makes it easy to send your data to Bing Ads. Once you follow the steps below, your data will be routed through our platform and pushed to Bing Ads in the appropriate format.
+MetaRouter makes it easy to send your data to Bing Ads. Once you follow the steps below, your data will be routed through our platform and pushed to Bing Ads in the appropriate format.
 
 ## What is Bing Ads and how does it work?
 
@@ -13,11 +13,11 @@ Cost-wise, Bing Ads is both exceptionally accessible and adaptable to your needs
 
 [Learn more about Bing Ads](https://secure.bingads.microsoft.com/).
 
-## Why send data to Bing Ads using Astronomer Clickstream?
+## Why send data to Bing Ads using MetaRouter?
 
-With Astronomer Clickstream, send page and event data to Bing Ads without having to edit code. Once you enable our pipelines, our script will immediately load on your website to start collecting page views and recording events. Events that have a `value` or `revenue` property directly translate to Bing Ads' event value.
+With MetaRouter, send page and event data to Bing Ads without having to edit code. Once you enable our pipelines, our script will immediately load on your website to start collecting page views and recording events. Events that have a `value` or `revenue` property directly translate to Bing Ads' event value.
 
-## Getting Started with Bing Ads & Astronomer Clickstream
+## Getting Started with Bing Ads & MetaRouter
 
 Bing Ads will record all of your page views and events sent via `page` and `track`, giving you access to data that you can use to create custom goals and conversions directly on Bing Ads.
 
@@ -37,19 +37,19 @@ Now, go ahead and create a UET Tag by choosing a name and description.
 
 ![bing-ads2](../../../images/bing-ads2.png).
 
-If you click on `View Tag`, you'll be able to see both the JavaScript code and the 7-digit `Tag Id`. With that, jump over to your Astronomer dashboard to activate your pipeline directly from our UI.
+If you click on `View Tag`, you'll be able to see both the JavaScript code and the 7-digit `Tag Id`. With that, jump over to your MetaRouter dashboard to activate your pipeline directly from our UI.
 
 ![bing-ads3](../../../images/bing-ads3.png).
 
 For more help on getting Bing Ads set up, check out [this Bing Ads support page](http://help.bingads.microsoft.com/apex/index/3/en/56705).
 
-### Astronomer Side
+### MetaRouter Side
 
-If you're ready with your `Tag Id` at hand, go ahead and log into your Astronomer dashboard.
+If you're ready with your `Tag Id` at hand, go ahead and log into your MetaRouter dashboard.
 
 Add Bing Ads as a destination. From there, give your connection a unique name and input your `Tag Id` where prompted.
 
-![bing-ads4](../../../images/bing-ads4.png)
+![bing-ads4](../../../images/bing-ads4v2.png)
 
 Now, just click on `Save` to activate your pipeline.
 

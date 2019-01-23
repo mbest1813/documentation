@@ -3,7 +3,7 @@ title: Clicky
 sidebar: platform_sidebar
 ---
 
-Astronomer Clickstream makes it easy to send your data to Clicky. Once you follow the steps below, your data will be routed through our platform and pushed to Clicky in the appropriate format. 
+MetaRouter makes it easy to send your data to Clicky. Once you follow the steps below, your data will be routed through our platform and pushed to Clicky in the appropriate format. 
 
 ## What is Clicky and how does it work?
 
@@ -13,11 +13,11 @@ Clicky is used for optimizing traffic sources, engaging users with content, and 
 
 [Learn more about Clicky](https://clicky.com/)
 
-## Why send data to Clicky using Astronomer Clickstream?
+## Why send data to Clicky using MetaRouter?
 
-Integrating Clicky with Astronomer Clickstream avoids the painstaking process of installing the Clicky JavaScript library on each page of your site. Once you enable Clicky in your Astronomer UI, this JavaScript library will be automatically loaded into each page and you will begin collecting user information. 
+Integrating Clicky with MetaRouter avoids the painstaking process of installing the Clicky JavaScript library on each page of your site. Once you enable Clicky in your MetaRouter UI, this JavaScript library will be automatically loaded into each page and you will begin collecting user information. 
 
-## Getting Started with Clicky and Astronomer Clickstream
+## Getting Started with Clicky and MetaRouter
 
 ### Clicky Side 
 
@@ -27,11 +27,11 @@ Once you've made an account with Clicky, you will land on a page outlining basic
 
 Your site ID will be at the top of this page. Copy this ID to your clipboard.
 
-### Astronomer Side
+### MetaRouter Side
 
 ![clicky4](../../../images/clicky4.png)
 
-Paste this ID into the Astronomer UI to begin sending data to Clicky. Your pipeline will be activated once you click 'Save.'
+Paste this ID into the MetaRouter UI to begin sending data to Clicky. Your pipeline will be activated once you click 'Save.'
 
-
+![clicky5](../../../images/clicky5v2.png)
 

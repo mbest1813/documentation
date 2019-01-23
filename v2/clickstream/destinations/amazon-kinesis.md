@@ -2,7 +2,7 @@
 title: Amazon Kinesis
 sidebar: platform_sidebar
 ---
-Astronomer Clickstream makes it easy to send your data to Amazon Kinesis. Once you follow the steps below, your data will be routed through our platform and pushed to Kinesis in the appropriate format.
+MetaRouter makes it easy to send your data to Amazon Kinesis. Once you follow the steps below, your data will be routed through our platform and pushed to Kinesis in the appropriate format.
 
 ## What is Amazon Kinesis?
 
@@ -12,9 +12,9 @@ In order to configure a Kinesis stream, you must implement its appropriate API l
 
 [Learn more about Amazon Kinesis](https://aws.amazon.com/documentation/kinesis/)
 
-## Why send data to Amazon Kinesis using Astronomer Clickstream?
+## Why send data to Amazon Kinesis using MetaRouter?
 
-Implementing Kinesis with Astronomer Clickstream allows you to skip the installation of a Kinesis API library or SDK and limits the amount of modifications that you need to make to your own code. Our Kinesis integration supports all of our [API Calls](../calls.html), so you don't need to set up a separate library for each event you want to track.
+Implementing Kinesis with MetaRouter allows you to skip the installation of a Kinesis API library or SDK and limits the amount of modifications that you need to make to your own code. Our Kinesis integration supports all of our [API Calls](../calls.html), so you don't need to set up a separate library for each event you want to track.
 
 ## Getting started with Amazon Kinesis
 

@@ -3,7 +3,7 @@ title: Heap Analytics
 sidebar: platform_sidebar
 ---
 
-Astronomer Clickstream makes it easy to send your data to Heap. Once you follow the steps below, your data will be routed through our platform and pushed to Heap in the appropriate format. 
+MetaRouter makes it easy to send your data to Heap. Once you follow the steps below, your data will be routed through our platform and pushed to Heap in the appropriate format. 
 
 ## What is Heap and how does it work?
 
@@ -15,15 +15,15 @@ Heap is powered by a JavaScript library that you'll need to install on every pag
 
 [Learn more about Heap](https://heapanalytics.com/features/sql)
 
-## Why send data to Heap using Astronomer Clickstream?
+## Why send data to Heap using MetaRouter?
 
-Integrating Heap with Astronomer Clickstream allows you to collect valuable data without manually adding the Heap code snippet into your site header. All you have to do is enable the Heap destination in your UI and Astronomer will take care of translating user traits and sending them to Heap. 
+Integrating Heap with MetaRouter allows you to collect valuable data without manually adding the Heap code snippet into your site header. All you have to do is enable the Heap destination in your UI and MetaRouter will take care of translating user traits and sending them to Heap. 
 
-## Getting Started with Heap and Astronomer Clickstream
+## Getting Started with Heap and MetaRouter
 
 ### Heap Side
 
-Once you create a Heap account, a page will load suggesting that you install Heap into your application. If you're using Astronomer for a web application, this isn't necessary as you'll be able to copy over the Source ID into your Astronomer account. Your Source ID will be located at the end of the JavaScript snippet they provide with the `heap.load()` function.
+Once you create a Heap account, a page will load suggesting that you install Heap into your application. If you're using MetaRouter for a web application, this isn't necessary as you'll be able to copy over the Source ID into your MetaRouter account. Your Source ID will be located at the end of the JavaScript snippet they provide with the `heap.load()` function.
 
 ![heap-analytics1](../../../images/heap-analytics1.png)
 
@@ -31,11 +31,11 @@ It's important to note here that Heap automatically sets you up with a Developme
 
 ![heap-analytics2](../../../images/heap-analytics2.png)
 
-### Astronomer Side
+### MetaRouter Side
 
-Add your Source ID into the Heap connector on your Astronomer dashboard and give your new connection a unique name. Click `Save` and your pipeline will be activated.
+Add your Source ID into the Heap connector on your MetaRouter dashboard and give your new connection a unique name. Click `Save` and your pipeline will be activated.
 
-![heap-analytics3](../../../images/heap-analytics3.png)
+![heap-analytics3](../../../images/heap-analytics3v2.png)
 
 ### Things to Note. 
 

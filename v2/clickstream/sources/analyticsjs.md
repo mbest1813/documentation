@@ -15,7 +15,7 @@ Next, you’ll need to copy and paste the snippet below into the <head> of your 
 
 ```javascript
 <script type="text/javascript">
-  !function(){var analytics=window.analytics=window.analytics||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Astronomer snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","page","once","off","on"];analytics.factory=function(t){return function(){var e=Array.prototype.slice.call(arguments);e.unshift(t);analytics.push(e);return analytics}};for(var t=0;t<analytics.methods.length;t++){var e=analytics.methods[t];analytics[e]=analytics.factory(e)}analytics.load=function(t){var e=document.createElement("script");e.type="text/javascript";e.async=!0;e.src=("https:"===document.location.protocol?"https://":"http://")+"cdn.metarouter.io/a/v1/"+t+".js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(e,n)};analytics.SNIPPET_VERSION="3.1.0";
+  !function(){var analytics=window.analytics=window.analytics||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("MetaRouter snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","page","once","off","on"];analytics.factory=function(t){return function(){var e=Array.prototype.slice.call(arguments);e.unshift(t);analytics.push(e);return analytics}};for(var t=0;t<analytics.methods.length;t++){var e=analytics.methods[t];analytics[e]=analytics.factory(e)}analytics.load=function(t){var e=document.createElement("script");e.type="text/javascript";e.async=!0;e.src=("https:"===document.location.protocol?"https://":"http://")+"cdn.metarouter.io/a/v1/"+t+".js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(e,n)};analytics.SNIPPET_VERSION="3.1.0";
   analytics.load("YOUR_SOURCE_ID");
   analytics.page()
   }}();
@@ -60,7 +60,7 @@ For example, a simple `identify` looks something like this:
 ```
 analytics.identify('123456', {
   name: 'Dagny',
-  email: 'dagny@astronomer.io'
+  email: 'dagny@metarouter.io'
   role: 'buyer'
 });
 ```
@@ -85,7 +85,7 @@ The fields mentioned above are defined here:
 | Field | Status | Type | Notes |
 |-------|--------|------|-------|
 | event | Mandatory | String | Name of the event you're tracking |
-| properties | Optional | Object | A library of properties to be associated with the event. Check out our [API Call doc](https://docs.astronomer.io/v2/clickstream/calls.html) to learn more about properties you can pass with your track calls |
+| properties | Optional | Object | A library of properties to be associated with the event. Check out our [API Call doc](https://docs.metarouter.io/v2/clickstream/calls.html) to learn more about properties you can pass with your track calls |
 | options | Optional | Object | A library of options, such as enabiling or disabiling specfiic destinations for a given call. Note that, if you elect to not pass a `properties` object, you must pass an empty object with `{}` before options. |
 | callback | Optional | Function | A function that is executed after a short timeout. This gives the browser time to make outbound requests. |
 

@@ -7,7 +7,7 @@ sidebar: platform_sidebar
 
 This library lets you record analytics data from your Java code. Once installed, the requests will hit our servers and then be routed to the destinations of your choice. 
 
-You can install the library [here](https://mvnrepository.com/artifact/io.astronomer.analytics.java/analytics-core/2.0.0-RC5).
+You can install the library [here](https://mvnrepository.com/artifact/io.metarouter.analytics.java/analytics-core/2.0.0-RC5).
 
 You can use this library in your web server controller code- it is built for high performance and uses and internal queue to make all calls non-blocking and fast. It will batch messages and flush asynchronously to our servers.
 
@@ -22,7 +22,7 @@ The library is distributed as a `jar` dependency via [Maven Central](http://sear
 Add to `pom.xml`:
 ```xml
 <dependency>
-    <groupId>io.astronomer.analytics.java</groupId>
+    <groupId>io.metarouter.analytics.java</groupId>
     <artifactId>analytics-core</artifactId>
     <version>2.0.0-RC5</version>
 </dependency>
@@ -30,7 +30,7 @@ Add to `pom.xml`:
 
 #### Initialize the SDK
 
-Before you can start sending us events, you'll need to initialize an instance of the Analytics class. Do this using the `Analytics.builder` class, inputting the `Source ID` found in the source settings of your Astronomer UI.
+Before you can start sending us events, you'll need to initialize an instance of the Analytics class. Do this using the `Analytics.builder` class, inputting the `Source ID` found in the source settings of your MetaRouter UI.
 ```java
 Analytics analytics = Analytics.builder("Your Source ID")
         .endpoint("https://e.metarouter.io")
@@ -103,15 +103,15 @@ The above call tells us that someone has viewed a `MoonLanding` page that is cat
 analytics.enqueue(GroupMessage.builder("some-group-id")
     .userId("qwerty1234")
     .traits(ImmutableMap.builder()
-        .put("name", "Astronomer")
+        .put("name", "MetaRouter")
         .put("size", 55)
-        .put('website", "www.astronomer.io")
+        .put('website", "www.metarouter.io")
         .build()
     )
 );
 ```
 
-The above call assigns the user with the "Astronomer" group and gives that group the "size" and "website" traits. 
+The above call assigns the user with the "MetaRouter" group and gives that group the "size" and "website" traits. 
 
 #### Alias
 

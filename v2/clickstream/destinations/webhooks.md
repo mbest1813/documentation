@@ -2,7 +2,7 @@
 title: Webhooks
 sidebar: platform_sidebar
 ---
-Astronomer Clickstream makes it easy to send your data to webhooks from server-side, mobile, *and* client-side. Once you follow the steps below, your data will be routed through our platform and pushed to webhooks in the appropriate format.
+MetaRouter makes it easy to send your data to webhooks from server-side, mobile, *and* client-side. Once you follow the steps below, your data will be routed through our platform and pushed to webhooks in the appropriate format.
 
 ## What are webhooks and how do they work?
 
@@ -14,17 +14,17 @@ A webhook submits realtime user data, ties customer information to a dedicate AP
 
 Get instant, realtime notifications without having to manually poll your data.  
 
-## Why send data to webhooks using Astronomer Clickstream?
+## Why send data to webhooks using MetaRouter?
 
-If you're already setup with Astronomer Clickstream,  you can start using webhooks. Any data you collect with Astronomer can be sent to up to 5 webhook destinations.
+If you're already setup with MetaRouter,  you can start using webhooks. Any data you collect with MetaRouter can be sent to up to 5 webhook destinations.
 
 Read below to kickoff your integration and start gaining insights.
 
-## Getting started with webhooks and Astronomer Clickstream
+## Getting started with webhooks and MetaRouter
 
-Add your domain name into the webhook connector on your Astronomer dashboard and give your new connection a unique name.
+Add your domain name into the webhook connector on your MetaRouter dashboard and give your new connection a unique name.
 
-Click `Create Destination` to activate your pipeline.
+Click `Save` to activate your pipeline.
 
 ## Beyond the basics
 

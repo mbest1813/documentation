@@ -38,7 +38,7 @@ analytics = Segment::Analytics.new({
 })
 ```
 
-***Note**: You can find your `Source ID` in the settings section of your Astronomer App.*
+***Note**: You can find your `Source ID` in the settings section of your MetaRouter App.*
 
 ### Calls in Ruby
 
@@ -72,7 +72,7 @@ analytics.page(
     user_id: user_id,
     category: Prod site
     name: 'Landing page'
-    properties: { url: 'https://astronomer.io'}
+    properties: { url: 'https://metarouter.io'}
 )
 ```
 
@@ -82,7 +82,7 @@ analytics.page(
 analytics.group(
     user_id: '1234qwerty'
     group_id: '10'
-    traits: { name: 'Astronomer', description: 'Data Engineering Platform'}
+    traits: { name: 'MetaRouter', description: 'Data Engineering Platform'}
 )
 ```
 

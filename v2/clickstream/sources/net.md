@@ -23,7 +23,7 @@ Install-Package Analytics
 
 You can also doing this by navigating through Visual Studio: `Toola-->Library Package Manager-->Package Manager Console'
 
-Now you need to initialize the .NET library so that it knows where to send data. Do this with your `Source ID`, which can be found in your Astronomer UI once you've created a server-side source. Then you can use the `Analytics` singleton in any controller you want:
+Now you need to initialize the .NET library so that it knows where to send data. Do this with your `Source ID`, which can be found in your MetaRouter UI once you've created a server-side source. Then you can use the `Analytics` singleton in any controller you want:
 
 ```c#
 <%@ Application Language="C#" %>
@@ -81,7 +81,7 @@ Analytics.Client.Track("1234qwerty", "Add to Cart", new Properties() {
 ```c#
 Analytics.Client.Page("1234qwerty", "Login", new Properties() {
     { "path", "/login" },
-    { "title", "Astronomer Login" }
+    { "title", "MetaRouter Login" }
 });
 ```
 
@@ -89,8 +89,8 @@ Analytics.Client.Page("1234qwerty", "Login", new Properties() {
 
 ```c#
 Analytics.Client.Group("userId", "groupId", new Traits() {
-    { "name", "Astronomer },
-    { "website", "www.astronomer.io" }
+    { "name", "MetaRouter" },
+    { "website", "www.metarouter.io" }
 });
 ```
 

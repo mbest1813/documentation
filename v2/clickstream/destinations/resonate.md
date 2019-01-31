@@ -3,7 +3,7 @@ title: Resonate
 sidebar: platform_sidebar
 ---
 
-Astronomer Clickstream makes it easy to send your data to Resonate. Once you follow the steps below, your data will be routed through our platform and pushed to Resonate in the appropriate format.
+MetaRouter makes it easy to send your data to Resonate. Once you follow the steps below, your data will be routed through our platform and pushed to Resonate in the appropriate format.
 
 ## What is Resonate and how does it work?
 
@@ -15,13 +15,13 @@ Resonate's professional services offerings, data management platform integration
 
 [Learn more about Resonate](https://www.resonate.com/)
 
-## Why send data to Resonate using Astronomer Clickstream?
+## Why send data to Resonate using MetaRouter?
 
-Integrating Astronomer Clickstream with Resonate will circumvent the need for manual implementation. More importantly, it will enrich the data you see in your Resonate dashboard and equip your team to better understand your customer base. Once your team has a better grasp of your customer base, it can effectively measure marketing performance and create engaging content.
+Integrating MetaRouter with Resonate will circumvent the need for manual implementation. More importantly, it will enrich the data you see in your Resonate dashboard and equip your team to better understand your customer base. Once your team has a better grasp of your customer base, it can effectively measure marketing performance and create engaging content.
 
-## Getting Started with Resonate and Astronomer Clickstream
+## Getting Started with Resonate and MetaRouter
 
-***Note:** This connector supports client-side analytics.js only.  You also need to have implemented Astronomer [inside your website](../sources/analyticsjs.md) prior to enabling this connector.*
+***Note:** This connector supports client-side analytics.js only.  You also need to have implemented MetaRouter [inside your website](../sources/analyticsjs.md) prior to enabling this connector.*
 
 ### Resonate Side
 
@@ -45,15 +45,15 @@ The identify tag is a bit different, and you can extract your `User Tracking Key
 
 ```
 
-### Astronomer Side
+### MetaRouter Side
 
-Copy your common tag parameters (`advkey`, `opptykey`), as well as your `User Tracking Key` from the identify tag,  and paste them into your Astronomer Resonate configuration.  
+Copy your common tag parameters (`advkey`, `opptykey`), as well as your `User Tracking Key` from the identify tag,  and paste them into your MetaRouter Resonate configuration.  
 
 Next, you'll need to provide your page impression tag event key, as well as any custom events and their respective event keys (shown as `evkey` in the snippet above).  
 
-Give your new Resonate connection a name, and choose `Create Destination`.
+Give your new Resonate connection a name, and choose `Save`.
 
-![resonate1](../../../images/resonate1.png)
+![resonate1](../../../images/resonate1v2.png)
 
 ### Final Step.
 

@@ -28,23 +28,23 @@ require_once(\"/path/to/analytics-php/lib/Segment.php\");
 
 #### Step 3
 
-Initialize the module with the Source ID found in the setting sections of your Astronomer account. Note that you are only required to do this initialization once.
+Initialize the module with the Source ID found in the setting sections of your MetaRouter account. Note that you are only required to do this initialization once.
 
 ```php
 class_alias('Segment', 'analytics');
-analytics::init("ASTRONOMER_APP_ID", array(
+analytics::init("METAROUTER_APP_ID", array(
   "host" => "e.metarouter.io"
 ));
 ```
 
 After this initialization, you have a ready-to-use instance with all calls built in.
 
-***Note:** We've standardized to analytics.js. If you've used a tool like [Segment](https://segment.com/) in the past, you will find that instrumenting events in Astronomer works in the exact same way.*
+***Note:** We've standardized to analytics.js. If you've used a tool like [Segment](https://segment.com/) in the past, you will find that instrumenting events in MetaRouter works in the exact same way.*
 
 
 ### Using Composer to Install the PHP Library from Github
 
-To add the Astronomer PHP library to a PHP app using composer:
+To add the MetaRouter PHP library to a PHP app using composer:
 
 In composer.json, add the GitHub url to the repositories section and then require the library as usual.
 

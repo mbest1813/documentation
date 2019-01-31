@@ -3,13 +3,13 @@ title: Source - Android
 sidebar: platform_sidebar
 ---
 
-## Getting Started with Astronomer Clickstream - Android
+## Getting Started with MetaRouter - Android
 
-Using our analytics-android library, you can start sending customer data from your app to Astronomer, giving you valuable user data that yields actionable insights for your business. Follow the instructions below to get started in only a few minutes.
+Using our analytics-android library, you can start sending customer data from your app to MetaRouter, giving you valuable user data that yields actionable insights for your business. Follow the instructions below to get started in only a few minutes.
 
-### Create an Android Source in the Astronomer UI
+### Create an Android Source in the MetaRouter UI
 
-After logging in with your Astronomer credentials, add a new `Source → Android`. Give your source a friendly name and copy that `Source ID` for the next step.
+After logging in with your MetaRouter credentials, add a new `Source → Android`. Give your source a friendly name and copy that `Source ID` for the next step.
 
 ### Install the SDK
 
@@ -28,7 +28,7 @@ dependencies {
 We recommend initializing the client in your `Application` subclass.
 
 ```
-// Create an analytics client with the given context and Astronomer Source ID.
+// Create an analytics client with the given context and MetaRouter Source ID.
 Analytics analytics = new Analytics.Builder(context, YOUR_SOURCE_ID)
   .trackApplicationLifecycleEvents() // Enable this to record certain application events automatically!
   .recordScreenViews() // Enable this to record screen views automatically!
@@ -41,8 +41,8 @@ Analytics.setSingletonInstance(analytics);
 
 **Notes:**
 
-* Automatically tracking lifecycle events (`Application Opened`, `Application Installed`, `Application Updated`) is optional, but we highly recommending doing so to ensure you get the most out of Astronomer Clickstream!
-* This only installs the Astronomer destination, meaning all your data will be sent server side to tools.
+* Automatically tracking lifecycle events (`Application Opened`, `Application Installed`, `Application Updated`) is optional, but we highly recommending doing so to ensure you get the most out of MetaRouter!
+* This only installs the MetaRouter destination, meaning all your data will be sent server side to tools.
 
 ### Add Permissions
 
@@ -62,7 +62,7 @@ It's up to you to call `identify` based on how your users are authenticated, but
 For example, a simple `identify` looks something like this:
 
 ```
-Analytics.with(context).identify("123456", new Traits().putName("Dagny Smith").putEmail("dagny@astronomer.io").putRole("buyer"));
+Analytics.with(context).identify("123456", new Traits().putName("Dagny Smith").putEmail("dagny@metarouter.io").putRole("buyer"));
 ```
 
 This call is identifying a user by her unique `userID` (from your database) and associating her with `name`, `email`, and `role` traits.
@@ -71,7 +71,7 @@ Once you have the `identify` call implemented, you're ready to move on to the `t
 
 ### Track Your Users' Actions
 
-To get to a more complete event tracking analytics setup, you can add a `track` call to your app. This will tell Astronomer which actions users are performing in your app. With `track`, each user action triggers an “event”, which can also have associated properties.
+To get to a more complete event tracking analytics setup, you can add a `track` call to your app. This will tell MetaRouter which actions users are performing in your app. With `track`, each user action triggers an “event”, which can also have associated properties.
 
 To start, our SDK can automatically track a few common events (e.g. Application_Installed, Application_Opened, and Application_Updated) - you will just need to enable this option during initialization.
 
@@ -98,4 +98,4 @@ Analytics.with(context).track("Viewed Product", new Properties()
   .putValue("revenue", "9.99"));
 ```
 
-You have now successfully implemented your Android app! Now you're ready to head back to the Astronomer Clickstream UI and start switching on some destinations.
+You have now successfully implemented your Android app! Now you're ready to head back to the MetaRouter UI and start switching on some destinations.

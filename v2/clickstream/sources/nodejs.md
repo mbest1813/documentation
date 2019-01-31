@@ -17,18 +17,18 @@ npm install --save astronomer
 ```
 
 #### Step 2
-Initialize this package with the Source ID found in the settings section of your Astronomer account.
+Initialize this package with the Source ID found in the settings section of your MetaRouter account.
 
 ```js
 var Analytics = require('astronomer');
-var analytics = new Analytics('ASTRONOMER_SOURCE_ID');
+var analytics = new Analytics('METAROUTER_SOURCE_ID');
 ```
 
 #### Step 3
 
 Set your event methods (identify, track, etc.) throughout your app.
 
-***Note**: We've standardized to analytics.js. If you've used a tool like [Segment](https://segment.com/) in the past, you will find that instrumenting events in Astronomer works in the exact same way.*
+***Note**: We've standardized to analytics.js. If you've used a tool like [Segment](https://segment.com/) in the past, you will find that instrumenting events in MetaRouter works in the exact same way.*
 
 ### Calls in Node.js
 

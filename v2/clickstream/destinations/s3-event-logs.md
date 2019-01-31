@@ -3,7 +3,7 @@ title: S3 Event Logs
 sidebar: platform_sidebar
 ---
 
-Astronomer Clickstream makes it easy to send your data to an Amazon S3 bucket. Once you follow the steps below, your data will be routed through our platform and pushed to Amazon S3 in the appropriate format.
+MetaRouter makes it easy to send your data to an Amazon S3 bucket. Once you follow the steps below, your data will be routed through our platform and pushed to Amazon S3 in the appropriate format.
 
 ## What is Amazon S3 and how does it work?
 
@@ -15,17 +15,17 @@ Amazon Simple Storage Service (S3) is a scalable web-based cloud storage service
 
 Getting data into your S3 bucket natively requires quite a bit of developer work; you'd need to use an analytics tool like [Google Analytics](google-analytics.md) and write an ETL pipeline to bring the data from that analytics tool to S3. This is inefficient in that it utilizes your engineering resources and dumps pre-formatted data into your S3 bucket rather than raw data.
 
-## Why send data to Amazon S3 using Astronomer Clickstream?
+## Why send data to Amazon S3 using MetaRouter?
 
 Getting data to Amazon S3 ultimately leaves you with data that was designed to power reports within an analytics tool, not the raw data you need for custom analysis.
 
-When you enable the Amazon S3 integration, raw data from Astronomer Clickstream automatically gets copied into your Amazon S3 bucket. Everything is stored as line-separated JSON objects, which each contains data from a single API called made to our platform.
+When you enable the Amazon S3 integration, raw data from MetaRouter automatically gets copied into your Amazon S3 bucket. Everything is stored as line-separated JSON objects, which each contains data from a single API called made to our platform.
 
-Astronomer spares you the headache of writing custom ETL pipelines to get your data into an S3 bucket.
+MetaRouter spares you the headache of writing custom ETL pipelines to get your data into an S3 bucket.
 
-## Getting Started with Amazon S3 and Astronomer Clickstream
+## Getting Started with Amazon S3 and MetaRouter
 
-Astronomer makes it easy to copy broadcasted events to an [Amazon Simple Storage Service (S3) bucket](https://aws.amazon.com/s3/).  You'll only need to configure the S3 Event Logs connector within your [Astronomer dashboard](https://app.astronomer.io/), and include our bucket policy.
+MetaRouter makes it easy to copy broadcasted events to an [Amazon Simple Storage Service (S3) bucket](https://aws.amazon.com/s3/).  You'll only need to configure the S3 Event Logs connector within your [MetaRouter dashboard](https://app.metarouter.io/), and include our bucket policy.
 
 ### Amazon S3 Side
 
@@ -35,11 +35,11 @@ Astronomer makes it easy to copy broadcasted events to an [Amazon Simple Storage
 
 ***Note:** See below to confirm your region.*
 
-Once you create the bucket, create a folder labeled `Astronomer-logs` inside of it.  
+Once you create the bucket, create a folder labeled `MetaRouter-logs` inside of it.  
 
 #### Add our S3 Bucket Policy
 
-Add the following S3 bucket policy, which will grant Astronomer permission to copy events into your S3 bucket using `s3:PutObject`.  In the `Resource:` line of each of the two policies below, swap out `YOUR_BUCKET_NAME` for the exact name of your S3 bucket, but keep the `/*` on the end.
+Add the following S3 bucket policy, which will grant MetaRouter permission to copy events into your S3 bucket using `s3:PutObject`.  In the `Resource:` line of each of the two policies below, swap out `YOUR_BUCKET_NAME` for the exact name of your S3 bucket, but keep the `/*` on the end.
 
 ```
 {
@@ -71,9 +71,9 @@ Add the following S3 bucket policy, which will grant Astronomer permission to co
 ![s3-event-logs1](../../../images/s3-event-logs2.gif)
 
 
-### Astronomer Side
+### MetaRouter Side
 
-Configure a new S3 connection in your Astronomer dashboard and give your new connection a unique name. Click `Save` to activate your pipeline.
+Configure a new S3 connection in your MetaRouter dashboard and give your new connection a unique name. Click `Save` to activate your pipeline.
 
 ### Things to Note:
 
@@ -86,4 +86,4 @@ AWS S3 supports [server side encryption](http://docs.aws.amazon.com/AmazonS3/lat
 3. *Path Prefix (optional)*
 The file path at which your S3 events will be stored.
 
-![s3-event-logs1](../../../images/s3-event-logs3.png)
+![s3-event-logs1](../../../images/s3-event-logs3v2.png)

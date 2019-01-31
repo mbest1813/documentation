@@ -2,7 +2,7 @@
 title: Lytics
 sidebar: platform_sidebar
 ---
-Astronomer Clickstream makes it easy to send your data to Lytics. Once you follow the steps below, your data will be routed through our platform and pushed to Lytics in the appropriate format.
+MetaRouter makes it easy to send your data to Lytics. Once you follow the steps below, your data will be routed through our platform and pushed to Lytics in the appropriate format.
 
 ## What is Lytics and how does it work?
 
@@ -20,15 +20,15 @@ Lytics also enables drag-and-drop segmentation, which allows teams to target cus
 
 [Learn more about Lytics](https://www.getlytics.com/)
 
-## Why send data to Lytics using Astronomer Clickstream?
+## Why send data to Lytics using MetaRouter?
 
-Integrating Lytics with Astronomer Clickstream means that you won't have to write any custom code on top of your standard Astronomer integration. Enabling Lytics in your Astronomer UI automatically loads the JavaScript library onto your site without making code changes.
+Integrating Lytics with MetaRouter means that you won't have to write any custom code on top of your standard MetaRouter integration. Enabling Lytics in your MetaRouter UI automatically loads the JavaScript library onto your site without making code changes.
 
-Astronomer Clickstream automatically maps `page`, `identify`, and `track` calls directly to Lytics, which then uses that customer data to power its implementations.
+MetaRouter automatically maps `page`, `identify`, and `track` calls directly to Lytics, which then uses that customer data to power its implementations.
 
-***Note:** With Astronomer Clickstream you can also easily push data from mobile apps or servers to Lytics.*
+***Note:** With MetaRouter you can also easily push data from mobile apps or servers to Lytics.*
 
-## Getting Started with Lytics and Astronomer Clickstream
+## Getting Started with Lytics and MetaRouter
 
 ### Lytics Side
 
@@ -41,19 +41,19 @@ Once you have a Lytics account, you'll be dropped into a welcome page asking you
 
 ![lytics1](../../../images/lytics1.png)
 
-Astronomer won't show up on that page, but go ahead and click on your email address at the top right, and into the `Manage Accounts` option.
+MetaRouter won't show up on that page, but go ahead and click on your email address at the top right, and into the `Manage Accounts` option.
 
 Once there, you'll see your ID on the left hand side of your account and your Data API Key on the right.
 
 ![lytics2](../../../images/lytics2.png)
 
-### Astronomer Side
+### MetaRouter Side
 
-Add your Account ID and Data API Key into the Lytics connector on your Astronomer dashboard and give your new connection a unique name.
+Add your Account ID and Data API Key into the Lytics connector on your MetaRouter dashboard and give your new connection a unique name.
 
-Now, just click `Create Destination` to activate your pipeline.
+Now, just click `Save` to activate your pipeline.
 
-![lytics3](../../../images/lytics3.png)
+![lytics3](../../../images/lytics3v2.png)
 
 Lytics updates their incoming data stream every two minutes, so give it a couple of minutes for your events to show up.
 

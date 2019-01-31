@@ -3,7 +3,7 @@ title: Kenshoo Pixel
 sidebar: platform_sidebar
 ---
 
-Astronomer Clickstream makes it easy to send your data to Kenshoo Conversion Pixel, which was recently enhanced with Kenshoo Infinity Tag. If you follow the steps below, your data will be routed through our platform and pushed to Kenshoo Pixel in the appropriate format.
+MetaRouter makes it easy to send your data to Kenshoo Conversion Pixel, which was recently enhanced with Kenshoo Infinity Tag. If you follow the steps below, your data will be routed through our platform and pushed to Kenshoo Pixel in the appropriate format.
 
 ## What is Kenshoo Infinity Tag and how does it work?
 
@@ -13,13 +13,13 @@ Infinity Tag enhances campaign performance by moving beyond currently accepted K
 
 [Learn more about Kenshoo Infinity Tag](https://kenshoo.com/infinity-tag-pr/)
 
-## Getting Started with Kenshoo and Astronomer Clickstream
+## Getting Started with Kenshoo and MetaRouter
 
 ### Kenshoo Side
 
-All you'll need from Kenshoo is your `Acount Id`. Once you have this code, copy it to your clipboard and head over to your [Astronomer dashboard](app.astronomer.io)
+All you'll need from Kenshoo is your `Acount Id`. Once you have this code, copy it to your clipboard and head over to your [MetaRouter dashboard](app.metarouter.io)
 
-### Astronomer Side
+### MetaRouter Side
 
 Once on our app, go ahead and add Kenshoo Infinity Pixel as a destination for your preferred source. Give the connection a unique name and paste both your `Account Id` and `Server Id` where prompted.
 

@@ -2,7 +2,7 @@
 title: Pinterest Tag
 sidebar: platform_sidebar
 ---
-Astronomer Clickstream makes it easy to send your data to Pinterest Tag. Once you follow the steps below, your data will be routed through our platform and pushed to Pinterest Tag in the appropriate format.
+MetaRouter makes it easy to send your data to Pinterest Tag. Once you follow the steps below, your data will be routed through our platform and pushed to Pinterest Tag in the appropriate format.
 
 ## What is Pinterest Tag and how does it work?
 
@@ -12,19 +12,19 @@ The Pinterest Tag allows you to track user events on your website after viewing 
 
 [Learn more about Pinterest](https://business.pinterest.com/en)
 
-## Why send data to Pinterest Tag using Astronomer Clickstream?
+## Why send data to Pinterest Tag using MetaRouter?
 
-This integration can be very complicated to implement without Astronomer; the base code for each customer is unique and must be obtained from the Pinterest UI or API. If you want to track custom events, you'll need to familiarize yourself with the Pinterest API to both locate the correct base and event tracking code as well as install it correctly into your own site. It typically needs to be added by a webmaster or developer to prevent errors.
+This integration can be very complicated to implement without MetaRouter; the base code for each customer is unique and must be obtained from the Pinterest UI or API. If you want to track custom events, you'll need to familiarize yourself with the Pinterest API to both locate the correct base and event tracking code as well as install it correctly into your own site. It typically needs to be added by a webmaster or developer to prevent errors.
 
-Using Astronomer, you can send page views and event data directly to Pinterest without needing to manually install any extra JavaScript on your website. Just enable the Pinterest destination in your Astronomer UI, and we'll automatically take care of mapping a standard set of events to recognized Pinterest Tag events. Astronomer also allows you to define and map your own events to supported Pinterest events without any custom code. All of this data is immediately available for analysis in your Pinterest dashboard.
+Using MetaRouter, you can send page views and event data directly to Pinterest without needing to manually install any extra JavaScript on your website. Just enable the Pinterest destination in your MetaRouter UI, and we'll automatically take care of mapping a standard set of events to recognized Pinterest Tag events. MetaRouter also allows you to define and map your own events to supported Pinterest events without any custom code. All of this data is immediately available for analysis in your Pinterest dashboard.
 
-Integrating Pinterest with Astronomer cuts out any need for additional implementation resources, saving your development team valuable time.
+Integrating Pinterest with MetaRouter cuts out any need for additional implementation resources, saving your development team valuable time.
 
-## Getting Started with Pinterest Tag and Astronomer Clickstream
+## Getting Started with Pinterest Tag and MetaRouter
 
 To get started sending events to Pinterest, first sign up for [Pinterest for Business](https://business.pinterest.com/en).
 
-***Note**: This destination supports client-side analytics.js only. You also need to have implemented Astronomer within your website prior to enabling this connector.*
+***Note**: This destination supports client-side analytics.js only. You also need to have implemented MetaRouter within your website prior to enabling this connector.*
 
 ### Pinterest Side
 
@@ -44,15 +44,15 @@ The generated Pinterest tag contains a value shown in red in two places. Copy th
 
 ***Note:** we will fire `page` views for you, but you'll need to map in your custom events in order to fire those off.*
 
-### Astronomer Side
+### MetaRouter Side
 
-Back in the Astronomer UI, select Pinterest Conversion Tracking as a destination and give your new Pinterest pipeline a unique name.
+Back in the MetaRouter UI, select Pinterest Conversion Tracking as a destination and give your new Pinterest pipeline a unique name.
 
 Then, provide your custom event name and paste the value for that event.
 
 Finally, click `Save` to activate your pipeline.
 
-![pinterest4](../../../images/pinterest4.png)
+![pinterest4](../../../images/pinterest4v2.png)
 
 With that, you're all set! Get ready for insights.
 

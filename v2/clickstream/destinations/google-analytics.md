@@ -3,7 +3,7 @@ title: Google Analytics
 sidebar: platform_sidebar
 ---
 
-Astronomer makes is easy to send your data to Google Analytics. Once you've set up your source to start tracking data, we'll translate and route that data to Google Analytics.
+MetaRouter makes is easy to send your data to Google Analytics. Once you've set up your source to start tracking data, we'll translate and route that data to Google Analytics.
 
 ## What is Google Analytics and how does it work?
 
@@ -11,13 +11,13 @@ Google Analytics is a web analytics tool that pools real-time site information f
 
 Google Analytics requires that you add their snippet to your site. Doing this will give you basic information such as page views, traffic sources, and user location.  If you want to get more detailed user information, you'll need to write custom code in your site. In order to do this, you'll need to have a developer study the Google Analytics API to learn how to implement methods and format data correctly.
 
-## Why send data to Google Analytics using Astronomer Clickstream?
+## Why send data to Google Analytics using MetaRouter?
 
-Integrating Google Analytics with Astronomer Clickstream means that you do not need to install any Google Analytics code into your site or mobile app. It also greatly eases the processes of tracking more detailed information like what users are doing on a page, e-commerce data, and user attributes. Furthermore, many custom events can be configured directly in the Astronomer UI, making it easy to track the data that you need.
+Integrating Google Analytics with MetaRouter means that you do not need to install any Google Analytics code into your site or mobile app. It also greatly eases the processes of tracking more detailed information like what users are doing on a page, e-commerce data, and user attributes. Furthermore, many custom events can be configured directly in the MetaRouter UI, making it easy to track the data that you need.
 
-## Getting Started with Google Analytics and Astronomer Clickstream
+## Getting Started with Google Analytics and MetaRouter Clickstream
 
-*Before you get started, note that you will need to remove Google Analytics snippet from your page if you were using it outside of Astronomer.*
+*Before you get started, note that you will need to remove Google Analytics snippet from your page if you were using it outside of MetaRouter.*
 
 ### Google Analytics Side
 
@@ -25,17 +25,17 @@ To start, you'll need your Google Analytics `Tracking ID`. This can be found in 
 
 ![google-analytics1](../../../images/google-analytics1.png)
 
-### Astronomer Side
+### MetaRouter Side
 
-Next, head to app.astronomer.io and add a new destination for the source you want to track. Select Google Analytics and you will be brought to a Configure your destination panel.
+Next, head to app.metarouter.io and add a new destination for the source you want to track. Select Google Analytics and you will be brought to a Configure your destination panel.
 
-Here, you'll need to create a Friendly Name and enter your Google Analytics Tracking ID for the application. With just these two pieces of information, you can click `Create Destination` and Astronomer will start sending your Clickstream data to Google Analytics.
+Here, you'll need to create a Friendly Name and enter your Google Analytics Tracking ID for the application. With just these two pieces of information, you can click `Create Destination` and MetaRouter will start sending your Clickstream data to Google Analytics.
 
-![google-analytics1](../../../images/google-analytics2.png)
+![google-analytics1](../../../images/google-analytics2v2.png)
 
-***Note:** Unless you specify otherwise, Astronomer will automatically enable `Track Named Pages` and `Track Categorized Pages`.*
+***Note:** Unless you specify otherwise, MetaRouter will automatically enable `Track Named Pages` and `Track Categorized Pages`.*
 
-Enabling Google Analytics in your Astronomer UI causes a few things to happen:
+Enabling Google Analytics in your MetaRouter UI causes a few things to happen:
 
   * Within a couple of minutes, our CDN is updated and our snippet will start loading Google Analytics JavaScript library onto your web pages. Note that it typically takes 12-24 hours for events to begin populating your GA dashboard, but then events should populate in real-time.
 
@@ -54,7 +54,7 @@ Note that when sending `page` views from a server-side library, a `url` property
 
 Also note that when calling `screen` in a mobile app, we'll send a screen view to Google Analytics but when calling `screen` server-side, you must pass in an application name through the `context.app.name` object for Google Analytics to accept your event.
 
-If you've set an application name in your Android or iOS project, Astronomer will grab the name and pass `context.app.name` automatically. For iOS, we collect your project's `infoDictionary` and use whatever name you've set there.
+If you've set an application name in your Android or iOS project, MetaRouter will grab the name and pass `context.app.name` automatically. For iOS, we collect your project's `infoDictionary` and use whatever name you've set there.
 
 ### Identify
 Since it's against Google's [Terms of Service](https://www.google.com/policies/terms/) to send Personally Identifiable Information (PII) to your Analytics reporting interface, we will never pass anything from an `identify` to Google unless you specifically tell us to.
@@ -68,7 +68,7 @@ To utilize this feature, you'll need to enable User-ID in your Google Analytics 
 We'll record a Google Analytics event whenever you make a `track` call (see events in Google Analytics in Behavior -> Events -> Overview).
 
 ## Beyond the Basics
-As mentioned above, Astronomer will automatically enable `Track Named Pages` and `Track Categorized Pages`. You'll notice that there a quite a few other Destination Details. Keep reading to learn what those are and why you might want to use them.
+As mentioned above, MetaRouter will automatically enable `Track Named Pages` and `Track Categorized Pages`. You'll notice that there a quite a few other Destination Details. Keep reading to learn what those are and why you might want to use them.
 
 ### Use Classic Analytics on Your Site
 When creating your Google Analytics profile, you can choose between Classic and Universal Analytics. Profiles created after March 2013 default to Universal while earlier profiles are Classic.
@@ -137,7 +137,7 @@ Google’s AMP Client ID API lets you uniquely identify users who engage with yo
 Google Analytics allows users to either pass custom dimensions / metrics as properties of specific events or as properties for all events on a given page (or the lifetime of the global tracker object). The default Segment behavior is the latter. Any metrics / dimensions that are mapped to a given property will be set to the page and sent as properties of all subsequent events on that page. You can disable this functionality with this setting. If disabled, Segment will only pass custom dimensions / metrics as part of the payload of the event with which they are explicitly associated. Please reference the Google Analytics [documentation](https://developers.google.com/analytics/devguides/collection/analyticsjs/custom-dims-mets#implementation) for more info.
 
 ### Name Tracker
-Name the tracker `astronomerGATracker`. Enable this if you're working with additional Google Analytics trackers and want to ensure that your Segment tracker has a distinct name. If this is enabled you must prepend this tracker name to any native Google Analytics (except for create) that you call, e.g. `astronomerGATracker.require(….)`
+Name the tracker `metarouterGATracker`. Enable this if you're working with additional Google Analytics trackers and want to ensure that your Segment tracker has a distinct name. If this is enabled you must prepend this tracker name to any native Google Analytics (except for create) that you call, e.g. `metarouterGATracker.require(….)`
 
 ### Optimize Container ID
 Integrate with Google Analytics Optimize plugin. Please enter your Optimize Container ID

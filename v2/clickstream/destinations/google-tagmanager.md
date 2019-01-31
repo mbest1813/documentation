@@ -3,7 +3,7 @@ title: Google Tag Manager
 sidebar: platform_sidebar
 ---
 
-Available for client-side sources, Astronomer makes it easy to send your data to Google Tag Manager. Once you've set up your source to start tracking data, we'll translate and route that data to Google.
+Available for client-side sources, MetaRouter makes it easy to send your data to Google Tag Manager. Once you've set up your source to start tracking data, we'll translate and route that data to Google.
 
 ## What is Google Tag Manager and how does it work?
 
@@ -15,15 +15,15 @@ GTM works through a snippet that you'd normally have to include in all of your p
 
 [Learn more about Google Tag Manager](https://www.google.com/analytics/tag-manager/)
 
-## Why send data to Google Tag Manager using Astronomer Clickstream?
+## Why send data to Google Tag Manager using MetaRouter?
 
 
-With Astronomer's GTM integration, you won't have to worry about loading GTM's snippet onto every single one of your pages or installing SKDs for iOS and Android mobile apps. Instead, GTM will be automatically loaded onto any pages where your Astronomer snippet is initialized and your `analytics.js` page gets called in client-side JavaScript.
+With MetaRouter's GTM integration, you won't have to worry about loading GTM's snippet onto every single one of your pages or installing SKDs for iOS and Android mobile apps. Instead, GTM will be automatically loaded onto any pages where your MetaRouter snippet is initialized and your `analytics.js` page gets called in client-side JavaScript.
 
-Astronomer's integration only requires the `Container ID` tied to your account. Skip the headache and get straight to insights.
+MetaRouter's integration only requires the `Container ID` tied to your account. Skip the headache and get straight to insights.
 
 
-## Getting Started with Google Tag Manager and Astronomer Clickstream
+## Getting Started with Google Tag Manager and MetaRouter
 
 ### Google Tag Manager Side
 
@@ -31,7 +31,7 @@ First, you'll need to sign up for a Google Tag Manager account directly on [GTM]
 
 ![google-tagmanager1](../../../images/google-tagmanager1.png)
 
-You'll immediately be given a GTM container `snippet`. Since you're using Astronomer's integration and snippet, you can skip this step - just press `OK`.
+You'll immediately be given a GTM container `snippet`. Since you're using MetaRouter's integration and snippet, you can skip this step - just press `OK`.
 
 ![google-tagmanager2](../../../images/google-tagmanager2.png)
 
@@ -42,20 +42,20 @@ You'll then be taken to your "Workspace". Look to the top right of that page to 
 
 *Still need help setting up Google Tag Manager? Check out [this page](https://support.google.com/tagmanager/answer/6103696?hl=en).*
 
-### Astronomer Side
+### MetaRouter Side
 
-Once you've identified your `Container ID`, go to your Astronomer dashboard and add 'Google Tag Manager' as a destination.
+Once you've identified your `Container ID`, go to your MetaRouter dashboard and add 'Google Tag Manager' as a destination.
 
 Input your `Container ID` and give your connection a unique name.
 
 At the bottom, you'll also see an option to enable tracking for both named and categorized pages. Once that's set, go ahead and click `Save` to activate your pipeline.
 
-![google-tagmanager4](../../../images/google-tagmanager4.png)
+![google-tagmanager4](../../../images/google-tagmanager4v2.png)
 
 With that, you're all set!
 
 ### Things to Note.
 
-Once you enable this pipeline, you'll be able to trigger Astronomer events by entering `analytics.track` or `analytics.page` calls into GTM.
+Once you enable this pipeline, you'll be able to trigger MetaRouter events by entering `analytics.track` or `analytics.page` calls into GTM.
 
-***Note:** Don't forget to "publish" your GTM container before trying to load it with Astronomer.*
+***Note:** Don't forget to "publish" your GTM container before trying to load it with MetaRouter.*

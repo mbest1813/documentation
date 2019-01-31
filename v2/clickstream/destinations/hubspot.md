@@ -2,7 +2,7 @@
 title: Hubspot
 sidebar: platform_sidebar
 ---
-Astronomer Clickstream makes it easy to send your data to HubSpot. Once you follow the steps below, your data will be routed through our platform and pushed to HubSpot in the appropriate format.
+MetaRouter makes it easy to send your data to HubSpot. Once you follow the steps below, your data will be routed through our platform and pushed to HubSpot in the appropriate format.
 
 ## What is HubSpot and how does it work?
 
@@ -16,11 +16,11 @@ Often used in tandem with another CRM like Salesforce, HubSpot integrates multip
 
 [Learn more about HubSpot](https://www.hubspot.com/)
 
-## Why send data to HubSpot using Astronomer Clickstream?
+## Why send data to HubSpot using MetaRouter?
 
-Using HubSpot with Astronomer Clickstream allows you to automatically keep all of the customer data in your HubSpot account up-to-date and accurate, rather than spending valuable time uploading lists or relying on lead forms to capture contacts. By enabling the HubSpot integration in your Astronomer UI, you can keep all customer data records synced and up-to-date across multiple systems in real time.
+Using HubSpot with MetaRouter allows you to automatically keep all of the customer data in your HubSpot account up-to-date and accurate, rather than spending valuable time uploading lists or relying on lead forms to capture contacts. By enabling the HubSpot integration in your MetaRouter UI, you can keep all customer data records synced and up-to-date across multiple systems in real time.
 
-## Getting Started with HubSpot and Astronomer Clickstream
+## Getting Started with HubSpot and MetaRouter
 
 To get started sending events to [HubSpot](http://www.hubspot.com), all you'll need is your Portal ID and API, both of which can be found shortly after you create an account.
 
@@ -28,7 +28,7 @@ To get started sending events to [HubSpot](http://www.hubspot.com), all you'll n
 
 Create a HubSpot account via their [website](http://www.hubspot.com).
 
-After you go through the initial onboarding, click on your account tab on the top right of the window. Note that you might notice something called a `Hub ID` next to the account tab. That's the ID you'll need for the Astronomer integration.
+After you go through the initial onboarding, click on your account tab on the top right of the window. Note that you might notice something called a `Hub ID` next to the account tab. That's the ID you'll need for the MetaRouter integration.
 
 Now, go to `Settings` -> `Configuration`.
 
@@ -44,10 +44,10 @@ One handy feature of HubSpot is the full API Key History, including creation, vi
 
 ![hubspot3](../../../images/hubspot3.png)
 
-### Astronomer Side
+### MetaRouter Side
 
-Now, all you have to do is add both of these credentials (your Portal ID and your newly created API Key) into the Astronomer UI and give your new connection a unique name.
+Now, all you have to do is add both of these credentials (your Portal ID and your newly created API Key) into the MetaRouter UI and give your new connection a unique name.
 
-![hubspot4](../../../images/hubspot4.png)
+![hubspot4](../../../images/hubspot4v2.png)
 
 Once you do that, just click `Save` to activate your pipeline.

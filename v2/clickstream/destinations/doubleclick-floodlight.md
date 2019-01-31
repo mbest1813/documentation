@@ -3,7 +3,7 @@ title: DoubleClick Floodlight
 sidebar: platform_sidebar
 ---
 
-Astronomer Clickstream makes it easy to send your data to DoubleClick Floodlight. Once you follow the steps below, your data will be routed through our platform and pushed to DoubleClick Floodlight in the appropriate format.
+MetaRouter   makes it easy to send your data to DoubleClick Floodlight. Once you follow the steps below, your data will be routed through our platform and pushed to DoubleClick Floodlight in the appropriate format.
 
 ## What is DoubleClick Floodlight and how does it work?
 
@@ -13,23 +13,23 @@ DoubleClick Floodlight requires the installation of an HTML `Floodlight tag` on 
 
 For more information on DoubleClick Floodlight, check out  [this page](https://support.google.com/dfa/partner/answer/186739?hl=en).
 
-## Why send data to DoubleClick Floodlight using Astronomer Clickstream?
+## Why send data to DoubleClick Floodlight using MetaRouter?
 
-By integrating DoubleClick Floodlight with Astronomer Clickstream, you can send information directly to DoubleClick without even using the `Floodlight tag`. Once you enable it as a destination in your Astronomer UI, your data will routed by Astronomer and sent to DoubleClick. By using Astronomer to enable DoubleClick, you eliminate the need for additional developer resources and custom event tracking code.
+By integrating DoubleClick Floodlight with MetaRouter, you can send information directly to DoubleClick without even using the `Floodlight tag`. Once you enable it as a destination in your MetaRouter UI, your data will routed by MetaRouter and sent to DoubleClick. By using MetaRouter to enable DoubleClick, you eliminate the need for additional developer resources and custom event tracking code.
 
 
-## Getting Started with DoubleClick Floodlight and Astronomer Clickstream
+## Getting Started with DoubleClick Floodlight and MetaRouter
 
 ### DoubleClick Floodlight Side
 
 With the DoubleClick Floodlight destination, you can make calls directly to Floodlight based on your mapped events. To begin doing this, you'll need your Advertiser ID. Because DoubleClick is a rather expensive platform, you might be going through a DoubleClick Partner, such as [Mightyhive](http://mightyhive.com). If this is the case, you'll have to obtain your Advertiser ID directly from the partner.
 
 
-### Astronomer Side
+### MetaRouter Side
 
-Once you find your seven-digit Advertiser ID, enter it into the corresponding field in the Astronomer UI. Under this field, you'll find space for your Activity Group label (referred to as "type" within DoubleClick) as well as your Activity Tag String Value (referred to as "cat") for tracking page views.
+Once you find your seven-digit Advertiser ID, enter it into the corresponding field in the MetaRouter UI. Under this field, you'll find space for your Activity Group label (referred to as "type" within DoubleClick) as well as your Activity Tag String Value (referred to as "cat") for tracking page views.
 
-If you want to pass in specific track events to DoubleClick, you can do so within the Events section in the Advanced tab. Simply specify the name of the event *exactly* as it is sent to Astronomer and the corresponding Type and CAT values for the Activity Group in DoubleClick.
+If you want to pass in specific track events to DoubleClick, you can do so within the Events section in the Advanced tab. Simply specify the name of the event *exactly* as it is sent to MetaRouter and the corresponding Type and CAT values for the Activity Group in DoubleClick.
 
 In the past, we've seen Floodlight tags that look something like this:
 
@@ -57,7 +57,7 @@ Insert the Floodlight tags between the <body> and </body> tags, as close to the 
 Add Comment Collapse
 ```
 
-In this example, `mytype00` is your `type` and `mycat0` is your `cat` in the Astronomer UI.
+In this example, `mytype00` is your `type` and `mycat0` is your `cat` in the MetaRouter UI.
 
 Custom properties can be added to the events sent to Doubleclick by specifying the specific property and mapping to the corresponding property label in Doubleclick (e.g. u1, u2, etc.)
 

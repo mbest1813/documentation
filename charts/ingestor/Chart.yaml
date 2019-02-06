@@ -1,0 +1,5 @@
+name: mr-ee-ingestor
+version: 0.1.0
+appVersion: 0.1.0
+apiVersion: v1
+description: MetaRouter Enterprise Edition - Helm chart for installation and deployment

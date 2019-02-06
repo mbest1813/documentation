@@ -1,0 +1,8 @@
+################################################
+### Welcome to MetaRouter Enterprise Edition ###
+################################################
+
+Following destinations are enabled:
+{{- range .Values.global.forwarders.enabledDestinations}}
+  - {{.label | quote}}
+{{- end}}

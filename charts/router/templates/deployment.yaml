@@ -1,0 +1,67 @@
+apiVersion: apps/v1beta2
+kind: Deployment
+metadata:
+  name: {{ include "event-router.fullname" . }}
+spec:
+{{- if eq .Values.global.environment "production"}}
+  replicas: {{ .Values.global.router.minReplicas | default 2 }}
+{{- else }}
+  replicas: 1
+{{- end }}
+  selector:
+    matchLabels:
+      chart: {{ include "event-router.chart" . }}
+  template:
+    metadata:
+      labels:
+        chart: {{ include "event-router.chart" . }}
+        tier: backend
+    spec:
+      volumes:
+        - name: metarouter-platform-config
+          secret:
+            secretName: mr-platform-config
+        {{- if eq .Values.global.messageQueue.type "pubsub" }}
+        - name: mr-platform-pubsub
+          secret:
+            secretName: mr-platform-pubsub
+        {{- end }}
+      containers:
+        - name: event-router-container
+          image: gcr.io/metarouter-cloud/event-router:rc0.1.0-beta2
+          {{- if eq .Values.global.environment "production"}}
+          resources:
+            limits:
+              cpu: "1"
+              memory: "4Gi"
+            requests:
+              cpu: ".5"
+              memory: "2Gi"
+          {{- end }}
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8081
+          volumeMounts:
+            - name: metarouter-platform-config
+              mountPath: /var/secrets/metarouter
+            {{- if eq .Values.global.messageQueue.type "pubsub" }}
+            - name: mr-platform-pubsub
+              mountPath: /var/secrets/google
+            {{- end }}
+          env:
+            - name: ER_DEBUG_MODE
+              value: {{ .Values.global.router.debugMode | default "false" | quote }}
+            - name: ER_INTEGRATION_CONFIG_DIR
+              value: /var/secrets/metarouter/
+            - name: ER_MESSAGE_WRITER
+              value: {{ .Values.global.messageQueue.type | quote }}
+            - name: ER_DOWNSTREAM_PREFIX
+              value: {{ .Values.global.messageQueue.topicPrefix | quote }}
+            {{- if eq .Values.global.messageQueue.type "pubsub" }}
+            - name: ER_GCP_PUB_SUB_PROJECT
+              value: {{ .Values.global.messageQueue.groupId | quote }}
+            - name: ER_GCP_PUB_SUB_SUBSCRIPTION
+              value: "{{ .Values.global.messageQueue.topicPrefix }}main-router"
+            - name: GOOGLE_APPLICATION_CREDENTIALS
+              value: /var/secrets/google/key.json
+            {{- end }}

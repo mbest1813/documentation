@@ -1,0 +1,20 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: {{ include "event-forwarder.fullname" .}}
+spec:
+  selector:
+    chart: {{ include "event-forwarder.chart" .}}
+  ports:
+    - name: ea-port
+      protocol: TCP
+      port: 8080
+      targetPort: 8080
+    - name: ea-admin-port
+      protocol: TCP
+      port: 8081
+      targetPort: 8081
+
+  # type: NodePort
+  type: ClusterIP
+  # loadBalancerIP: "some.ip.from.vpc"

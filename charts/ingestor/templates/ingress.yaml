@@ -1,0 +1,80 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: {{ .Values.global.host }}
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+    # kubernetes.io/tls-acme: 'true'
+    certmanager.k8s.io/issuer: "letsencrypt-staging"
+    certmanager.k8s.io/acme-challenge-type: http01
+spec:
+  rules:
+  - host: ingest.supertag.us
+    http:
+      paths:
+        - path: /
+          backend:
+            serviceName: {{ include "event-ingestor.fullname" . }}
+            servicePort: 8080
+  tls:
+    {{- if .Values.global.acme }}
+    - secretName: mr-platform-acme
+    {{- end }}
+    {{- if .Values.global.tlsSecret }}
+    - secretName: mr-platform-tls
+    {{- end }}
+      hosts:
+        - {{ .Values.global.host }}
+{{-if .Values.global.acme }}
+---
+apiVersion: certmanager.k8s.io/v1alpha1
+kind: ClusterIssuer
+metadata:
+  name: letsencrypt-staging
+spec:
+  acme:
+    # The ACME server URL
+    server: https://acme-staging-v02.api.letsencrypt.org/directory
+    # Email address used for ACME registration
+    email: {{ .Values.global.adminEmail | quote }}
+    # Name of a secret used to store the ACME account private key
+    privateKeySecretRef:
+      name: letsencrypt-staging
+    # Enable the HTTP-01 challenge provider
+    http01: {}
+---
+apiVersion: certmanager.k8s.io/v1alpha1
+kind: ClusterIssuer
+metadata:
+  name: letsencrypt-prod
+spec:
+  acme:
+    # The ACME server URL
+    server: https://acme-v01.api.letsencrypt.org/directory
+    # Email address used for ACME registration
+    email: {{ .Values.global.adminEmail | quote}}
+    # Name of a secret used to store the ACME account private key
+    privateKeySecretRef:
+      name: letsencrypt-prod
+    # Enable the HTTP-01 challenge provider
+    http01: {}
+---
+apiVersion: certmanager.k8s.io/v1alpha1
+kind: Certificate
+metadata:
+  name: acme-crt
+spec:
+  secretName: tls.ingest.supertag.us
+  dnsNames:
+  - {{ .Values.global.host }}
+  acme:
+    config:
+    - ingressClass: nginx
+      domains:
+      - {{ .Values.global.host }}
+  issuerRef:
+    name: letsencrypt-staging
+    # We can reference ClusterIssuers by changing the kind here.
+    # The default value is Issuer (i.e. a locally namespaced Issuer)
+    kind: Issuer
+{{- end }}

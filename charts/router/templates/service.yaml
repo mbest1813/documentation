@@ -1,0 +1,13 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: {{ include "event-router.fullname" .}}
+spec:
+  selector:
+    chart: {{ include "event-router.chart" .}}
+  ports:
+    - name: er-port
+      protocol: TCP
+      port: 8081
+      targetPort: 8081
+  type: ClusterIP

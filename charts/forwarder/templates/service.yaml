@@ -1,0 +1,17 @@
+{{- range $.Values.global.forwarders.enabledDestinations }}
+kind: Service
+apiVersion: v1
+metadata:
+  name: {{ include "event-forwarder.fullname" $ }}-{{ .label }}
+spec:
+  selector:
+    chart: {{ include "event-forwarder.chart" $ }}-{{ .label }}
+  ports:
+    - name: ef-port
+      protocol: TCP
+      port: 8080
+      targetPort: 8080
+  type: ClusterIP
+  # type: LoadBalancer
+---
+{{- end }}

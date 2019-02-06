@@ -1,0 +1,63 @@
+{{- range $.Values.global.forwarders.enabledDestinations }}
+apiVersion: apps/v1beta2
+kind: Deployment
+metadata:
+  name: {{ include "event-forwarder.fullname" $}}-{{ .label }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      chart: {{ include "event-forwarder.chart" $}}-{{ .label }}
+  template:
+    metadata:
+      labels:
+        chart: {{ include "event-forwarder.chart" $}}-{{ .label }}
+        tier: backend
+    spec:
+      volumes:
+        - name: metarouter-platform-config
+          secret:
+            secretName: mr-platform-config
+        {{- if eq $.Values.global.messageQueue.type "pubsub" }}
+        - name: mr-platform-pubsub
+          secret:
+            secretName: mr-platform-pubsub
+        {{- end }}
+      containers:
+        - name: event-forwarder-container
+          image: gcr.io/metarouter-cloud/event-forwarder:rc4.0.0-beta8
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
+          volumeMounts:
+            # {{- if eq $.Values.global.messageQueue.type "pubsub" }}
+            - name: mr-platform-pubsub
+              mountPath: /var/secrets/google
+            # {{- end }}
+            - name: metarouter-platform-config
+              mountPath: /var/secrets/metarouter
+          env:
+            - name: INTEGRATION_CODE
+              value: {{ .label | quote }}
+            - name: SERVER_INTEGRATION
+              value: {{ .dependency | quote }}
+            - name: TOPIC
+              value: "{{ $.Values.global.messageQueue.topicPrefix }}{{ .label }}"
+            - name: STREAM_PROCESSOR
+              value: {{ $.Values.global.messageQueue.type | quote }}
+            - name: GROUP_ID
+              value: {{ $.Values.global.messageQueue.groupId | quote }}
+            - name: DEBUG
+              value: {{ $.Values.global.forwarders.debugMode | quote }}
+            # {{- if eq $.Values.global.messageQueue.type "pubsub" }}
+            - name: GOOGLE_APPLICATION_CREDENTIALS
+              value: /var/secrets/google/key.json
+            # {{- end }}
+            - name: KAFKA_BROKERS # needs to stay until no longer a required field for all msg queue options
+              value: null
+            - name: EF_PLATFORM_CONFIGURATION
+              value: /var/secrets/metarouter/integrations.yaml
+            - name: EF_MESSAGE_BUFFER_SIZE
+              value: {{ .bufferSize | default "100" | quote }}
+---
+{{- end }}

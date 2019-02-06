@@ -1,0 +1,9 @@
+eventDestinations:
+  - label: google-analytics
+    dependency: analytics-js-server-integration-google-analytics
+  - label: facebook-pixel
+    dependency: analytics-js-server-integration-facebook-pixel
+  - label: webhooks
+    dependency: "@astronomerio/integration-webhooks"
+  - label: pinterest
+    dependency: analytics-js-server-integration-pinterest

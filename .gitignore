@@ -1,2 +1,3 @@
 charts/*.tgz
 requirements.lock
+.ship

@@ -1,7 +1,7 @@
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
-  name: {{ .Values.global.host }}
+  name: {{ .Values.global.host | quote }}
   annotations:
     kubernetes.io/ingress.class: "nginx"
     # kubernetes.io/tls-acme: 'true'
@@ -24,8 +24,9 @@ spec:
     - secretName: mr-platform-tls
     {{- end }}
       hosts:
-        - {{ .Values.global.host }}
-{{-if .Values.global.acme }}
+        - {{ .Values.global.host | quote }}
+
+{{- if .Values.global.acme }}
 ---
 apiVersion: certmanager.k8s.io/v1alpha1
 kind: ClusterIssuer

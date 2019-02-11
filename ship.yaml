@@ -1,0 +1,145 @@
+assets:
+  v1:
+    - inline:
+        dest: values.yaml
+        contents: |
+            global:
+                host: {{repl ConfigOption "host"}} # Host Name for EE Cluster
+                adminEmail: {{repl ConfigOption "adminEmail"}} # Admin Email for EE Cluster
+                environment: production # local (minimal resources) or production (stable, failover resources)
+                forwarders:
+                    enabled: true # Allow for built-in Data Forwarders to send events to 3rd Party API and data destinations.
+                    debugMode: true
+                    enabledDestinations: # Will create a duplicate Service and Deployment for each enabled destination, uses dependency to know which Destination logic to use. Omit the ones that shouldn't be running.
+                    {{repl if ConfigOptionEquals "destiantions" "webhooks"}}
+                      - label: webhooks
+                        pendency: "@astronomerio/integration-webhooks"
+                    {{repl end}}
+                    {{repl if ConfigOptionEquals "destinations" "google-analytics"}}
+                      - label: google-analytics
+                        dependency: analytics-js-server-integration-google-analytics
+                    {{repl end}}
+                    {{repl if ConfigOptionEquals "destinations" "facebook-pixel"}}
+                      - label: facebook-pixel
+                        dependency: analytics-js-server-integration-facebook-pixel
+                    {{repl end}}
+                    {{repl if ConfigOptionEquals "destinations" "pinterest"}}
+                      - label: pinterest
+                        dependency: analytics-js-server-integration-pinterest
+                    {{repl end}}
+                    {{repl if ConfigOptionEquals "destinations" "criteo"}}
+                      - label: criteo
+                        dependency: analytics-js-server-integration-criteo
+                    {{repl end}}
+                messageQueue:
+                    type: {{repl ConfigOption "messageQueue"}} # pubsub or kafka (msgbus and kinesis coming soon)
+    # - helm:
+    #     github:
+    #       repo: super-collider/enterprise.metarouter.io
+    #       ref: v0.1.1
+    #       path: /
+    #       source: private
+    #       dest: /charts/rendered/
+    - github:
+        repo: super-collider/enterprise.metarouter.io
+        ref: v0.1.1
+        path: /
+        source: private
+        dest: chart/raw
+    - helm:
+        local:
+          chart_root: installer/chart/raw
+        dest: chart/rendered
+    - helm:
+        local:
+          chart_root: installer/chart/raw/charts/ingestor
+        dest: chart/rendered/ingestor
+    - helm:
+        local:
+          chart_root: installer/chart/raw/charts/router
+        dest: chart/rendered/router
+    - helm:
+        local:
+          chart_root: installer/chart/raw/charts/forwarder
+        dest: chart/rendered/forwarder
+config:
+  v1:
+    - name: global
+      title: Main Project Settings
+      description: These control, well, everything
+      items:
+      - name: host
+        title: Host Name
+        help_text: What domain will the project run under?
+        type: text
+      - name: adminEmail
+        title: Administrator Email Address
+        type: text
+        help_text: Used in order to send alerts.
+      - name: messageQueue
+        title: Message Queue
+        type: select_one
+        items:
+        - name: pubsub
+          title: Google Pub/Sub
+        - name: kafka
+          title: Apache Kafka
+        - name: msgbus
+          title: Azure Message Bus
+        - name: kinesis
+          title: AWS Kinesis
+    - name: destinations
+      title: Main Project Destinations
+      description: These control, well, everything else
+      items:
+        - name: webhooks
+          title: Webhooks
+          type: bool
+          default: "0"
+        - name: facebook-pixel
+          title: Facebook Pixel
+          type: bool
+          default: "0"
+        - name: google-analytics
+          title: Google Analytics
+          type: bool
+          default: "0"
+        - name: criteo
+          title: Criteo
+          type: bool
+          default: "0"
+        - name: pinterest
+          title: Pinterest
+          type: bool
+          default: "0"
+
+lifecycle:
+  v1:
+    # custom markdown messaging
+    - message:
+        contents: |
+          # Nginx Installer
+
+          This installer will walk you through setting up a scalable nginx pool
+          that will serve high-quality, relevant web content.
+    - message:
+        contents: |
+          # Prerequisites
+
+          This installer assumes you already have a Kubernetes cluster up and running,
+          and that you have `kubectl` configured to access that cluster.
+
+    # collect info according to the `config` section
+    - config:
+        invalidates: ["render"]
+    # render assets
+    - render:
+        requires: ["config"]
+    - message:
+        id: outro
+        contents: |
+          ## You're all set!
+
+          If you have `kubectl` configured locally, you can deploy nginx by running
+
+              kubectl apply -f installer/k8s/

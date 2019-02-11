@@ -68,7 +68,7 @@ global:
     # minReplicas: 2 # Override; Defaults to 2 for production, statically 1 for local
     #                # We always want, at least, two for any size cluster as ingestion is the most important to always be available
     healthCheck: true # exposes /healthz endpoint
-    debugMode: flase # verbose logging
+    debugMode: false # verbose logging
   router:
     enabled: true # Allow for built-in router to fan-out event data to forwarders, set to false if there is no need to write data to streams outside of the main one
     # minReplicas: 2 # Override; Defaults to 2 for production, statically 1 for local

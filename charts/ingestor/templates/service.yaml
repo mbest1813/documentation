@@ -1,10 +1,10 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: {{ include "event-forwarder.fullname" .}}
+  name: {{ include "event-ingestor.fullname" . }}
 spec:
   selector:
-    chart: {{ include "event-forwarder.chart" .}}
+    chart: {{ include "event-ingestor.chart" . }}
   ports:
     - name: ea-port
       protocol: TCP

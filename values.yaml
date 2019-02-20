@@ -56,13 +56,16 @@ global:
   host: "" # Host Name for EE Cluster
   adminEmail: "" # Admin Email for EE Cluster
   environment: production # local (minimal resources) or production (stable, failover resources)
-  tlsSecret: true # TLS encrypt for data coming to host, include if there is a TLS secret within namespace called mr-platfrom-tls that should be used for encryption
-  acme: false # Automatic TLS encryption for data coming to host, include if TLS is wanted but no one wants to make a cert for it. # TODO: Currently not working, fix with cert-manager
+  tlsSecret: false # TLS encrypt for data coming to host, include if there is a TLS secret within namespace called mr-platfrom-tls that should be used for encryption
+  acme: # Automatic TLS encryption for data coming to host, include if TLS is wanted but no one wants to make a cert for it. # TODO: Currently not working, fix with cert-manager
+    enabled: false
+    issuer: ""
   messageQueue:
     type: "pubsub" # pubsub or kafka (msgbus and kinesis coming soon)
     topicPrefix: "mree-" # used to create names of topics and subscriptions (e.g. webhooks becomes mree-webhooks and mree-webhooks-forwarder)
     groupId: "mr-ee" # specific for messageQueue.type, for pubsub this resolves to project and is required
     retention: "7d" # not yet used, will set data retention period of self-hosted or automatically configured message queues
+    # broker: "" # Kafka Broker URI
   ingestor:
     enabled: true # Allow for built-in API to receive data, false if another service is already feeding subscription the router has subscribed to
     # minReplicas: 2 # Override; Defaults to 2 for production, statically 1 for local

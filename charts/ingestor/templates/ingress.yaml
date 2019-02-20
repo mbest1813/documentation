@@ -4,32 +4,45 @@ metadata:
   name: {{ .Values.global.host | quote }}
   annotations:
     kubernetes.io/ingress.class: "nginx"
-    # kubernetes.io/tls-acme: 'true'
-    certmanager.k8s.io/issuer: "letsencrypt-staging"
+    certmanager.k8s.io/issuer: {{ .Values.global.acme.issuer | quote }}
     certmanager.k8s.io/acme-challenge-type: http01
+    kubernetes.io/tls-acme: {{ .Values.global.acme.enabled | default "false" | quote }}
 spec:
   rules:
-  - host: ingest.supertag.us
+{{- if eq .Values.global.environment "production"}}
+  - host: {{ .Values.global.host | quote }}
     http:
       paths:
         - path: /
           backend:
             serviceName: {{ include "event-ingestor.fullname" . }}
             servicePort: 8080
+{{- else }}
+  - http:
+      paths:
+        - path: /
+          backend:
+            serviceName: {{ include "event-ingestor.fullname" . }}
+            servicePort: 8080
+{{- end }}
+{{- if eq .Values.global.environment "production"}}
   tls:
-    {{- if .Values.global.acme }}
+    {{- if .Values.global.acme.enabled }}
     - secretName: mr-platform-acme
+      hosts:
+        - {{ .Values.global.host | quote }}
     {{- end }}
     {{- if .Values.global.tlsSecret }}
     - secretName: mr-platform-tls
-    {{- end }}
       hosts:
         - {{ .Values.global.host | quote }}
+    {{- end }}
+{{- end }}
 
-{{- if .Values.global.acme }}
+{{- if .Values.global.acme.enabled }}
 ---
 apiVersion: certmanager.k8s.io/v1alpha1
-kind: ClusterIssuer
+kind: Issuer
 metadata:
   name: letsencrypt-staging
 spec:
@@ -45,37 +58,18 @@ spec:
     http01: {}
 ---
 apiVersion: certmanager.k8s.io/v1alpha1
-kind: ClusterIssuer
+kind: Issuer
 metadata:
-  name: letsencrypt-prod
+  name: letsencrypt-production
 spec:
   acme:
     # The ACME server URL
-    server: https://acme-v01.api.letsencrypt.org/directory
+    server: https://acme-v02.api.letsencrypt.org/directory
     # Email address used for ACME registration
-    email: {{ .Values.global.adminEmail | quote}}
+    email: {{ .Values.global.adminEmail | quote }}
     # Name of a secret used to store the ACME account private key
     privateKeySecretRef:
-      name: letsencrypt-prod
+      name: letsencrypt-production
     # Enable the HTTP-01 challenge provider
     http01: {}
----
-apiVersion: certmanager.k8s.io/v1alpha1
-kind: Certificate
-metadata:
-  name: acme-crt
-spec:
-  secretName: tls.ingest.supertag.us
-  dnsNames:
-  - {{ .Values.global.host }}
-  acme:
-    config:
-    - ingressClass: nginx
-      domains:
-      - {{ .Values.global.host }}
-  issuerRef:
-    name: letsencrypt-staging
-    # We can reference ClusterIssuers by changing the kind here.
-    # The default value is Issuer (i.e. a locally namespaced Issuer)
-    kind: Issuer
 {{- end }}

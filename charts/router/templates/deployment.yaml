@@ -65,3 +65,11 @@ spec:
             - name: GOOGLE_APPLICATION_CREDENTIALS
               value: /var/secrets/google/key.json
             {{- end }}
+            {{- if eq .Values.global.messageQueue.type "kafka" }}
+            - name: ER_KAFKA_BROKERS
+              value: {{ .Values.global.messageQueue.broker | quote }}
+            - name: ER_KAFKA_CONSUMER_TOPIC
+              value: "{{ .Values.global.messageQueue.topicPrefix }}main"
+            - name: ER_KAFKA_DEBUG_MODE
+              value: {{ .Values.global.router.debugMode | default "false" | quote }}
+            {{- end }}

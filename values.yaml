@@ -1,35 +1,116 @@
+# Default values for mr-helm.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+# replicaCount: 1
+#
+# image:
+#   repository: nginx
+#   tag: stable
+#   pullPolicy: IfNotPresent
+#
+# nameOverride: ""
+# fullnameOverride: ""
+#
+# service:
+#   type: ClusterIP
+#   port: 80
+
+# ingress:
+#   enabled: false
+#   annotations: {}
+#     # kubernetes.io/ingress.class: nginx
+#     # kubernetes.io/tls-acme: "true"
+#   paths: []
+#   hosts:
+#     - chart-example.local
+#   tls: []
+  #  - secretName: chart-example-tls
+  #    hosts:
+  #      - chart-example.local
+
+resources: {}
+  # We usually recommend not to specify default resources and to leave this as a conscious
+  # choice for the user. This also increases chances charts run on environments with little
+  # resources, such as Minikube. If you do want to specify resources, uncomment the following
+  # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+  # limits:
+  #  cpu: 100m
+  #  memory: 128Mi
+  # requests:
+  #  cpu: 100m
+  #  memory: 128Mi
+
+# nodeSelector: {}
+#
+# tolerations: []
+#
+# affinity: {}
+
+#############################
+## MetaRouter Enterprise Edition
+#############################
+
 global:
-    host: jhfk # Host Name for EE Cluster
-    adminEmail: mjgc # Admin Email for EE Cluster
-    environment: local # local (minimal resources) or production (stable, failover resources)
-    tls:
-      type: "off"
-    prometheus:
-      enabled: false
-    forwarders:
-        enabled: true # Allow for built-in Data Forwarders to send events to 3rd Party API and data destinations.
-        debugMode: true
-        enabledDestinations: # Will create a duplicate Service and Deployment for each enabled destination, uses dependency to know which Destination logic to use. Omit the ones that shouldn't be running.
-          - label: webhooks
-            dependency: "@astronomerio/integration-webhooks"
-        
-        
-        
-        
-    messageQueue:
-        type: kafka # pubsub or kafka (msgbus and kinesis coming soon)
-        topicPrefix: "mree-"
-        groupId: "mr-ee"
-        retention: "7d"
-    ingestor:
-      enabled: true # Allow for built-in API to receive data, false if another service is already feeding subscription the router has subscribed to
-      healthCheck: true # exposes /healthz endpoint
-      debugMode: false # verbose logging
-    router:
-      enabled: true # Allow for built-in router to fan-out event data to forwarders, set to false if there is no need to write data to streams outside of the main one
-      # minReplicas: 2 # Override; Defaults to 2 for production, statically 1 for local
-      debugMode: true
+  ## Services Available for Cluster
+  host: "" # Host Name for EE Cluster
+  adminEmail: "" # Admin Email for EE Cluster
+  environment: production # local (minimal resources) or production (stable, failover resources)
+  tls:
+    type: "self" # off | self | secret | clusterIssuer
+    # issuer: "mr-platform-acme-issuer" # used if there is a cert-manager installed cluster-wide
+    # secretName: "mr-platform-acme-issuer"
+  # DEPRECATED |  tlsSecret: false
+  # DEPRECATED |  acme: # Automatic TLS encryption for data coming to host, include if TLS is wanted but no one wants to make a cert for it. # TODO: Currently not working, fix with cert-manager
+  # DEPRECATED |    enabled: true # DEPRECATED |
+  # DEPRECATED |    issuer: "letsencrypt-production" # DEPRECATED |
+  messageQueue:
+    type: "pubsub" # pubsub or kafka (msgbus and kinesis coming soon)
+    topicPrefix: "mree-" # used to create names of topics and subscriptions (e.g. webhooks becomes mree-webhooks and mree-webhooks-forwarder)
+    groupId: "mr-ee" # specific for messageQueue.type, for pubsub this resolves to project and is required
+    retention: "7d" # not yet used, will set data retention period of self-hosted or automatically configured message queues
+    # broker: "" # Kafka Broker URI
+  ingestor:
+    enabled: true # Allow for built-in API to receive data, false if another service is already feeding subscription the router has subscribed to
+    # minReplicas: 2 # Override; Defaults to 2 for production, statically 1 for local
+    #                # We always want, at least, two for any size cluster as ingestion is the most important to always be available
+    healthCheck: true # exposes /healthz endpoint
+    debugMode: false # verbose logging
+  router:
+    enabled: true # Allow for built-in router to fan-out event data to forwarders, set to false if there is no need to write data to streams outside of the main one
+    # minReplicas: 2 # Override; Defaults to 2 for production, statically 1 for local
+    debugMode: true
+  forwarders:
+    enabled: true # Allow for built-in Data Forwarders to send events to 3rd Party API and data destinations.
+    debugMode: true
+    enabledDestinations: # Will create a duplicate Service and Deployment for each enabled destination, uses dependency to know which Destination logic to use. Omit the ones that shouldn't be running.
+      - label: webhooks
+        dependency: "@astronomerio/integration-webhooks"
+      - label: facebook-pixel
+        dependency: analytics-js-server-integration-facebook-pixel
+      - label: pinterest
+        dependency: analytics-js-server-integration-pinterest
+      - label: google-analytics
+        dependency: analytics-js-server-integration-google-analytics
+      - label: criteo
+        dependency: analytics-js-server-integration-criteo
+      - label: adobe-analytics
+        dependency: analytics-js-server-integration-adobe-analytics
+      - label: sailthru
+        dependency: analytics-js-server-integration-sailthru
+  prometheus:
+    enabled: false
 nginx-ingress:
-  enabled: true
+  enabled: true # Allows for NGINX controller to route traffic to ingress. Disable if Cloud Native Load Balancers are required (not implemented, requires further customization)
+  # controller: # Uncomment if you want the platform to use a assigned Static IP for incoming data
+  #   service:
+  #     loadBalancerIP: "101.102.103.104" # Platfrom Static IP
 cert-manager:
-  enabled: false
+  enabled: false # Allows for the automatic provisioning of ACME certs via HTTP validation to exposed endpoints. Currently not working :(
+  # ingressShim:
+  #   defaultIssuerName": "letsencrypt-prod" # TODO: Discover proper location for ingressShim default declarations
+  #   defaultIssuerKind": "ClusterIssuer"
+  # defaultIssuerName": "letsencrypt-prod"
+  # defaultIssuerKind": "ClusterIssuer"
+  # rbac:
+  #   create: true

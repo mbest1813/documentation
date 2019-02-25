@@ -6,15 +6,17 @@ assets:
             global:
                 host: {{repl ConfigOption "host"}} # Host Name for EE Cluster
                 adminEmail: {{repl ConfigOption "adminEmail"}} # Admin Email for EE Cluster
-                environment: production # local (minimal resources) or production (stable, failover resources)
+                environment: local # local (minimal resources) or production (stable, failover resources)
+                tls:
+                  type: "off"
+                prometheus:
+                  enabled: false
                 forwarders:
                     enabled: true # Allow for built-in Data Forwarders to send events to 3rd Party API and data destinations.
                     debugMode: true
                     enabledDestinations: # Will create a duplicate Service and Deployment for each enabled destination, uses dependency to know which Destination logic to use. Omit the ones that shouldn't be running.
-                    {{repl if ConfigOptionEquals "destiantions" "webhooks"}}
                       - label: webhooks
-                        pendency: "@astronomerio/integration-webhooks"
-                    {{repl end}}
+                        dependency: "@astronomerio/integration-webhooks"
                     {{repl if ConfigOptionEquals "destinations" "google-analytics"}}
                       - label: google-analytics
                         dependency: analytics-js-server-integration-google-analytics
@@ -33,6 +35,21 @@ assets:
                     {{repl end}}
                 messageQueue:
                     type: {{repl ConfigOption "messageQueue"}} # pubsub or kafka (msgbus and kinesis coming soon)
+                    topicPrefix: "mree-"
+                    groupId: "mr-ee"
+                    retention: "7d"
+                ingestor:
+                  enabled: true # Allow for built-in API to receive data, false if another service is already feeding subscription the router has subscribed to
+                  healthCheck: true # exposes /healthz endpoint
+                  debugMode: false # verbose logging
+                router:
+                  enabled: true # Allow for built-in router to fan-out event data to forwarders, set to false if there is no need to write data to streams outside of the main one
+                  # minReplicas: 2 # Override; Defaults to 2 for production, statically 1 for local
+                  debugMode: true
+            nginx-ingress:
+              enabled: true
+            cert-manager:
+              enabled: false
     # - helm:
     #     github:
     #       repo: super-collider/enterprise.metarouter.io
@@ -46,22 +63,34 @@ assets:
         path: /
         source: private
         dest: chart/raw
+    # - helm:
+    #     local:
+    #       chart_root: installer/chart/raw
+    #     dest: chart/rendered
+    #     helm_opts:
+    #       - --values
+    #       - installer/values.yaml
     - helm:
         local:
-          chart_root: installer/chart/raw
-        dest: chart/rendered
-    - helm:
-        local:
-          chart_root: installer/chart/raw/charts/ingestor
+          chart_root: chart/raw/charts/ingestor
         dest: chart/rendered/ingestor
+        helm_opts:
+          - --values
+          - values.yaml
     - helm:
         local:
-          chart_root: installer/chart/raw/charts/router
+          chart_root: chart/raw/charts/router
         dest: chart/rendered/router
+        helm_opts:
+          - --values
+          - values.yaml
     - helm:
         local:
-          chart_root: installer/chart/raw/charts/forwarder
+          chart_root: chart/raw/charts/forwarder
         dest: chart/rendered/forwarder
+        helm_opts:
+          - --values
+          - values.yaml
 config:
   v1:
     - name: global
@@ -88,6 +117,19 @@ config:
           title: Azure Message Bus
         - name: kinesis
           title: AWS Kinesis
+      - name: tls
+        title: TLS Security
+        help_text: Select how you would like TLS Certificates created for the platform
+        type: select_one
+        items:
+          - name: off
+            title: No TLS
+          - name: self
+            title: Automatic TLS (from Platform)
+          - name: clusterIssuer
+            title: Automatic TLS (from Cluster)
+          - name: secret
+            title: Provided TLS Certificate
     - name: destinations
       title: Main Project Destinations
       description: These control, well, everything else
@@ -135,6 +177,13 @@ lifecycle:
     # render assets
     - render:
         requires: ["config"]
+        root: .
+    - kustomizeIntro: {}
+    - kustomize:
+        requires: ["render"]
+        base: ./chart/rendered
+        overlay: overlays/ship
+        dest: metarouter-ee.yaml
     - message:
         id: outro
         contents: |

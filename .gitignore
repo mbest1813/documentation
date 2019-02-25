@@ -2,3 +2,6 @@ charts/*.tgz
 requirements.lock
 .ship
 /tmp
+/chart
+/overlays
+metarouter.yaml

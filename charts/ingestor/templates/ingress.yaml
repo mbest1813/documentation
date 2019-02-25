@@ -4,9 +4,11 @@ metadata:
   name: {{ .Values.global.host | quote }}
   annotations:
     kubernetes.io/ingress.class: "nginx"
-    certmanager.k8s.io/issuer: {{ .Values.global.acme.issuer | quote }}
+    {{- if or (eq .Values.global.tls.type "self") (eq .Values.global.tls.type "clusterIssuer") }}
+    kubernetes.io/tls-acme: {{ .Values.global.tls.acme | default "false" | quote }}
+    certmanager.k8s.io/issuer: {{ .Values.global.tls.issuer | default "mr-platform-acme-issuer" | quote }}
     certmanager.k8s.io/acme-challenge-type: http01
-    kubernetes.io/tls-acme: {{ .Values.global.acme.enabled | default "false" | quote }}
+    {{- end}}
 spec:
   rules:
 {{- if eq .Values.global.environment "production"}}
@@ -27,40 +29,24 @@ spec:
 {{- end }}
 {{- if eq .Values.global.environment "production"}}
   tls:
-    {{- if .Values.global.acme.enabled }}
+    {{- if eq .Values.global.tls.type "self" }}
     - secretName: mr-platform-acme
       hosts:
         - {{ .Values.global.host | quote }}
     {{- end }}
-    {{- if .Values.global.tlsSecret }}
-    - secretName: mr-platform-tls
+    {{- if eq .Values.global.tls.type "secret" }}
+    - secretName: {{ .Values.global.tls.secretName | default "mr-platform-tls" | quote }}
       hosts:
         - {{ .Values.global.host | quote }}
     {{- end }}
 {{- end }}
 
-{{- if .Values.global.acme.enabled }}
+{{- if eq .Values.global.tls.type "self" }}
 ---
 apiVersion: certmanager.k8s.io/v1alpha1
 kind: Issuer
 metadata:
-  name: letsencrypt-staging
-spec:
-  acme:
-    # The ACME server URL
-    server: https://acme-staging-v02.api.letsencrypt.org/directory
-    # Email address used for ACME registration
-    email: {{ .Values.global.adminEmail | quote }}
-    # Name of a secret used to store the ACME account private key
-    privateKeySecretRef:
-      name: letsencrypt-staging
-    # Enable the HTTP-01 challenge provider
-    http01: {}
----
-apiVersion: certmanager.k8s.io/v1alpha1
-kind: Issuer
-metadata:
-  name: letsencrypt-production
+  name: {{ .Values.global.tls.issuer | default "mr-platform-acme-issuer" | quote }}
 spec:
   acme:
     # The ACME server URL
@@ -69,7 +55,7 @@ spec:
     email: {{ .Values.global.adminEmail | quote }}
     # Name of a secret used to store the ACME account private key
     privateKeySecretRef:
-      name: letsencrypt-production
+      name: {{ .Values.global.tls.issuer | default "mr-platform-acme-issuer" | quote }}
     # Enable the HTTP-01 challenge provider
     http01: {}
 {{- end }}

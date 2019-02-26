@@ -25,7 +25,7 @@ spec:
         {{- end }}
       containers:
         - name: event-forwarder-container
-          image: gcr.io/metarouter-cloud/event-forwarder:rc4.0.0-beta13
+          image: gcr.io/metarouter-cloud/event-forwarder:rc4.0.0-beta14
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
@@ -45,15 +45,17 @@ spec:
               value: "{{ $.Values.global.messageQueue.topicPrefix }}{{ .label }}"
             - name: STREAM_PROCESSOR
               value: {{ $.Values.global.messageQueue.type | quote }}
-            - name: GROUP_ID
-              value: "{{ $.Values.global.messageQueue.groupId }}-{{ .label }}"
             - name: DEBUG
               value: {{ $.Values.global.forwarders.debugMode | quote }}
             {{- if eq $.Values.global.messageQueue.type "pubsub" }}
+            - name: GROUP_ID
+              value: {{ $.Values.global.messageQueue.groupId | quote }}
             - name: GOOGLE_APPLICATION_CREDENTIALS
               value: /var/secrets/google/key.json
             {{- end }}
             {{- if eq $.Values.global.messageQueue.type "kafka" }}
+            - name: GROUP_ID
+              value: "{{ $.Values.global.messageQueue.groupId }}-{{ .label }}"
             - name: KAFKA_BROKERS
               value: {{ $.Values.global.messageQueue.broker | quote }}
             - name: POSITION

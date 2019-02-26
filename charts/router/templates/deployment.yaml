@@ -28,7 +28,7 @@ spec:
         {{- end }}
       containers:
         - name: event-router-container
-          image: gcr.io/metarouter-cloud/event-router:rc0.1.0-beta2
+          image: gcr.io/metarouter-cloud/event-router:rc0.1.0-beta3
           {{- if eq .Values.global.environment "production"}}
           resources:
             limits:

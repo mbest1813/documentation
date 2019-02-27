@@ -1,13 +1,13 @@
 ---
 title: Houston - MetaRouter's GraphQL API
 sidebar: platform_sidebar
-summary: Houston is a GraphQL API (utilizing Apollo) that allows interaction with the Astronomer Data Engineering Platform. Named after NASA’s Johnson Space Center in Houston, it provides direct communication and orchestration over our platform services.
+summary: Houston is a GraphQL API (utilizing Apollo) that allows interaction with the MetaRouter Data Engineering Platform. Named after NASA’s Johnson Space Center in Houston, it provides direct communication and orchestration over our platform services.
 ---
 
 ## API Explorer
 
 You can
-[explore the API](https://houston-explorer.astronomer.io/) directly using GraphQL Explorer.
+[explore the API](https://houston-explorer.metarouter.io/) directly using GraphQL Explorer for testing purposes. You will want to make sure you select "MetaRouter Houston" when interfacing with this tool.
 
 
 ## Connecting
@@ -25,7 +25,7 @@ JSON Web Tokens (JWT) encrypt important user session data in a way for our syste
 
 #### Requesting JWT Access
 
-In order to generate a JWT, you will first need a user account with Astronomer. Once you have a user account, the follow mutation (updated with your email, as the username, and password) will respond with your Token string for you to pass to our API.
+In order to generate a JWT, you will first need a [user account](https://app.metarouter.io) with MetaRouter. Once you have a user account, the follow mutation (updated with your email, as the username, and password) will respond with your Token string for you to pass to our API.
 
 ```
 mutation createToken{
@@ -50,13 +50,13 @@ JWT will expire after 24 hours. Once it is expired, you will need to generate a 
 
 #### Using an API Key
 
-We’re working to provide trusted partners with API Keys that provide access to the Public API and do not self-expire. Stay tuned for updates, or send us a note at support@astronomer.io if you would like to be notified when this feature is made available.
+We’re working to provide trusted partners with API Keys that provide access to the Public API and do not self-expire. Stay tuned for updates, or send us a note at support@metarouter.io if you would like to be notified when this feature is made available.
 
 ## Data Models
 
 ### Users and Organizations
 
-In order to access and control pipelines in the Astronomer platform, we give control of these operations to `Organizations`. `Users` are added to `Organizations` in order to utilize the org's control over those pipelines. Once an person is added to an `Organization`, they are titled either `Owner` or `User`.
+In order to access and control pipelines in the MetaRouter platform, we give control of these operations to `Organizations`. `Users` are added to `Organizations` in order to utilize the org's control over those pipelines. Once an person is added to an `Organization`, they are titled either `Owner` or `User`.
 
 Organization `Owners` have full read/write control over everything linked to that Organization, from editing pipelines to expanding User permissions. You can consider this role as having administrative privileges for this Organization.
 
@@ -91,7 +91,7 @@ mutation {
 }
 ```
 
-There is no direct access to auto signup a user from the API. However the auto signup feature will be automatically triggered when adding a user to your `Organization` that does not have an existing Astronomer `User` account.
+There is no direct access to auto signup a user from the API. However the auto signup feature will be automatically triggered when adding a user to your `Organization` that does not have an existing MetaRouter `User` account.
 
 Note that editing a user's account and editing organization users are features on our roadmap and will be available soon!
 
@@ -203,7 +203,7 @@ Mutations typically respond with a `statusMessage` object to alert you on if the
 * `id` : For operations that create new data, the id of the created object will be returned
 * `code` : Coming soon...
 
-Actions to mutate data within Astronomer’s platform tend to follow a "create and update" pattern, where we separate out the functions to make a new object with the ability to change or delete it in order to have strict control over the permissions over data control. For example, anyone can run `createOrganization` and make a new `Organization` where they are the owner. However, only `Organization` owners can run `updateOrganization` that allows for adding/removing users, updating details, or deleting the org.
+Actions to mutate data within MetaRouter’s platform tend to follow a "create and update" pattern, where we separate out the functions to make a new object with the ability to change or delete it in order to have strict control over the permissions over data control. For example, anyone can run `createOrganization` and make a new `Organization` where they are the owner. However, only `Organization` owners can run `updateOrganization` that allows for adding/removing users, updating details, or deleting the org.
 
 #### Error Response
 
@@ -213,11 +213,11 @@ This is on our roadmap and currently being built out- check back soon for update
 
 ### API Developer Console
 
-Please contact us directly at support@astronomer.io for access to the main developer console for Astronomer’s public API.
+Please contact us directly at support@metarouter.io for access to the main developer console for MetaRouter’s public API.
 
-Within the black Header Area, you want to paste the JWT into the token field and the Organization ID (found within the URL of your Organizations dashboard on alpha.astronomer.io - alpha.astronomer.io/org/). This will embed that information within the header of all of your requests within the console and will provide access to query and mutation results for your organization. Make sure you select `Prod` as your GraphQL endpoint (defaults to `Staging` on page load) to make sure you are accessing data that resides on Astronomer's Main Platform.
+Within the black Header Area, you want to paste the JWT into the token field and the Organization ID (found within the URL of your Organizations dashboard on app.metarouter.io - app.metarouter.io/org/). This will embed that information within the header of all of your requests within the console and will provide access to query and mutation results for your organization. Make sure you select `Prod` as your GraphQL endpoint (defaults to `Staging` on page load) to make sure you are accessing data that resides on MetaRouter's Main Platform.
 
 ## API Reference Materials
 
-* [API Schema](https://astronomerio.github.io/houston/schema/public-API-schema-0.3.0.html)
-* [API Roadmap](https://astronomerio.github.io/houston/roadmap.html) coming soon...
+* [API Schema](https://super-collider.github.io/houston/schema/public-API-schema-0.3.0.html)
+* [API Roadmap](https://super-collider.github.io/houston/roadmap.html) coming soon...

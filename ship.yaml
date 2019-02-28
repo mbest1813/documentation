@@ -1,7 +1,7 @@
 assets:
   v1:
     - inline:
-        dest: values.yaml
+        dest: values.ship.yaml
         contents: |
             global:
                 host: {{repl ConfigOption "host"}} # Host Name for EE Cluster
@@ -9,11 +9,9 @@ assets:
                 environment: local # local (minimal resources) or production (stable, failover resources)
                 tls:
                   type: "off"
-                prometheus:
-                  enabled: false
                 forwarders:
                     enabled: true # Allow for built-in Data Forwarders to send events to 3rd Party API and data destinations.
-                    debugMode: true
+                    debugMode: false
                     enabledDestinations: # Will create a duplicate Service and Deployment for each enabled destination, uses dependency to know which Destination logic to use. Omit the ones that shouldn't be running.
                       - label: webhooks
                         dependency: "@astronomerio/integration-webhooks"
@@ -35,7 +33,7 @@ assets:
                     {{repl end}}
                 messageQueue:
                     type: {{repl ConfigOption "messageQueue"}} # pubsub or kafka (msgbus and kinesis coming soon)
-                    topicPrefix: "mree-"
+                    topicPrefix: "{{repl ConfigOption "messageQueuePrefix"}}-"
                     groupId: "mr-ee"
                     retention: "7d"
                 ingestor:
@@ -45,11 +43,15 @@ assets:
                 router:
                   enabled: true # Allow for built-in router to fan-out event data to forwarders, set to false if there is no need to write data to streams outside of the main one
                   # minReplicas: 2 # Override; Defaults to 2 for production, statically 1 for local
-                  debugMode: true
+                  debugMode: false
+                prometheus:
+                  enabled: true
             nginx-ingress:
               enabled: true
             cert-manager:
               enabled: false
+            prometheus:
+              enabled: true
     # - helm:
     #     github:
     #       repo: super-collider/enterprise.metarouter.io
@@ -76,21 +78,33 @@ assets:
         dest: chart/rendered/ingestor
         helm_opts:
           - --values
-          - values.yaml
+          - values.ship.yaml
     - helm:
         local:
           chart_root: chart/raw/charts/router
         dest: chart/rendered/router
         helm_opts:
           - --values
-          - values.yaml
+          - values.ship.yaml
     - helm:
         local:
           chart_root: chart/raw/charts/forwarder
         dest: chart/rendered/forwarder
         helm_opts:
           - --values
-          - values.yaml
+          - values.ship.yaml
+    - helm:
+        local:
+          chart_root: chart/raw/charts/cert-manager-v0.6.0.tgz
+        dest: chart/rendered/cert-manager-v0.6.0.tgz
+    - helm:
+        local:
+          chart_root: chart/raw/charts/nginx-ingress-1.2.3.tgz
+        dest: chart/rendered/nginx-ingress-1.2.3.tgz
+    - helm:
+        local:
+          chart_root: chart/raw/charts/prometheus-8.8.0.tgz
+        dest: chart/rendered/prometheus-8.8.0.tgz
 config:
   v1:
     - name: global
@@ -117,6 +131,11 @@ config:
           title: Azure Message Bus
         - name: kinesis
           title: AWS Kinesis
+      - name: messageQueuePrefix
+        title: Message Queue Prefix
+        type: text
+        default: "mr-ee"
+        help_text: Added to the beginning of message queues
       - name: tls
         title: TLS Security
         help_text: Select how you would like TLS Certificates created for the platform

@@ -10,6 +10,10 @@ spec:
       chart: {{ include "event-forwarder.chart" $}}-{{ .label }}
   template:
     metadata:
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/path: "/metrics"
+        prometheus.io/port: "8080"
       labels:
         chart: {{ include "event-forwarder.chart" $}}-{{ .label }}
         tier: backend
@@ -25,7 +29,7 @@ spec:
         {{- end }}
       containers:
         - name: event-forwarder-container
-          image: gcr.io/metarouter-cloud/event-forwarder:rc4.0.0-beta14
+          image: gcr.io/metarouter-cloud/event-forwarder:rc4.0.0-beta15
           imagePullPolicy: Always
           ports:
             - containerPort: 8080

@@ -8,3 +8,7 @@ dependencies:
     version: ~1.2.3
     repository: "https://kubernetes-charts.storage.googleapis.com/" # "@stable"
     condition: nginx-ingress.enabled
+  - name: prometheus
+    version: 8.8.0
+    repository: "https://kubernetes-charts.storage.googleapis.com/" # "@stable"
+    condition: prometheus.enabled

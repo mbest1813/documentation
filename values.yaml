@@ -69,7 +69,7 @@ global:
   # DEPRECATED |    issuer: "letsencrypt-production" # DEPRECATED |
   messageQueue:
     type: "pubsub" # pubsub or kafka (msgbus and kinesis coming soon)
-    topicPrefix: "mree-" # used to create names of topics and subscriptions (e.g. webhooks becomes mree-webhooks and mree-webhooks-forwarder)
+    topicPrefix: "mr-ee-" # used to create names of topics and subscriptions (e.g. webhooks becomes mree-webhooks and mree-webhooks-forwarder)
     groupId: "mr-ee" # specific for messageQueue.type, for pubsub this resolves to project and is required
     retention: "7d" # not yet used, will set data retention period of self-hosted or automatically configured message queues
     # broker: "" # Kafka Broker URI
@@ -102,7 +102,7 @@ global:
       - label: sailthru
         dependency: analytics-js-server-integration-sailthru
   prometheus:
-    enabled: false
+    enabled: true
 nginx-ingress:
   enabled: true # Allows for NGINX controller to route traffic to ingress. Disable if Cloud Native Load Balancers are required (not implemented, requires further customization)
   # controller: # Uncomment if you want the platform to use a assigned Static IP for incoming data
@@ -117,3 +117,5 @@ cert-manager:
   # defaultIssuerKind": "ClusterIssuer"
   # rbac:
   #   create: true
+prometheus:
+  enabled: true

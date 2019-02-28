@@ -19,6 +19,15 @@ spec:
           backend:
             serviceName: {{ include "event-ingestor.fullname" . }}
             servicePort: 8080
+  {{- range $.Values.global.hosts }}
+  - host: {{ . | quote }}
+    http:
+      paths:
+        - path: /
+          backend:
+            serviceName: {{ include "event-ingestor.fullname" $ }}
+            servicePort: 8080
+  {{- end }}
 {{- else }}
   - http:
       paths:
@@ -33,6 +42,9 @@ spec:
     - secretName: mr-platform-acme
       hosts:
         - {{ .Values.global.host | quote }}
+        {{- range $.Values.global.hosts }}
+        - {{ . | quote }}
+        {{- end }}
     {{- end }}
     {{- if eq .Values.global.tls.type "secret" }}
     - secretName: {{ .Values.global.tls.secretName | default "mr-platform-tls" | quote }}

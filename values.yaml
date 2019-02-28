@@ -54,6 +54,9 @@ resources: {}
 global:
   ## Services Available for Cluster
   host: "" # Host Name for EE Cluster
+  # hosts: # Additional hosts to have the platform respond to
+  #   - alternative.host.one
+  #   - alternative.host.two
   adminEmail: "" # Admin Email for EE Cluster
   environment: production # local (minimal resources) or production (stable, failover resources)
   tls:

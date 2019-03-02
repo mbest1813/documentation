@@ -10,30 +10,30 @@ entries:
 
   - title: Platform
     output: web
-
     folderitems:
-
     - title: Overview
       url: /
       output: web
-
-    - title: Enterprise Edition
-      url: /v2/editions/enterprise/overview.html
-      output: web
-
+      subfolders:
+      - title: Enterprise Edition
+        output: web
+        subfolderitems:
+        - title: Overview
+          url: /v2/editions/enterprise/overview.html
+          output: web
+        - title: Requirements
+          url: /v2/editions/enterprise/requirements.html
+          output: web
     # - title: Open Edition
     #   url: /v2/editions/open/overview.html
     #   output: web
-
       subfolders:
       - title: Cloud Edition
         output: web
         subfolderitems:
-
         - title: Overview
           url: /v2/editions/cloud/overview.html
           output: web
-
         - title: API
           url: /v2/editions/cloud/api.html
           output: web
@@ -42,24 +42,19 @@ entries:
   - title: Clickstream
     output: web
     folderitems:
-
     - title: Overview
       url: /v2/clickstream/overview.html
       output: web
-
     - title: Basic Clickstream Example
       url: /v2/clickstream/2048.html
       output: web
-
     - title: Segment Switch Guide
       url: /v2/clickstream/segment-switch-guide.html
       output: web
-
     - title: API Calls
       url: /v2/clickstream/calls.html
       output: web
       subfolders:
-
       - title: Sources
         output: web
         subfolderitems:

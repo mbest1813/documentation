@@ -14,16 +14,16 @@ entries:
     - title: Overview
       url: /
       output: web
-      subfolders:
-      - title: Enterprise Edition
+    subfolders:
+    - title: Enterprise Edition
+      output: web
+      subfolderitems:
+      - title: Overview
+        url: /v2/editions/enterprise/overview.html
         output: web
-        subfolderitems:
-        - title: Overview
-          url: /v2/editions/enterprise/overview.html
-          output: web
-        - title: Requirements
-          url: /v2/editions/enterprise/requirements.html
-          output: web
+      - title: Requirements
+        url: /v2/editions/enterprise/requirements.html
+        output: web
     # - title: Open Edition
     #   url: /v2/editions/open/overview.html
     #   output: web

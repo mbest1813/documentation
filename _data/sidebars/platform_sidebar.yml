@@ -276,6 +276,10 @@ entries:
           url: /v2/clickstream/destinations/s3-event-logs.html
           output: web
 
+        - title: Sailthru
+          url: /v2/clickstream/destinations/sailthru.html
+          output: web
+
         - title: Taboola
           url: /v2/clickstream/destinations/taboola.html
           output: web

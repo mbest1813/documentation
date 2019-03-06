@@ -54,6 +54,9 @@ entries:
     - title: API Calls
       url: /v2/clickstream/calls.html
       output: web
+    - title: Ecommerce
+      url: /v2/clickstream/ecommerce.html
+      output: web
       subfolders:
       - title: Sources
         output: web

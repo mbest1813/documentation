@@ -304,13 +304,13 @@ Sailthru does not accept nested custom traits or properties, so by default we wi
 "key": "extid",
 "event": "Played Game",
 "vars": {
-"levels.0": 1,
-"levels.1": 2,
-"levels.2": 3,
-"arcade.blips and chitz.planet": "Parblesnops",
-"arcade.galaxy.coordinates": "1232.4832",
-"arcade.games.0": "Roy: A life well lived",
-"arcade.games.1": "Whack a mole"
+"levels0": 1,
+"levels1": 2,
+"levels2": 3,
+"arcadeblips and chitzplanet": "Parblesnops",
+"arcadegalaxycoordinates": "1232.4832",
+"arcadegames0": "Roy: A life well lived",
+"arcadegames1": "Whack a mole"
 },
 "format": "json",
 "api_key": "xxxxxxxxx",

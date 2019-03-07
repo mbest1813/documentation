@@ -51,14 +51,9 @@ entries:
     - title: Segment Switch Guide
       url: /v2/clickstream/segment-switch-guide.html
       output: web
-<<<<<<< HEAD
-
     - title: Compare MetaRouter and Segment Side-by-side
       url: /v2/clickstream/aa-test-metarouter-and-segment.html
       output: web
-
-=======
->>>>>>> 7f94de244d6b0047f1adabc1cead784cd620d48b
     - title: API Calls
       url: /v2/clickstream/calls.html
       output: web

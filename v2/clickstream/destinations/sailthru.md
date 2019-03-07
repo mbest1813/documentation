@@ -33,13 +33,21 @@ The Sailthru server-side destination will allow you to add users, send custom ev
 
 ### Page
 
-You must configure a `customerId` in your integration settings in order to utilize the page functionality. This value is only required for page calls and can be found in your **Sailthru Dashboard** under **App Settings**.
+You must configure a `clientId` in your integration settings in order to utilize the page functionality. This value is only required for page calls and can be found in your **Sailthru Dashboard** under **App Settings** - **customerId**.
 
 When you call page, we will hit the Sailthru page endpoint and you will see the calls populate in the **Sailthru Realtime Dashboard**.
 
 The `context.page.url` is also a required field for all page calls, so be sure this is present on each call. The url *must* be a domain name, otherwise the request will fail.
 
 We will automatically handle the proper identification of user’s in Sailthru via the Analytics.js `userId`.
+
+Sailthru provides an out of band web scraper that will automatically collect contextual information from your pages to power their [**personalization engine**](https://getstarted.sailthru.com/site/personalization-engine/meta-tags/). If the design of your site requires passing these tags to Sailthru manually (Single Page Apps are one example) you can manually pass them via a `tags` property in the page event:
+
+```javascript
+analytics.page('Page Name', {
+  tags: ['football', 'new york giants', 'eli manning']
+});
+```
 
 ### Identify
 

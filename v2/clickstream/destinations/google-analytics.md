@@ -15,7 +15,7 @@ Google Analytics requires that you add their snippet to your site. Doing this wi
 
 Integrating Google Analytics with MetaRouter means that you do not need to install any Google Analytics code into your site or mobile app. It also greatly eases the processes of tracking more detailed information like what users are doing on a page, e-commerce data, and user attributes. Furthermore, many custom events can be configured directly in the MetaRouter UI, making it easy to track the data that you need.
 
-## Getting Started with Google Analytics and MetaRouter Clickstream
+## Getting Started with Google Analytics and MetaRouter
 
 *Before you get started, note that you will need to remove Google Analytics snippet from your page if you were using it outside of MetaRouter.*
 
@@ -29,7 +29,7 @@ To start, you'll need your Google Analytics `Tracking ID`. This can be found in 
 
 Next, head to app.metarouter.io and add a new destination for the source you want to track. Select Google Analytics and you will be brought to a Configure your destination panel.
 
-Here, you'll need to create a Friendly Name and enter your Google Analytics Tracking ID for the application. With just these two pieces of information, you can click `Create Destination` and MetaRouter will start sending your Clickstream data to Google Analytics.
+Here, you'll need to create a Friendly Name and enter your Google Analytics Tracking ID for the application. With just these two pieces of information, you can click `Create Destination` and MetaRouter will start sending your data to Google Analytics.
 
 ![google-analytics1](../../../images/google-analytics2v2.png)
 
@@ -81,7 +81,7 @@ Turn this feature on to use Google's remarketing tag (what was formerly known as
 ### Cookie Domain Name
 In Google Analytics, the Cookie Domain Name setting allows you to specify the domain that the `_ga` cookie will be set on (this defaults to the top level domain: `domain.com`).
 
-With Clickstream, the Cookie Domain Name defaults to `auto` which sets the cookie at root domain level. This will allow you to track across multiple sub-domains but will not work on `localhost` so, if you need to test on `localhost` but don't need to track between multiple sub-domains, then you can set the domain to `none`.
+With MetaRouter, the Cookie Domain Name defaults to `auto` which sets the cookie at root domain level. This will allow you to track across multiple sub-domains but will not work on `localhost` so, if you need to test on `localhost` but don't need to track between multiple sub-domains, then you can set the domain to `none`.
 
 If you only want the cookie to live on a single sub-domain, enter that sub-domain the Cookie Domain Name field.
 
@@ -96,12 +96,12 @@ Use this if you want Google Analytics to ignore certain referral domains.
 ### Track Named Pages
 Enabling this will track events to Google Analytics for `page` calls that have a `name` associated with them. For example, `page('Home')` will translate to **Viewed Home Page**.
 
-***Note:** We enable this automatically when you set-up Google Analytics as a Clickstream destination.*
+***Note:** We enable this automatically when you set-up Google Analytics as a MetaRouter destination.*
 
 ### Track Categorized Pages
 Enabling this will track events to Google Analytics for `page` calls that have a `category` associated with them. For example, `page('Blog', 'Index')` will translate to Viewed Blog Page.
 
-***Note:** We enable this automatically when you set-up Google Analytics as a Clickstream destination.*
+***Note:** We enable this automatically when you set-up Google Analytics as a MetaRouter destination.*
 
 ### Include Querystring in Page Views
 By default, we only send the domain and path to Google Analytics. Enable this feature if you would like to pass a whole URL with query string to Google Analytics. This is helpful when you would like to track search queries.

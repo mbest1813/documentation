@@ -3,7 +3,7 @@ title: Attribution
 sidebar: platform_sidebar
 ---
 
-MetaRouter makes it easy to send your data to Attribution. Once you follow the steps below, your data will be routed through our platform and pushed to Bing Ads in the appropriate format.
+MetaRouter makes it easy to send your data to Attribution. Once you follow the steps below, your data will be routed through our platform and pushed to Attribution in the appropriate format.
 
 ## What is Attribution?
 

@@ -55,6 +55,10 @@ entries:
       url: /v2/clickstream/segment-switch-guide.html
       output: web
 
+    - title: Compare MetaRouter and Segment Side-by-side
+      url: /v2/clickstream/aa-test-metarouter-and-segment.html
+      output: web
+
     - title: API Calls
       url: /v2/clickstream/calls.html
       output: web

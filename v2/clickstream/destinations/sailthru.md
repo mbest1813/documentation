@@ -85,7 +85,7 @@ So if you send an`identify` call without a `traits.email` and only a `userId`, t
 
 ### Track
 
-When you track an event, we will send that event to Sailthru as a custom event with the same name as the Analytics.js event. **Important**: You must have each event mapped in Sailthru within **Communications > Lifecycle Optimizer** in order to leverage the custom event. Be sure that the **Status** is set to **Active**:
+We map `Product Added`, `Product Removed`, `Order Completed` and `Order Updated` events to the `/purchase` endpoint. All other Analytics.js Ecommerce Events will be sent to the `/event` endpoint, with the same name. . **Important**: You must have each event mapped in Sailthru within **Communications > Lifecycle Optimizer** in order to leverage the custom event. Be sure that the **Status** is set to **Active**:
 
 ![sailthru-lifecycle-optimizer-1](../../../images/sailthru-lifecycle-optimizer-1.png)
 

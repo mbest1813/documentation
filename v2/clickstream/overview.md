@@ -66,6 +66,7 @@ Check out the list below to explore all of the destinations available with MetaR
 * [Retention Science](/v2/clickstream/destinations/retention-science.html)
 * [Rubicon](/v2/clickstream/destinations/rubicon.html)
 * [S3 Event Logs](/v2/clickstream/destinations/s3-event-logs.html)
+* [Sailthru](/v2/clickstream/destinations/sailthru.html)
 * [Taboola](/v2/clickstream/destinations/taboola.html)
 * [Twitter Ads](/v2/clickstream/destinations/twitter-ads.html)
 * [VWO](/v2/clickstream/destinations/vwo.html)

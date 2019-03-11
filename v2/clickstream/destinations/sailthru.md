@@ -19,16 +19,17 @@ With MetaRouter, you can use Sailthru without having to install their JavaScript
 
 ### Initialization
 
-The Sailthru server-side destination will allow you to add users, send custom events and purchase events. Once the Analytics.js library is integrated, toggle Sailthru on in your Analytics.js destination panel and add your API Key and Shared Secret, which you can find in the Sailthru Dashboard under **App Settings > Setup > API & Postbacks**
+The Sailthru server-side destination will allow you to add users, send custom events and purchase events. Once you have configured a source and our MetaRouter [snippet](http://127.0.0.1:4000/v2/clickstream/sources/analyticsjs.html) is installed, enable and configure Sailthru as a destination and add your API Key and Shared Secret, which you can find in the Sailthru Dashboard under **App Settings > Setup > API & Postbacks**.
 
 ### Implementation checklist
 
 **Important**: In order for this destination to work, you must have a few prerequisite configurations.
-  - You must have `extid` lookup enabled in Sailthru.
-  -  Use the **ecommerce v2** events to track `Order Completed`,`Order Updated`, `Product Added`, and `Product Removed`.
-     -  For `Product Added` and `Product Removed` events, whether there is an `email` or not, we need to make a request to grab the items in the user’s cart. We rely on the `userId` value for this request. It is essential that you have a `userId` on these calls, otherwise they will not make it to Sailthru.
-     -  To trigger abandoned cart campaigns, you must pass in a `reminder_time` and `reminder_template` on the `Product Added` and `Product Removed` events.
-     -  The template passed through as `reminder_template` must match the public name configured in Sailthru’s UI.
+
+- You must have `extid` lookup enabled in Sailthru.
+- Use the **ecommerce v2** events to track `Order Completed`,`Order Updated`, `Product Added`, and `Product Removed`.
+- For `Product Added` and `Product Removed` events, whether there is an `email` or not, we need to make a request to grab the items in the user’s cart. We rely on the `userId` value for this request. It is essential that you have a `userId` on these calls, otherwise they will not make it to Sailthru.
+  - To trigger abandoned cart campaigns, you must pass in a `reminder_time` and `reminder_template` on the `Product Added` and `Product Removed` events.
+  - The template passed through as `reminder_template` must match the public name configured in Sailthru’s UI.
 - We recommend appending `traits.email` whenever possible in your `identify` calls. If you send an identify call without a `traits.email` and only a `userId`, the profile will be created in Sailthru but you would not be able to find that user via their **User Look Up feature** or to send `Product Added`, `Product Removed` `Order Updated` and `Order Completed` events.
 
 ### Page
@@ -51,9 +52,9 @@ analytics.page('Page Name', {
 
 ### Identify
 
-When you `identify` a user, we will pass that user’s information to Sailthru with `userId` (or `anonymousId` if `userId` is not passed) as Sailthru’s External User ID (`extid`). Segment sends all traits as `vars` to Sailthru.
+When you `identify` a user, MetaRouter will pass that user’s information to Sailthru with `userId` (or `anonymousId` if `userId` is not passed) as Sailthru’s External User ID (`extid`). MetaRouter sends all traits as `vars` to Sailthru.
 
-Segment will automatically alias users for you so if you `identify` a user who you had previously only identified with an anonymousId, we will merge the profile with `anonymousId` into a new profile with `userId` as long as you pass both `anonymousId` and `userId`.
+MetaRouter will automatically alias users for you so if you `identify` a user who you had previously only identified with an anonymousId, we will merge the profile with `anonymousId` into a new profile with `userId` as long as you pass both `anonymousId` and `userId`.
 
 An identify event will appear in Sailthru’s user lookup feature if there is an `email` present (Sailthru only allows a user lookup up based on an email):
 
@@ -75,7 +76,7 @@ analytics.identify("38472034892",{
 
 ![sailtrhu-default-list-name](../../../images/sailtrhu-default-list-name.png)
 
-You can also configure an `optoutValue` value in the Segment UI, or pass in a value through the destinations object with one of the Sailthru expected values:
+You can also configure an `optoutValue` value in the MetaRouter UI, or pass in a value through the destinations object with one of the Sailthru expected values:
 
 ```javascript
 analytics.identify("3242351231",{
@@ -123,11 +124,11 @@ Note that the main identifier is `email` not `id`
 
 ![sailthru-purchase-3](../../../images/sailthru-purchase-3.png)
 
-Sailthru does not allow the `extid` to be the main lookup identifier for their Purchase API. Instead, Sailthru requires an `email` as the primary identifier. Segment will make a GET request to retrieve the user’s email based on their `userId`, which is their `extid` in Sailthru.
+Sailthru does not allow the `extid` to be the main lookup identifier for their Purchase API. Instead, Sailthru requires an `email` as the primary identifier. MetaRouter will make a GET request to retrieve the user’s email based on their `userId`, which is their `extid` in Sailthru.
 
-If the user and their email does not exist in Sailthru, the event will throw an error. If the user exists, the purchase will be added to their profile. Be sure to call `identify` with an `email` passed in the `traits` object prior to the `Order Completed`, `Order Updated`, `Product Added` and `Product Removed` events. If you are sending events using one of Segment’s server-side libraries and want to be sure, you can also send the email value in your `track` calls under `properties.email`.
+If the user and their email does not exist in Sailthru, the event will throw an error. If the user exists, the purchase will be added to their profile. Be sure to call `identify` with an `email` passed in the `traits` object prior to the `Order Completed`, `Order Updated`, `Product Added` and `Product Removed` events. If you are sending events using one of MetaRouter’s server-side libraries and want to be sure, you can also send the email value in your `track` calls under `properties.email`.
 
-Once `Order Completed` is triggered, Segment will pass in `incomplete: 0 `to signify that the order is now complete. Segment will map the following Sailthru **required fields** from the **v2 Order Completed Spec**:
+Once `Order Completed` is triggered, MetaRouter will pass in `incomplete: 0 `to signify that the order is now complete. MetaRouter will map the following Sailthru **required fields** from the **v2 Order Completed Spec**:
 
 | Sailthru spec | Analytics.js spec |
 | --------------------------------- | -------------------------- |
@@ -137,7 +138,7 @@ Once `Order Completed` is triggered, Segment will pass in `incomplete: 0 `to sig
 | id                | products.$.product_id           |
 | url                      | products.$.url             |
 
-*Note*: the url field is required by Sailthru for each product. If it’s not explicitly attached to the product, Segment will pull this value out from the `context.page.url` for you, or if this value is not present, we'll use `productBaseUrl` value configured in Metarouter UI.
+*Note*: the url field is required by Sailthru for each product. If it’s not explicitly attached to the product, MetaRouter will pull this value out from the `context.page.url` for you, or if this value is not present, we'll use `productBaseUrl` value configured in Metarouter UI.
 
 In addition, the following optional parameters will be mapped:
 
@@ -188,11 +189,11 @@ analytics.track('Order Completed', {
 
 ### Abandoned Cart Events
 
-In addition to `Order Completed` events, we support the concept of **Sailthru’s Abandonded Carts** via Segment’s `Product Added`, `Product Removed` and `Order Updated` events. When these events are triggered, Segment will pass in `incomplete: 1` to signify that the order is incomplete.
+In addition to `Order Completed` events, we support the concept of **Sailthru’s Abandonded Carts** via MetaRouter’s `Product Added`, `Product Removed` and `Order Updated` events. When these events are triggered, MetaRouter will pass in `incomplete: 1` to signify that the order is incomplete.
 
 To leverage the functionality of sending transactional emails when a user abandonds his or her cart, you must pass in a `reminderTime` and `reminderTemplate` on these events. The template passed through as `reminderTemplate` must match the **public name** configured in Sailthru’s UI.
 
-If you send in a `Product Added` event without a valid template, Sailthru will return an error. If you send in a `Product Added` event with the `reminderTemplate` param, it will successfully send in and appear in the user view within their **incomplete purchase cart**. Some example values for `reminderTime` are 60 minutes, 24 hrs, 2 weeks. Segment will handle passing in the `+` increment.
+If you send in a `Product Added` event without a valid template, Sailthru will return an error. If you send in a `Product Added` event with the `reminderTemplate` param, it will successfully send in and appear in the user view within their **incomplete purchase cart**. Some example values for `reminderTime` are 60 minutes, 24 hrs, 2 weeks. MetaRouter will handle passing in the `+` increment.
 
 
 ```javascript
@@ -218,7 +219,7 @@ analytics.track('Product Added', {
 });
 ```
 
-**Note**: All `Product Added` and `Product Removed` events going into Sailthru must have a `userId`. Sailthru must understand the state of a user’s cart when updating an item within the cart. To understand this, Segment makes a `get` request with the `userId` value to retrieve a user’s cart.
+**Note**: All `Product Added` and `Product Removed` events going into Sailthru must have a `userId`. Sailthru must understand the state of a user’s cart when updating an item within the cart. To understand this, MetaRouter makes a `get` request with the `userId` value to retrieve a user’s cart.
 
 For `Product Added` events, we check the item added using the `productId` against the items we retrieved from Sailthru within the user’s cart. If the item is present, we increase the quantity by one. If there are no items in the retrieved cart, we simply add the item.
 
@@ -247,12 +248,12 @@ The default `productBaseUrl`, which will be used as a fallback for extracting a 
 
 #### Addding users to a list
 
-To configure a default list name, Segment exposes a setting to configure this in the UI. You can also explicitly set your own `defaultListName` through the destination option on `identify`.
+To configure a default list name, MetaRouter exposes a setting to configure this in the UI. You can also explicitly set your own `defaultListName` through the destination option on `identify`.
 
 
 #### Reminder Time and  Reminder/Send Template
 
-To configure a default reminder time and template, enter the **public name** of your template (configured in Sailthru’s UI) and the time frame you will want the email to send. Some example values are 60 minutes, 24 hours, 2 weeks. Segment will handle passing in the `+` increment. To read more about how Sailthru calculates time, please refer to their [**time documentation**](https://getstarted.sailthru.com/developers/zephyr-functions-library/time/).
+To configure a default reminder time and template, enter the **public name** of your template (configured in Sailthru’s UI) and the time frame you will want the email to send. Some example values are 60 minutes, 24 hours, 2 weeks. MetaRouter will handle passing in the `+` increment. To read more about how Sailthru calculates time, please refer to their [**time documentation**](https://getstarted.sailthru.com/developers/zephyr-functions-library/time/).
 
 ### FAQ
 
@@ -326,7 +327,7 @@ Note that Sailthru does not support historical replay.
 
 ### Settings
 
-Segment lets you change these destination settings via your Segment dashboard without having to touch any code.
+MetaRouter lets you change these destination settings via your MetaRouter dashboard without having to touch any code.
 
 ### API Key
 
@@ -346,7 +347,7 @@ Sailthru best practice dicates every user be added to a list. Configure a defaul
 
 ### Default Reminder Time
 
-**Required with Reminder Template**. The time frame you will want the email to send. **YOU MUST ENTER A NUMERICAL TIME AND FIELD MINUTES, HOURS, WEEKS** For example: `60 minutes`, `24 hours`, `2 weeks`. Segment will handle passing in the `+` increment.
+**Required with Reminder Template**. The time frame you will want the email to send. **YOU MUST ENTER A NUMERICAL TIME AND FIELD MINUTES, HOURS, WEEKS** For example: `60 minutes`, `24 hours`, `2 weeks`. MetaRouter will handle passing in the `+` increment.
 
 ### Optout status
 

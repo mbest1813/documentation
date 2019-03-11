@@ -31,9 +31,10 @@ We route all inbound data and translate it into a format that your destination o
 
 Check out the matrix below if you're wondering which sources are compatible with which destinations.
 
-|            | Client | Server | Mobile |
+            | Client | Server | Mobile |
 | ---------- | ------ | ------ | ------ |
 | Acquisio | ✔ | x | x |
+| Adobe Analytics | ✔ | x | x |
 | Amazon Kinesis | ✔ | ✔ | ✔ |
 | Amazon Redshift | ✔ | ✔ | ✔ |
 | Amplitude | ✔ | ✔ | ✔ |
@@ -68,6 +69,7 @@ Check out the matrix below if you're wondering which sources are compatible with
 | Retention Science | ✔ | x | x |
 | Rubicon | ✔ | x | x |
 | S3 Event Logs | ✔ | ✔ | ✔ |
+| Sailthru | ✔ | ✔ | ✔ |
 | Taboola | ✔ | x | x |
 | Twitter Ads | ✔ | x | x |
 | VWO | ✔ | x | x |

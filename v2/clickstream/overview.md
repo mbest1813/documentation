@@ -75,10 +75,10 @@ Check out the list below to explore all of the destinations available with MetaR
 
 ## Source/Destination Compatibility Matrix
 
-|            | Client | Server | Mobile |
+            | Client | Server | Mobile |
 | ---------- | ------ | ------ | ------ |
 | Acquisio | ✔ | x | x |
-| Adobe Analytics | ✔ | ✔ | ✔ |
+| Adobe Analytics | ✔ | x | x |
 | Amazon Kinesis | ✔ | ✔ | ✔ |
 | Amazon Redshift | ✔ | ✔ | ✔ |
 | Amplitude | ✔ | ✔ | ✔ |
@@ -113,6 +113,7 @@ Check out the list below to explore all of the destinations available with MetaR
 | Retention Science | ✔ | x | x |
 | Rubicon | ✔ | x | x |
 | S3 Event Logs | ✔ | ✔ | ✔ |
+| Sailthru | ✔ | ✔ | ✔ |
 | Taboola | ✔ | x | x |
 | Twitter Ads | ✔ | x | x |
 | VWO | ✔ | x | x |

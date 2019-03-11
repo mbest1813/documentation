@@ -15,6 +15,7 @@ Check out our source/destination compatibility matrix below to see which destina
 |            | Client | Server | Mobile |
 | ---------- | ------ | ------ | ------ |
 | Acquisio | ✔ | x | x |
+| Adobe Analytics | ✔ | x | x |
 | Amazon Kinesis | ✔ | ✔ | ✔ |
 | Amazon Redshift | ✔ | ✔ | ✔ |
 | Amplitude | ✔ | ✔ | ✔ |
@@ -49,6 +50,7 @@ Check out our source/destination compatibility matrix below to see which destina
 | Retention Science | ✔ | x | x |
 | Rubicon | ✔ | x | x |
 | S3 Event Logs | ✔ | ✔ | ✔ |
+| Sailthru | ✔ | ✔ | ✔ |
 | Taboola | ✔ | x | x |
 | Twitter Ads | ✔ | x | x |
 | VWO | ✔ | x | x |

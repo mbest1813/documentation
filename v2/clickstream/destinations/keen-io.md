@@ -2,7 +2,7 @@
 title: Keen IO
 sidebar: platform_sidebar
 ---
-Astronomer Clickstream makes it easy to send your data to Keen.io. Once you follow the steps below, your data will be routed through our platform and pushed to Keen.io in the appropriate format.
+MetaRouter makes it easy to send your data to Keen.io. Once you follow the steps below, your data will be routed through our platform and pushed to Keen.io in the appropriate format.
 
 ```
 Alert: Our server-side version of Keen.io has been disabled without a date set for it to be re-enabled. If you are interested in using Keen.io server-side, please contact us so we may evaluate. Thanks!
@@ -16,35 +16,35 @@ Keen.io supports customizable APIs and a charting library, which gives developer
 
 [Learn more about Keen.io](https://keen.io/)
 
-## Why send data to Keen.io using Astronomer Clickstream?
+## Why send data to Keen.io using MetaRouter?
 
-Instead of having to manually adapt your code, Astronomer Clickstream's integration automatically collects and transforms data for Keen.io directly from web applications, mobile applications, and server-side implementations.
+Instead of having to manually adapt your code, MetaRouter's integration automatically collects and transforms data for Keen.io directly from web applications, mobile applications, and server-side implementations.
 
-Plus, with Astronomer, there is no need to manually install the Keen.io SDK in your web application.
+Plus, with MetaRouter, there is no need to manually install the Keen.io SDK in your web application.
 
-## Getting Started with Keen IO and Astronomer Clickstream
+## Getting Started with Keen IO and MetaRouter
 
 ### Keen.io Side
 
 To get started sending events to Keen IO, you'll need two things:
 
-* `Project ID`: This tells Astronomer which project within Keen IO is yours
-* `Write Key`: This gives Astronomer permission to send data to your Keen IO dashboard
+* `Project ID`: This tells MetaRouter which project within Keen IO is yours
+* `Write Key`: This gives MetaRouter permission to send data to your Keen IO dashboard
 Both of these things will be long strings of random characters.
 
 You can find your Write Key by clicking on `Show API Keys`.
 
 ![keen-io1](../../../images/keen-io1.png)
 
-### Astronomer Side
+### MetaRouter Side
 
-Once you have your Project ID and Write Key, copy both into the Astronomer dashboard.
+Once you have your Project ID and Write Key, copy both into the MetaRouter dashboard.
 
 Your pipeline will be activated once you click `Create Destination`.
 
 ### Additional Features
 
-We offer some additional features in the Astronomer UI that allow you to change your destination settings without any code. 
+We offer some additional features in the MetaRouter UI that allow you to change your destination settings without any code. 
 
 * `Project ID` - This is a 24-character code that you can find in your Keen settings.
 * `Read Key` - This can be used if you are a Keen Pro user. This should be a string of letters and numbers that is at least 32 characters long.

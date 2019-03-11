@@ -2,7 +2,7 @@
 title: KISSmetrics
 sidebar: platform_sidebar
 ---
-Astronomer Clickstream makes it easy to send your data to KISSmetrics. Once you follow the steps below, your data will be routed through our platform and pushed to KISSmetrics in the appropriate format.
+MetaRouter makes it easy to send your data to KISSmetrics. Once you follow the steps below, your data will be routed through our platform and pushed to KISSmetrics in the appropriate format.
 
 ## What is KISSmetrics and how does it work?
 
@@ -20,15 +20,15 @@ KISSmetrics event reporting is easy to use if your events are properly planned f
 
 [Learn more about KISSmetrics](https://www.kissmetrics.com/)
 
-## Why send data to KISSmetrics using Astronomer Clickstream?
+## Why send data to KISSmetrics using MetaRouter?
 
 If you want to set up multiple analytics tools in your stack, going through this installation process individually for each one is probably not worth your developer's time.
 
-Using Astronomer to send data to KISSmetrics ensures that your developers only need to implement one platform and learn two simple calls: `identify` and `track`. With Astronomer, your customer data will not only be sent to KISSmetrics directly, but also to internal tools like email and chat.
+Using MetaRouter to send data to KISSmetrics ensures that your developers only need to implement one platform and learn two simple calls: `identify` and `track`. With MetaRouter, your customer data will not only be sent to KISSmetrics directly, but also to internal tools like email and chat.
 
-With Astronomer, skip the need for custom code and benefit from additional customer data.
+With MetaRouter, skip the need for custom code and benefit from additional customer data.
 
-## Getting Started with KISSmetrics and Astronomer Clickstream
+## Getting Started with KISSmetrics and MetaRouter
 
 ### KISSmetrics Side
 
@@ -38,19 +38,19 @@ Once you have a KISSmetrics account, get started sending events to KISSmetrics. 
 - Your Write Key
 - API Key
 
-The Project ID is what tells Astronomer which project within KISSmetrics are yours and the Write Key gives Astronomer permission to send data into it. Both will be long strings of random characters (the ID will be 24 characters and the Write Key will be 224).
+The Project ID is what tells MetaRouter which project within KISSmetrics are yours and the Write Key gives MetaRouter permission to send data into it. Both will be long strings of random characters (the ID will be 24 characters and the Write Key will be 224).
 
 See the below for more details on how to find your API key. This will be a 40 character string found in the JavaScript snippet that they suggest adding to your application.
 
 ![kissmetrics1](../../../images/kissmetrics1.png)
 
-### Astronomer Side
+### MetaRouter Side
 
-Now that you have your API Key, go ahead and enter it into the KISSmetrics connector on your Astronomer dashboard and give your new connection a unique name.
+Now that you have your API Key, go ahead and enter it into the KISSmetrics connector on your MetaRouter dashboard and give your new connection a unique name.
 
-Once that's done, click on `Create Destination` to activate your pipeline.
+Once that's done, click on `Save` to activate your pipeline.
 
-![kissmetrics2](../../../images/kissmetrics2.png)
+![kissmetrics2](../../../images/kissmetrics2v2.png)
 
 Click around your application to send off some test events. It might take an hour or so for events to start populating into your project. You can check to see if events are coming in by clicking on the `Live` tab at the top of the page and looking at the `All Activity` section.
 

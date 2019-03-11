@@ -26,10 +26,10 @@ Inside your python app, set you Source ID inside an instance of the Analytics ob
 ~~~ python
 import analytics
 analytics.host = 'https://e.metarouter.io'
-analytics.app_id = ‘astronomer_source_id’
+analytics.app_id = ‘metarouter_source_id’
 ~~~
 
-***Note**: You can find your astronomer_source_id in the settings section of your Astronomer App.*
+***Note**: You can find your metarouter_source_id in the settings section of your MetaRouter App.*
 
 ### Calls in Python
 
@@ -55,7 +55,7 @@ analytics.track('userID' : '1234qwerty', 'Signed Up')
 
 ~~~ python
 analytics.page('user_id', 'Docs', 'Python', {
-  'url': 'http://astronomer.io'
+  'url': 'http://metarouter.io'
 })
 ~~~
 
@@ -63,7 +63,7 @@ analytics.page('user_id', 'Docs', 'Python', {
 
 ~~~ python
 analytics.group('user_id', 'group_id', {
-  'name': 'Astronomer',
+  'name': 'MetaRouter',
   'domain': 'Data Engineering Platform'
 })
 ~~~

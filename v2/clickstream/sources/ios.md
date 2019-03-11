@@ -3,13 +3,13 @@ title: Source - iOS
 sidebar: platform_sidebar
 ---
 
-## Getting Started with Astronomer Clickstream - iOS
+## Getting Started with MetaRouter - iOS
 
-Using our analytics-iOS library, you can start sending customer data from your app to Astronomer, giving you valuable user data that yields actionable insights for your business. Follow the steps below to get started in only a few minutes.
+Using our analytics-iOS library, you can start sending customer data from your app to MetaRouter, giving you valuable user data that yields actionable insights for your business. Follow the steps below to get started in only a few minutes.
 
-### Create an iOS Source in the Astronomer UI
+### Create an iOS Source in the MetaRouter UI
 
-After logging in with your Astronomer credentials, add a new `Source → iOS`. Give your source a friendly name and copy that `Source ID` for the next step.
+After logging in with your MetaRouter credentials, add a new `Source → iOS`. Give your source a friendly name and copy that `Source ID` for the next step.
 
 ### Install the SDK
 We recommend installing Analytics-iOS via [Cocoapods](https://cocoapods.org/pods/AstronomerAnalytics) as it allows you to create a build with specific destinations and makes it simple to install and upgrade.
@@ -52,7 +52,7 @@ For example, a simple `identify` looks something like this:
 ```
 [[SEGAnalytics sharedAnalytics] identify:@"123456"
                                 traits:@{ @"name": "Dagny Smith"
-                                          @"email": "dagny@astronomer.io",
+                                          @"email": "dagny@metarouter.io",
                                           @"role": "buyer"  }];
 ```
 
@@ -64,7 +64,7 @@ Once you have the `identify` call implemented, you're ready to move on to the `t
 
 ### Track Your Users’ Actions
 
-To get to a more complete event tracking analytics setup, you can add a `track` call to your app. This will tell Astronomer which actions users are performing in your app. With `track`, each user action triggers an “event”, which can also have associated properties.
+To get to a more complete event tracking analytics setup, you can add a `track` call to your app. This will tell MetaRouter which actions users are performing in your app. With `track`, each user action triggers an “event”, which can also have associated properties.
 
 To start, our SDK can automatically track a few common events (e.g. Application_Installed, Application_Opened, and Application_Updated) - you will just need to enable this option during initialization. In addition to these, you will likely want to track some events that are success indicators for your app - like Viewed Product, Email Sign Up, Item Purchased, etc.
 
@@ -101,7 +101,7 @@ Alternatively, you can `flush` the queue manually:
 
 ### Submitting to the App Store
 
-When submitting to the App Store, beware that Astronomer collects the IDFA for use in doing mobile install attribution with destinations like Mobile App Tracking. Even if you’re not currently doing mobile install attribution, if you get asked, “Does this app use the Advertising Identifier (IDFA)?” on this page, you’ll want to check the following three boxes:
+When submitting to the App Store, beware that MetaRouter collects the IDFA for use in doing mobile install attribution with destinations like Mobile App Tracking. Even if you’re not currently doing mobile install attribution, if you get asked, “Does this app use the Advertising Identifier (IDFA)?” on this page, you’ll want to check the following three boxes:
 
   1. "Attribute this app to a previously sent advertisement"
   2. “Attribute an action taken within this app to a previously served advertisement”
@@ -109,4 +109,4 @@ When submitting to the App Store, beware that Astronomer collects the IDFA for u
 
 Unless you are actually going to display ads in your app, do not check the box labeled "Serve advertisements within the app".
 
-Congratulations, you can now use Astronomer Analytics in your iOS app! Time to start hitting your business with insightful user data.
+Congratulations, you can now use MetaRouter Analytics in your iOS app! Time to start hitting your business with insightful user data.

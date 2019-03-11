@@ -3,7 +3,7 @@ title: API Calls
 sidebar: platform_sidebar
 ---
 
-Astronomer utilizes 6 different types of API calls to track users. Each call represents a distinct type of semantic information about a user and shares the same common fields.
+MetaRouter utilizes 6 different types of API calls to track users. Each call represents a distinct type of semantic information about a user and shares the same common fields.
 
 * Identify
 * Track
@@ -14,7 +14,7 @@ Astronomer utilizes 6 different types of API calls to track users. Each call rep
 
 ## Identify
 
-The `identify` method is used to associate behavior and to record traits about your users. The call includes a unique User ID and any option traits you know about them (email, name, role, etc.). Implementing `identify` is one of the first steps you should take in order to get the most out of Astronomer Clickstream.
+The `identify` method is used to associate behavior and to record traits about your users. The call includes a unique User ID and any option traits you know about them (email, name, role, etc.). Implementing `identify` is one of the first steps you should take in order to get the most out of MetaRouter Clickstream.
 
 We recommend calling `identify` at a couple of points:
 
@@ -28,7 +28,7 @@ Here's a sample `identify` snippet:
 ```
 analytics.identify("1205119", {
     "name": "Dagny Smith",
-    "email": "dagny@astronomer.io"
+    "email": "dagny@metarouter.io"
     "plan": "enterprise"
     });
 ```
@@ -40,7 +40,7 @@ And the resulting payload:
     "type": "identify",
     "traits": {
         "name": "Dagny Smith",
-        "email": "dagny@astronomer.io"
+        "email": "dagny@metarouter.io"
         "plan": "enterprise",
     },
     "userID": "1205119"
@@ -92,7 +92,7 @@ We have reserved some traits to be handled in special ways. These reserved trait
 
 
 ## Track
-To record any actions your users perform, along with properties that describe the action, you will want to use a `track` call. Each of these actions is known as an event, and each of these events has a name. Calling `track` is one of the first steps towards getting the most out of Astronomer Clickstream.
+To record any actions your users perform, along with properties that describe the action, you will want to use a `track` call. Each of these actions is known as an event, and each of these events has a name. Calling `track` is one of the first steps towards getting the most out of MetaRouter Clickstream.
 
 Here's a sample `track` call:
 
@@ -135,7 +135,7 @@ We have reserved some properties that have semantic meanings and are handled in 
 | `value`    | Number | An abstract "value" to associate with an event |
 
 ## Page
-The `page` call allows you to record whenever a user sees a page of your website, along with any optional properties you want to include about the page. Calling `page` or `screen` is one of the first steps to getting the most out of Astronomer Clickstream.
+The `page` call allows you to record whenever a user sees a page of your website, along with any optional properties you want to include about the page. Calling `page` or `screen` is one of the first steps to getting the most out of MetaRouter Clickstream.
 
 **Important** - In the `analytics.js` snippet, a `page` call is included by default (just after the `analytics.load`). We do this because this method needs to be called at least once per page load. You have the option of sprucing up the call with a `name` or `properties` and can call it multiple times if you have a single-page application.
 
@@ -152,8 +152,8 @@ And, here's the corresponding payload:
     "type": "page",
     "name": "Home",
     "properties": {
-        "title": "Astronomer: The Platform for Data Engineering",
-        "url": "https://ww.astronomer.io"
+        "title": "MetaRouter: The Platform for Data Engineering",
+        "url": "https://ww.metarouter.io"
     }
 }
 ```
@@ -191,7 +191,7 @@ Here's a sample `group` call:
 
 ```
 analytics.group("ak9g2hgpcf",{
-    "name": "Astronomer",
+    "name": "MetaRouter",
     "industry": "Technology",
     "employees": "48"
 });
@@ -204,7 +204,7 @@ And the corresponding payload:
     "type": "Group",
     "groupID": "ak9g2hgpcf",
     "traits": {
-        "name": "Astronomer",
+        "name": "MetaRouter",
         "industry": "Technology",
         "employees": "48"
     }
@@ -254,7 +254,7 @@ And the resulting payload:
 ```
 {
     "type": "alias",
-    "previousId": "dagny@astronomer.io",
+    "previousId": "dagny@metarouter.io",
     "userId": "k9jlquh2ew"
 }
 ```
@@ -267,7 +267,7 @@ The `UserId` string will either be the user's new identity or an existing identi
 
 # Common Fields of API Calls
 
-Every [API call](../calls.html) has a common structure. While some specific calls pass extra information, they will all pass the information detailed in this document. Note that, while Astronomer will send all of these fields, not every destination will accept every field listed below.
+Every [API call](../calls.html) has a common structure. While some specific calls pass extra information, they will all pass the information detailed in this document. Note that, while MetaRouter will send all of these fields, not every destination will accept every field listed below.
 
 ## General Structure
 
@@ -278,13 +278,13 @@ As mentioned above, there is a general structure that governs our API calls. Bel
   "context": {
     "active": true,
     "app": {
-      "name": "Astronomer",
+      "name": "MetaRouter",
       "version": "123",
       "build": "1.1.1.123",
-      "namespace": "com.production.astronomer"
+      "namespace": "com.production.metarouter"
     },
     "campaign": {
-      "name": "Astronomer Sunday Reads",
+      "name": "MetaRouter Sunday Reads",
       "source": "Newsletter",
       "medium": "email",
       "term": "tps reports",
@@ -327,8 +327,8 @@ As mentioned above, there is a general structure that governs our API calls. Bel
       "path": "/",
       "referrer": "",
       "search": "",
-      "title": "Astronomer",
-      "url": "https://www.astronomer.io/"
+      "title": "MetaRouter",
+      "url": "https://www.metarouter.io/"
     },
     "referrer": {
       "id": "exampleId",
@@ -363,8 +363,8 @@ Below is a chart detailing what the fields in the above sample payload mean.
 | `context` (optional) | object | Dictionary of extra information that provides useful context about a message that is not directly related to the API call |
 | `integrations` (optional) | string | Dictionary of destinations to either enable or disable |
 | `messageId` (implicit) | string | Automatically collected, this is a unique identifier for each message that lets you find an individual message across the API |
-| `receivedAt` (implicit) | date | The timestamp of when a message is received by Astronomer |
-| `sentAt` (optional) | date | The timestamp of when a message is sent to Astronomer |
+| `receivedAt` (implicit) | date | The timestamp of when a message is received by MetaRouter |
+| `sentAt` (optional) | date | The timestamp of when a message is sent to MetaRouter |
 | `type` (implicit) | strong |Type of message, according to the API method |
 | `userId` (required) | string | Unique string that identifies a user in your database |
 | `version` (implicit) | number | Version of th *****

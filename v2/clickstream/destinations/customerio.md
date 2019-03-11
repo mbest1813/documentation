@@ -3,7 +3,7 @@ title: Customer.io
 sidebar: platform_sidebar
 ---
 
-Astronomer Clickstream makes it easy to send your data to Customer.io. Once you follow the steps below, your data will be routed through our platform and pushed to Customer.io in the appropriate format.
+MetaRouter makes it easy to send your data to Customer.io. Once you follow the steps below, your data will be routed through our platform and pushed to Customer.io in the appropriate format.
 
 ## What is Customer.io and how does it work?
 
@@ -15,13 +15,13 @@ Using Customer.io involves placing their JavaScript snippet in the footer of you
 
 [Learn more about customer.io.](https://customer.io/)
 
-## Why send data to Customer.io using Astronomer Clickstream?
+## Why send data to Customer.io using MetaRouter?
 
 If you elect to use the Customer.io JavaScript snippet, you'll need to manually identify logged in users and any information you know about them. After manually identifying these users, you will be able to email everyone who logs into your site. Customer.io also lacks libraries for Java, iOS, Android, and OS X.
 
-Integrating Customer.io with Astronomer Clickstream allows the customer data coming in from websites, servers, and mobile applications to be sent directly to Customer.io without any additional installation. We eliminate the need for you to manually identify logged-in users.
+Integrating Customer.io with MetaRouter allows the customer data coming in from websites, servers, and mobile applications to be sent directly to Customer.io without any additional installation. We eliminate the need for you to manually identify logged-in users.
 
-## Getting Started with Customer.io and Astronomer Clickstream
+## Getting Started with Customer.io and MetaRouter
 
 ### Customer.io Side
 
@@ -35,8 +35,8 @@ You will find both your Site ID and API Key clearly presented and labeled once y
 
 ![customerio2](../../../images/customerio2.png)
 
-### Astronomer Side
+### MetaRouter
 
-Add your Site ID and API Key into the Customer.io connector on your Astronomer dashboard and give your new connection a unique name. Click 'Save' and your pipeline will be activated.
+Add your Site ID and API Key into the Customer.io connector on your MetaRouter dashboard and give your new connection a unique name. Click 'Save' and your pipeline will be activated.
 
-![customerio3](../../../images/customerio3.png)
+![customerio3](../../../images/customerio3v2.png)

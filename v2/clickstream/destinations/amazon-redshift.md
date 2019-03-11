@@ -147,14 +147,14 @@ Click `Create Destination` and your pipeline will be activated.
 
 That's it! You'll now be receiving a livestream of data from your application into your private Redshift account.
 
-![amazon-redshift1](../../../images/amazon-redshift1.gif)
+![amazon-redshift1](../../../images/amazon-redshift1v2.gif)
 
 
 ## Things to note
 
 ### Reserved Words
 
-Redshift limits the number of [reserved words](http://docs.aws.amazon.com/redshift/latest/dg/r_pg_keywords.html) in schema, table, and column names. We'd also encourage you to stay away from naming traits or properties that conflict with top level Clickstream fields (i.e. userID, receivedAt, messageID).
+Redshift limits the number of [reserved words](http://docs.aws.amazon.com/redshift/latest/dg/r_pg_keywords.html) in schema, table, and column names. We'd also encourage you to stay away from naming traits or properties that conflict with top level clickstream fields (i.e. userID, receivedAt, messageID).
 
 ### Query Speeds
 

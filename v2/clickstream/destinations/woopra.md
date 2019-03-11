@@ -2,7 +2,7 @@
 title: Woopra
 sidebar: platform_sidebar
 ---
-Astronomer Clickstream makes it easy to send your data to Woopra. Once you follow the steps below, your data will be routed through our platform and pushed to Woopra in the appropriate format.
+MetaRouter makes it easy to send your data to Woopra. Once you follow the steps below, your data will be routed through our platform and pushed to Woopra in the appropriate format.
 
 ## What is Woopra and how does it work?
 
@@ -10,15 +10,15 @@ Woopra is a real-time customer analytics platform that tracks your customer's we
 
 [Learn more about Woopra](https://www.woopra.com/)
 
-## Why send data to Woopra using Astronomer Clickstream?
+## Why send data to Woopra using MetaRouter?
 
-Astronomer's integration collects and transforms the data you receive from Woopra directly from your existing mobile and server-side integrations on Astronomer Clickstream. That way, there's no need to include any Woopra SDKs in any of your applications.
+MetaRouter's integration collects and transforms the data you receive from Woopra directly from your existing mobile and server-side integrations on MetaRouter. That way, there's no need to include any Woopra SDKs in any of your applications.
 
-Combining Woopra's data with the data you receive from other third-party tools on Astronomer Clickstream will empower your team to better understand customer behavior and more effectively target content.
+Combining Woopra's data with the data you receive from other third-party tools on MetaRouter will empower your team to better understand customer behavior and more effectively target content.
 
-## Getting Started with Woopra and Astronomer Clickstream
+## Getting Started with Woopra and MetaRouter
 
-### Woopra-Side
+### Woopra Side
 
 Once you create your account on the Woopra [website](https://www.woopra.com/), add a new project with the domain of your website or mobile app.  
 
@@ -26,13 +26,13 @@ Once you create your account on the Woopra [website](https://www.woopra.com/), a
 ![woopra1](../../../images/woopra1.png)
 
 
-### Astronomer-Side
+### MetaRouter Side
 
-Now, add your domain name into the Woopra connector on your Astronomer dashboard and give your new connection a unique name.
+Now, add your domain name into the Woopra connector on your MetaRouter dashboard and give your new connection a unique name.
 
-Click `Create Destination` to activate your pipeline.
+Click `Save` to activate your pipeline.
 
-![woopra2](../../../images/woopra2.png)
+![woopra2](../../../images/woopra2v2.png)
 
 
 ### The Pipeline

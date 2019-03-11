@@ -3,7 +3,7 @@ title: Google AdWords
 sidebar: platform_sidebar
 ---
 
-Astronomer Clickstream makes it easy to send your data to Google AdWords. Once you follow the steps below, your data will be routed through our platform and pushed to Adwords in the appropriate format.
+MetaRouter makes it easy to send your data to Google AdWords. Once you follow the steps below, your data will be routed through our platform and pushed to Adwords in the appropriate format.
 
 ## What is Google AdWords and how does it work?
 
@@ -15,14 +15,14 @@ Furthermore, if you want to use AdWords in your mobile apps, you'll need to lear
 
 [Learn more about Google AdWords](https://adwords.google.com/home/)
 
-## Why send data to Google AdWords using Astronomer Clickstream
+## Why send data to Google AdWords using MetaRouter
 
-Integrating AdWords with Astronomer allows you to use your existing tracking events (check out our [API Calls](../calls.md)) to trigger conversions and remarketing tags. We also allow you to incorporate multiple remarketing tags using the conversion label identifier.
+Integrating AdWords with MetaRouter allows you to use your existing tracking events (check out our [API Calls](../calls.md)) to trigger conversions and remarketing tags. We also allow you to incorporate multiple remarketing tags using the conversion label identifier.
 
-Furthermore, you do not need to learn the AdWords SDK methods if you want to send data from your mobile apps. You will also not need to re-submit to the app store, as everything can be handled by Astronomer. We take care of pulling the data from your apps and sending it to AdWords.
+Furthermore, you do not need to learn the AdWords SDK methods if you want to send data from your mobile apps. You will also not need to re-submit to the app store, as everything can be handled by MetaRouter. We take care of pulling the data from your apps and sending it to AdWords.
 
 
-## Getting Started with Google AdWords and Astronomer Clickstream
+## Getting Started with Google AdWords and MetaRouter
 
 ### Adwords Side
 
@@ -46,19 +46,19 @@ You will see a `Global Site Tag` that looks like the following:
 ~~~
 [Source](https://developers.google.com/adwords-remarketing-tag/)
 
-In the code snippet above, the conversion ID has been replaced with `AW-Google_Conversion_ID`. In your new conversion, this will be a unique numerical ID that is tied to your Adwords account. Copy this to your clipboard and navigate back to your Astronomer app.
+In the code snippet above, the conversion ID has been replaced with `AW-Google_Conversion_ID`. In your new conversion, this will be a unique numerical ID that is tied to your Adwords account. Copy this to your clipboard and navigate back to your MetaRouter app.
 
-### Astronomer Side
+### MetaRouter Side
 
-Once you've obtained your Conversion ID, copy and paste it into the corresponding field in your Astronomer UI. You can now enable the pipeline and watch your data flow into AdWords!
+Once you've obtained your Conversion ID, copy and paste it into the corresponding field in your MetaRouter UI. You can now enable the pipeline and watch your data flow into AdWords!
 
 #### Event Mapping to Adwords
 
-In you Astronomer UI, you'll need to map your conversion `track` events to your Adwords `google_conversion_label`s. To do this, enter the name of your track event **exactly** as you've named it in the left hand column and the corresponding `google_conversion_label` from  your Adwords conversion event in the right hand column. For more information on where to find your `google_Converion_id` and  `google_conversion_label`, check out [this forum](https://www.en.advertisercommunity.com/t5/AdWords-Tracking-and-Reporting/Find-conversion-ID-and-Conversion-label/td-p/364894#).
+In you MetaRouter UI, you'll need to map your conversion `track` events to your Adwords `google_conversion_label`s. To do this, enter the name of your track event **exactly** as you've named it in the left hand column and the corresponding `google_conversion_label` from  your Adwords conversion event in the right hand column. For more information on where to find your `google_Converion_id` and  `google_conversion_label`, check out [this forum](https://www.en.advertisercommunity.com/t5/AdWords-Tracking-and-Reporting/Find-conversion-ID-and-Conversion-label/td-p/364894#).
 
 ### Additional Features
 
-You are also now able to click a `Remarketing` checkbox. If you enable this feature, Astronomer sends an additional remarketing tag for each of your conversion labels and for every `page` API call. 
+You are also now able to click a `Remarketing` checkbox. If you enable this feature, MetaRouter sends an additional remarketing tag for each of your conversion labels and for every `page` API call. 
 
 Since AdWords recognizes labels rather than custom events, you'll need to map the `event name` to its corresponding `AdWords label` in the appropriate fields.
 

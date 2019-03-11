@@ -3,9 +3,9 @@ title: Facebook Pixel
 sidebar: platform_sidebar
 ---
 
-Astronomer Clickstream makes it easy to send your data to Facebook Pixel. Once you follow the steps below, your data will be routed through our platform and pushed to Facebook Pixel in the appropriate format.
+MetaRouter makes it easy to send your data to Facebook Pixel. Once you follow the steps below, your data will be routed through our platform and pushed to Facebook Pixel in the appropriate format.
 
-***Note:** Astronomer's Facebook Pixel destination consolidates what was previously Facebook's "Ads for Websites" suite, which consisted of both Facebook Custom Audiences and Facebook Conversion Tracking.*
+***Note:** MetaRouter's Facebook Pixel destination consolidates what was previously Facebook's "Ads for Websites" suite, which consisted of both Facebook Custom Audiences and Facebook Conversion Tracking.*
 
 ## What is Facebook Pixel and how does it work?
 
@@ -13,11 +13,11 @@ Facebook Pixel is an Ad system designed for conversion optimization and lead tra
 
 Facebook Pixel uses a JavaScript Tag API to track audiences and custom user events like page visibility and page length. In order to be used, this JavaScript library must be added to every page of your site. It has a standard set of natively-integrated events such as product views, adds to cart, and purchases. While extremely extensible, tracking dynamic data like sku, name, and price from your database will require that custom code be added to your site.
 
-## Why send data to Facebook Pixel using Astronomer Clickstream?
+## Why send data to Facebook Pixel using MetaRouter?
 
-With Astronomer Clickstream, you can use Facebook Pixel without having to install their JavaScript library on every page of your site. We also eliminate the need to write custom code to track user event data. Once your Facebook Pixel is routed through Astronomer, our platform translates page views and events into corresponding Facebook Pixel events.
+With MetaRouter, you can use Facebook Pixel without having to install their JavaScript library on every page of your site. We also eliminate the need to write custom code to track user event data. Once your Facebook Pixel is routed through MetaRouter, our platform translates page views and events into corresponding Facebook Pixel events.
 
-## Getting Started with Facebook Pixel and Astronomer Clickstream
+## Getting Started with Facebook Pixel and MetaRouter
 
 ### Facebook Pixel Side
 
@@ -29,9 +29,9 @@ You'll only create one pixel for your site (typically labeled with the name of y
 
 Once that's set up, identify your unique `pixelId`, a 15 digit number that uniquely identifies your site.
 
-### Astronomer Side
+### MetaRouter Side
 
-Put your Facebook Pixel ID into your Astronomer account and give your new connection a unique name.
+Put your Facebook Pixel ID into your MetaRouter account and give your new connection a unique name.
 
 With that, just click `Save` to activate your pipeline.
 
@@ -41,19 +41,19 @@ With that, just click `Save` to activate your pipeline.
 
 Facebook has nine [Standard Events](https://www.facebook.com/business/a/add-pixel-standard-events), which are predefined within the Facebook for Business platform.
 
-To connect your events to these predefined ones within Facebook, just input the name of the Astronomer event and choose the appropriate Standard Facebook Event that corresponds to it.
+To connect your events to these predefined ones within Facebook, just input the name of the MetaRouter event and choose the appropriate Standard Facebook Event that corresponds to it.
 
-![facebook-pixel3](../../../images/facebook-pixel3.png)
+![facebook-pixel3](../../../images/facebook-pixel3v2.png)
 
 **Conversion Pixel ID**
 
-If you are using the Facebook Pixel integration as a replacement for Conversion Pixels as well, put each `Conversion Pixel ID` into your Astronomer account next to the corresponding event in Astronomer that you've already set up. Make sure you include all capitals letters and spaces used in your event labels.
+If you are using the Facebook Pixel integration as a replacement for Conversion Pixels as well, put each `Conversion Pixel ID` into your MetaRouter account next to the corresponding event in MetaRouter that you've already set up. Make sure you include all capitals letters and spaces used in your event labels.
 
-![facebook-pixel4](../../../images/facebook-pixel4.png)
+![facebook-pixel4](../../../images/facebook-pixel4v2.png)
 
 **Send all Events as Single Events** 
 
-Enabling this will force FB Pixel events triggered by Astronomer to fire in trackSingle/trackSingleCustom mode to prevent them from going to other FB Pixels loaded on the page. This is helpful if there are different team managing their own pixel, or if you have installed analytics.js on a site with an existing pixel.
+Enabling this will force FB Pixel events triggered by MetaRouter to fire in trackSingle/trackSingleCustom mode to prevent them from going to other FB Pixels loaded on the page. This is helpful if there are different team managing their own pixel, or if you have installed analytics.js on a site with an existing pixel.
 
 You can find out more about the specific use-case and benefits from this [Facebook Developers article](https://developers.facebook.com/ads/blog/post/2017/11/28/event-tracking-with-multiple-pixels-tracksingle/)
 

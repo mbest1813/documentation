@@ -3,7 +3,7 @@ title: Twitter Ads
 sidebar: platform_sidebar
 ---
 
-Astronomer Clickstream makes it easy to send your data to Twitter Ads. Once you follow the steps below, your data will be routed through our platform and pushed to Twitter Ads in the appropriate format.
+MetaRouter makes it easy to send your data to Twitter Ads. Once you follow the steps below, your data will be routed through our platform and pushed to Twitter Ads in the appropriate format.
 
 ## What are Twitter Ads and how do they work?
 
@@ -13,19 +13,19 @@ With Twitter Ads, you pay for performance, target keywords, retarget engaged use
 
 Using Twitter Ads requires adding a JavaScript code snippet to all your pages. In order to track more dynamic data like product searches, revenue, and product viewed, you'll need to add custom code on top of that snippet.
 
-## Why send data to Twitter Ads using Astronomer Clickstream?
+## Why send data to Twitter Ads using MetaRouter?
 
 Sending Clickstream data to Twitter Ads will enrich the knowledge base that empowers your marketers with robust data about your user base.  
 
-As soon as you activate the integration, Astronomer can load the Twitter ads script code to start recording page views. If you're already using our platform, you can map Twitter ad conversion IDs to those same event names to track them in Twitter Ads as well.
+As soon as you activate the integration, MetaRouter can load the Twitter ads script code to start recording page views. If you're already using our platform, you can map Twitter ad conversion IDs to those same event names to track them in Twitter Ads as well.
 
-For e-commerce sites, you won't need to worry about creating custom code to track product browsing and checkout events - those events will be routed through Astronomer and sent directly to Twitter Ads.
+For e-commerce sites, you won't need to worry about creating custom code to track product browsing and checkout events - those events will be routed through MetaRouter and sent directly to Twitter Ads.
 
-## Getting Started with Twitter Ads and Astronomer Clickstream
+## Getting Started with Twitter Ads and MetaRouter
 
 To get started, all you need is your Twitter Pixel ID, which you can retrieve by creating a Twitter Ads conversion tracking website tag.
 
-***Note:** This connector supports client-side analytics.js only.  You also need to have instrumented Astronomer [inside your website](../sources/analyticsjs.md) prior to enabling this connector.*
+***Note:** This connector supports client-side analytics.js only.  You also need to have instrumented MetaRouter [inside your website](../sources/analyticsjs.md) prior to enabling this connector.*
 
 ### Twitter Side
 
@@ -51,21 +51,19 @@ If you want to use the universal tag, simply copy your Twitter Pixel ID from the
 
 **Single Event Website Tags**
 
-If you want to use Single Event Website Tags, you'll have to map the Astronomer events to your tags' respective conversion pixel IDs.
+If you want to use Single Event Website Tags, you'll have to map the MetaRouter events to your tags' respective conversion pixel IDs.
 
-If your events don't match the event names you're receiving from Astronomer that have the Universal Website Tag, you'll want to use the *Single Event Website Tags*.
+If your events don't match the event names you're receiving from MetaRouter that have the Universal Website Tag, you'll want to use the *Single Event Website Tags*.
 
 ***Note:** Twitter Ads only work with our client-side JavaScript library `analytics.js` since it requires its script or pixel to be loaded onto your website.*
 
-### Astronomer Side
+### MetaRouter Side
 
-Paste your Twitter Pixel ID into the `Page Pixel` field in your Astronomer Twitter Ads configuration, and give your new connection a unique name. Click 'Create Destination' and your pipeline will be activated.
-
-![twitterads4](../../../images/twitterads4.png)
+Paste your Twitter Pixel ID into the `Twitter Pixel ID` field in your MetaRouter Twitter Ads configuration, and give your new connection a unique name. Click `Save` and your pipeline will be activated.
 
 If you’d like to use the Single Event Website Tags, you must map the event names to your Single Event Website Tags’ respective conversion pixel IDs.
 
-![twitterads5](../../../images/twitterads5.png)
+![twitterads5](../../../images/twitterads4v2.png)
 
 ### Final Step
 You should now be able to refresh your website and see the Twitter Ads pixel firing for page views.

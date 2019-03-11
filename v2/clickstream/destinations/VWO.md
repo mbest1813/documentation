@@ -3,7 +3,7 @@ title: VWO
 sidebar: platform_sidebar
 ---
 
-Astronomer Clickstream makes it easy to send your data to VWO. Once you follow the steps below, your data will be routed through our platform and pushed to VWO in the appropriate format.
+MetaRouter makes it easy to send your data to VWO. Once you follow the steps below, your data will be routed through our platform and pushed to VWO in the appropriate format.
 
 ## What is VWO and how does it work?
 
@@ -11,11 +11,11 @@ VWO is a web and mobile optimization platform that creates varied web campaigns 
 
 Using VWO natively requires the installation of their JavaScript library. Experiments can then be deployed within the VWO web app. You will need to write custom code if you want to export experiment data for analysis or include other tools in your marketing automation stack.
 
-## Why send data to VWO using Astronomer Clickstream?
+## Why send data to VWO using MetaRouter?
 
-Since VWO loads data synchronously, we can't add their JavaScript snippet for you. However, integrating VWO with Astronomer Clickstream eliminates the need to add custom code to your site if you want to include other tools in your analytics stack. By triggering an event when a visitor views an experiment variation, Astronomer allows you to send A/B test data downstream of your other integrations. You can use this downstream data in an analytics tool of your choice, or dump it in a warehouse for more advanced analytics.
+Since VWO loads data synchronously, we can't add their JavaScript snippet for you. However, integrating VWO with MetaRouter eliminates the need to add custom code to your site if you want to include other tools in your analytics stack. By triggering an event when a visitor views an experiment variation, MetaRouter allows you to send A/B test data downstream of your other integrations. You can use this downstream data in an analytics tool of your choice, or dump it in a warehouse for more advanced analytics.
 
-## Getting Started with VWO and Astronomer Clickstream
+## Getting Started with VWO and MetaRouter
 
 ### VWO Side
 
@@ -23,9 +23,9 @@ To get started, you'll need to add the VWO JavaScript snippet to the pages that 
 
 If you would like for analytics.js to manage the loading of the snippet for you, ensure that you have **Use Async Smart Code** enabled in your Destination settings.
 
-### Astronomer Side
+### MetaRouter Side
 
-Since the VWO snippet is now on your site, all you need to do is enable the VWO integration in your Astronomer UI to get started. Note that there are a few different custom metrics you can track to VWO. We have outlined how to set up those methods below.
+Since the VWO snippet is now on your site, all you need to do is enable the VWO integration in your MetaRouter UI to get started. Note that there are a few different custom metrics you can track to VWO. We have outlined how to set up those methods below.
 
 ## Settings
 
@@ -59,7 +59,7 @@ The maximum amount of time (in milliseconds) to wait for test settings before VW
 This setting is only effective if *Use Async Smart Code* is set to `true`.
 
 #### Use Async Smart Code
-If you would like to utilize VWO’s asynchronous smart code, toggle on this feature. This means you will not need to include VWO’s native snippet on your page as Astronomer will do this on your behalf. If this feature is toggled off, you will need to include VWO’s native smart code on your webpage.
+If you would like to utilize VWO’s asynchronous smart code, toggle on this feature. This means you will not need to include VWO’s native snippet on your page as MetaRouter will do this on your behalf. If this feature is toggled off, you will need to include VWO’s native smart code on your webpage.
 
 #### Use Existing JQuery
 If your page already includes JQuery, you can set this to `true`. Otherwise, VWO will include JQuery onto the page for you. VWO needs JQuery on the page to function correctly.

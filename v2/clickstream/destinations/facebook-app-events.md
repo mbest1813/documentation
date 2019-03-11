@@ -3,7 +3,7 @@ title: Facebook App Events
 sidebar: platform_sidebar
 ---
 
-Available for server-side and mobile sources, Astronomer Clickstream makes it easy to send your data to Facebook App Events. Once you follow the steps below, your data will be routed through our platform and pushed to Facebook App Events in the appropriate format.
+Available for server-side and mobile sources, MetaRouter makes it easy to send your data to Facebook App Events. Once you follow the steps below, your data will be routed through our platform and pushed to Facebook App Events in the appropriate format.
 
 ## What is Facebook App Events and how does it work?
 
@@ -19,13 +19,13 @@ It's also worth noting that Facebook has a standard set of events that need to b
 
 [Learn more about Facebook App Events](https://developers.facebook.com/docs/app-events)
 
-## Why send data to Facebook App Events using Astronomer Clickstream?
+## Why send data to Facebook App Events using MetaRouter?
 
-With Astronomer Clickstream's Facebook App Events integration, you won't need to write custom code or bundle Facebook SDKs. Just integrate one of Astronomer's latest mobile SDKs into your app and we'll send all the data we collect to Facebook via our servers. Plus, you'll be able to map any of your existing Astronomer events to other Facebook App Event event names. User traits like birthday, city, gender, etc. get passed directly through to [Facebook Pixel](facebook-pixel.md).
+With MetaRouter's Facebook App Events integration, you won't need to write custom code or bundle Facebook SDKs. Just integrate one of MetaRouter's latest mobile SDKs into your app and we'll send all the data we collect to Facebook via our servers. Plus, you'll be able to map any of your existing MetaRouter events to other Facebook App Event event names. User traits like birthday, city, gender, etc. get passed directly through to [Facebook Pixel](facebook-pixel.md).
 
-In short, skip the manual headache and get straight to insights with Astronomer Clickstream.
+In short, skip the manual headache and get straight to insights with MetaRouter.
 
-## Getting Started with Facebook App Events and Astronomer Clickstream
+## Getting Started with Facebook App Events and MetaRouter
 
 ### Facebook App Events Side
 
@@ -33,13 +33,13 @@ Once you have a Facebook Apps account, all you'll need to do is retrieve your 15
 
 Once that's set, you'll need to know what specific events you want to map. For each event, we'll ask you for the event *key* (e.g. `Products Searched`) as well as the *value* (e.g. `fb_mobile_search`).
 
-### Astronomer Side
+### MetaRouter Side
 
-Now that you have what you need from the Facebook Apps side, go ahead to your Astronomer [dashboard](https://app.astronomer.io/login).
+Now that you have what you need from the Facebook Apps side, go ahead to your MetaRouter [dashboard](https://app.metarouter.io/login).
 
-![facebook-apps1](../../../images/facebook-apps1.png)
+![facebook-apps1](../../../images/facebook-apps1v2.PNG)
 
-Input your `appid` and App Event Mappings. Note that we'll automatically translate events so that they're passed to Facebook in the correct format. The event mappings are listed below. When filling out the `event mappings` section of thes destination, place the name of your `track` call in the `key` column on the left hand side and the corresponding `value` from the table below on the right hand side. Be sure that the names are spelled correctly!
+Input your `appid` and App Event Mappings. Note that we'll automatically translate events so that they're passed to Facebook in the correct format. The event mappings are listed below. When filling out the `event mappings` section of this destination, place the name of your `track` call in the `key` column on the left hand side and the corresponding `value` from the table below on the right hand side. Be sure that the names are spelled correctly!
 
 | Value | Translation |
 |-------|-------------|

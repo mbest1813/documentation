@@ -1,26 +1,28 @@
-image: ruby:2.3
+# Disabling Gitlab builds
 
-variables:
-  JEKYLL_ENV: production
+# image: ruby:2.3
 
-test:
-  stage: test
-  script:
-  - sh ./var/build.sh
-  - bundle exec jekyll build -d test
-  artifacts:
-    paths:
-    - test
-  except:
-  - master
+# variables:
+#   JEKYLL_ENV: production
 
-pages:
-  stage: deploy
-  script:
-  - sh ./var/build.sh
-  - bundle exec jekyll build -d public
-  artifacts:
-    paths:
-    - public
-  only:
-  - master
+# test:
+#   stage: test
+#   script:
+#   - sh ./var/build.sh
+#   - bundle exec jekyll build -d test
+#   artifacts:
+#     paths:
+#     - test
+#   except:
+#   - master
+
+# pages:
+#   stage: deploy
+#   script:
+#   - sh ./var/build.sh
+#   - bundle exec jekyll build -d public
+#   artifacts:
+#     paths:
+#     - public
+#   only:
+#   - master

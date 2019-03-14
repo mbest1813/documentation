@@ -7,7 +7,7 @@ MetaRouter makes it easy to send your data to Sailthru. Once you follow the step
 
 ## What is Sailthru and how does it work?
 
-Sailthru is the complete, unified and integrated marketing solution which allows purchases tracking, content personalization and email managing.
+[Sailthru](https://www.sailthru.com/) is the complete, unified and integrated marketing solution which allows purchases tracking, content personalization and email managing. You can visit their docs [here](https://getstarted.sailthru.com/).
 
 
 ## Why send data to Sailthru using MetaRouter?

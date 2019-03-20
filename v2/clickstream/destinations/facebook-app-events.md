@@ -31,15 +31,15 @@ In short, skip the manual headache and get straight to insights with MetaRouter.
 
 Once you have a Facebook Apps account, all you'll need to do is retrieve your 15-digit App ID. You can find this directly on your [dashboard](https://developers.facebook.com/apps/).
 
+Once that's set, you'll need to know what specific events you want to map. For each event, we'll ask you for the event *key* (e.g. `Products Searched`) as well as the *value* (e.g. `fb_mobile_search`).
+
 ### MetaRouter Side
 
 Now that you have what you need from the Facebook Apps side, go ahead to your MetaRouter [dashboard](https://app.metarouter.io/login).
 
 ![facebook-apps1](../../../images/facebook-apps1v2.PNG)
 
-Input your `appid` and App Event Mappings. Note that we'll automatically translate events so that they're passed to Facebook in the correct format.
-
-The standard event mappings are listed below - any standard event fired will be translated to the corresponding Facebook event.
+Input your `appid` and App Event Mappings. Note that we'll automatically translate events so that they're passed to Facebook in the correct format. The event mappings are listed below. When filling out the `event mappings` section of this destination, place the name of your `track` call in the `key` column on the left hand side and the corresponding `value` from the table below on the right hand side. Be sure that the names are spelled correctly!
 
 | Value | Translation |
 |-------|-------------|
@@ -53,11 +53,7 @@ The standard event mappings are listed below - any standard event fired will be 
 | Checkout Started | fb_mobile_initiated_checkout |
 | Order Completed | fb_mobile_purchase |
 
-For any event that's not listed above (a custom event that you would like to be translated to a specific Facebook standard event) you need to fill out the `event mappings` section of this destination. Place the event name of your `track` call in the `key` column on the left hand side (e.g. `Added to Cart`) and the corresponding `value` from the table above on the right hand side (e.g. `fb_mobile_add_to_cart`). Be sure that the names are spelled correctly!
 
-![facebook-apps-event-mapping](../../../images/facebook-apps-event-mapping.PNG)
-
-For any custom event that's not mapped, we'll send the exact event name to Facebook. Please note that Facebook App Events doesn't like events with periods in the name so if you send us an event with periods in the name, we'll convert all periods to underscores. So if your event is `friend.added`, we'll send that to Facebook as `friend_added`. We also truncate events that are longer than 40 characters long due to Facebook's API constraints.
 
 As a final step, give your destination a unique name in the `Friendly Name` box.
 

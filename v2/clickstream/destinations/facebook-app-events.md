@@ -55,7 +55,7 @@ The standard event mappings are listed below - any standard event fired will be 
 
 For any event that's not listed above (a custom event that you would like to be translated to a specific Facebook standard event) you need to fill out the `event mappings` section of this destination. Place the event name of your `track` call in the `key` column on the left hand side (e.g. `Added to Cart`) and the corresponding `value` from the table above on the right hand side (e.g. `fb_mobile_add_to_cart`). Be sure that the names are spelled correctly!
 
-![facebook-apps-event-mapping](../../../images/facebook-apps-event-mapping.PNG)
+![facebook-apps-event-mapping](../../../images/facebook-apps-event-mapping.png)
 
 For any custom event that's not mapped, we'll send the exact event name to Facebook. Please note that Facebook App Events doesn't like events with periods in the name so if you send us an event with periods in the name, we'll convert all periods to underscores. So if your event is `friend.added`, we'll send that to Facebook as `friend_added`. We also truncate events that are longer than 40 characters long due to Facebook's API constraints.
 

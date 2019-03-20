@@ -54,7 +54,15 @@ Once you've obtained your Conversion ID, copy and paste it into the correspondin
 
 #### Event Mapping to Adwords
 
-In you MetaRouter UI, you'll need to map your conversion `track` events to your Adwords `google_conversion_label`s. To do this, enter the name of your track event **exactly** as you've named it in the left hand column and the corresponding `google_conversion_label` from  your Adwords conversion event in the right hand column. For more information on where to find your `google_Converion_id` and  `google_conversion_label`, check out [this forum](https://www.en.advertisercommunity.com/t5/AdWords-Tracking-and-Reporting/Find-conversion-ID-and-Conversion-label/td-p/364894#).
+In you MetaRouter UI, you'll need to map your conversion `track` events to your Adwords `google_conversion_label`s. To do this, enter the name of your track event *exactly* as you've named for both the **Key** and **Event** fields. 
+
+Then, add the `Conversion Label` from your Adwords conversion event to the **Label** field inside the MetaRouter UI.  For more information on where to find your `google_Converion_id` and  `google_conversion_label`, check out [this forum](https://www.en.advertisercommunity.com/t5/AdWords-Tracking-and-Reporting/Find-conversion-ID-and-Conversion-label/td-p/364894#).
+
+For example, the event `analytics.track("Red Rover", {...})` and the AdWords Conversion label `ABC-123...` would be entered as:
+- **Key**: `Red Rover`
+- **Event**: `Red Rover`
+- **Label**: `ABC-123...`
+
 
 ### Additional Features
 

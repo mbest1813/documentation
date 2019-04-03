@@ -279,6 +279,10 @@ entries:
         - title: Sailthru
           url: /v2/clickstream/destinations/sailthru.html
           output: web
+          
+        - title: Slack
+          url: /v2/clickstream/destinations/slack.html
+          output: web
 
         - title: Taboola
           url: /v2/clickstream/destinations/taboola.html

@@ -120,10 +120,13 @@ entries:
       - title: Enterprise Destinations
         output: web
         subfolderitems:
-          - title: Google Analytics Enterprises
+          - title: Google Analytics
             url: /v2/clickstream/enterprise-destinations/google-analytics.html
             output: web
-
+          
+          - title: Pinterest 
+            url: /v2/clickstream/enterprise-destinations/pinterest.html
+            output: web
       
       - title: Destinations
         output: web

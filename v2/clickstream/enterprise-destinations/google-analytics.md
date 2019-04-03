@@ -1,3 +1,7 @@
+---
+title: Google Analytics
+sidebar: platform_sidebar
+---
 
 MetaRouter makes is easy to send your data to Google Analytics. Once you've set up your source to start tracking data, we'll translate and route that data to Google Analytics.
 

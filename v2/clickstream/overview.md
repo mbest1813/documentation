@@ -75,7 +75,7 @@ Check out the list below to explore all of the destinations available with MetaR
 
 ## Source/Destination Compatibility Matrix
 
-            | Client | Server | Mobile |
+|            | Client | Server | Mobile |
 | ---------- | ------ | ------ | ------ |
 | Acquisio | ✔ | x | x |
 | Adobe Analytics | ✔ | x | x |

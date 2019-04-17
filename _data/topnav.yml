@@ -3,7 +3,9 @@
 topnav:
 - title: Topnav
   items:
-    - title: GitHub
-      external_url: https://github.com/super-collider/documentation
+    - title: Home
+      external_url: https://metarouter.io
+    - title: App
+      external_url: https://app.metarouter.io
     - title: Help
       external_url: https://metarouter.io/#contact

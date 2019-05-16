@@ -57,3 +57,7 @@ Enabling this will force FB Pixel events triggered by MetaRouter to fire in trac
 
 You can find out more about the specific use-case and benefits from this [Facebook Developers article](https://developers.facebook.com/ads/blog/post/2017/11/28/event-tracking-with-multiple-pixels-tracksingle/)
 
+## Things to note
+
+### What happens to revenue when an event goes to Facebook?
+When our platform receives the `revenue` property within our schema, it will automatically map it to [Facebook Pixel's value property](https://www.facebook.com/business/help/392174274295227). This is to ensure that Facebook does not ignore any standard `revenue` property that would be in your events natively following our specification. Alternatively, including only `value` with eCommerce events will not make it to Facebook Pixel, as it doesn't match our specification it will not be mapped to the Facebook Pixel event properly. 

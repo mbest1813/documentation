@@ -102,10 +102,6 @@ entries:
           url: /v2/clickstream/sources/java.html
           output: web
 
-        - title: MeteorJS
-          url: /v2/clickstream/sources/meteorjs.html
-          output: web
-
         - title: .NET
           url: /v2/clickstream/sources/net.html
           output: web

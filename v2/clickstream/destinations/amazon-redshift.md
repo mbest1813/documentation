@@ -129,7 +129,7 @@ Make sure that you whitelist 52.20.96.13 and 35.236.193.215 as an incoming IP Ad
 
 ---
 
-## Step 3: Identify Your Host, Port, and Database Name
+## Step 4: Identify Your Host, Port, and Database Name
 
 The Host and Port are found at the top beside the label 'Endpoint,' with Host coming before the ':' and Port coming afterwards. The Database Name is found at the bottom besides a title of the same name.
 
@@ -137,7 +137,7 @@ The Host and Port are found at the top beside the label 'Endpoint,' with Host co
 
 ---
 
-## Step 4: Activate Integration on MetaRouter
+## Step 5: Activate Integration on MetaRouter
 
 After you've identified the <b>Username, Password, Host, Port,</b> and <b>Database Name</b>, put all of these credentials into your MetaRouter account and give your new connection a unique name.
 

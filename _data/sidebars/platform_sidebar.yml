@@ -197,6 +197,10 @@ entries:
           url: /v2/clickstream/destinations/google-analytics.html
           output: web
 
+        - title: Google BigQuery
+          url: /v2/clickstream/destinations/google-bigquery.html
+          output: web
+
         - title: Google Tag Manager
           url: /v2/clickstream/destinations/google-tagmanager.html
           output: web

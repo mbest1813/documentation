@@ -1,4 +1,4 @@
-# Ecommerce Events
+# Analytics.js Ecommerce Spec
 
 MetaRouter’s ecommerce spec helps define the journey for a customer as they browse your store, click on promotions, view products, add those products to a cart, and complete a purchase.
 **Note:** Not all destinations support every event listed here. Please refer to individual destination docs for more information on supported events and properties.

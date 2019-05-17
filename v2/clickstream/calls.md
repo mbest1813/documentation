@@ -1,5 +1,5 @@
 ---
-title: API Calls
+title: Analytics.js Spec
 sidebar: platform_sidebar
 ---
 

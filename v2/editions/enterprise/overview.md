@@ -13,9 +13,12 @@ With support for a variety of Destinations, MetaRouter Enterprise leverages Kube
 **Learn More:** [Here](https://www.metarouter.io/#about)
 
 # Architecture
+
 ## The Data Streaming Engine
 
 The primary component of our platform, consisting of three distinct layers of services, that allows for the real-time ingestion, durable processing, and monitored delivery of data from your applications. 
+
+[![MetaRouter Overview](/images/platform_overview.png)](/images/platform_overview.png)
 
 **Layer 1: Ingestion** - A high performance API, only outwardly facing component of the platform, that accepts the incoming data from your sources to write into durable stateful message queues. 
 

@@ -11,6 +11,7 @@ For specific information on each destination and what it is used for, check out 
 Check out our source/destination compatibility matrix below to see which destinations can accept the data that you'd like to send:
 
 ## Source/Destination Compatibility Matrix
+<!-- TODO: Figure out how to get EE edition destinations into this matrix -->
 
 |            | Client | Server | Mobile |
 | ---------- | ------ | ------ | ------ |
@@ -33,6 +34,7 @@ Check out our source/destination compatibility matrix below to see which destina
 | Facebook Pixel | ✔ | x | x |
 | Google AdWords | ✔ | x | ✔ |
 | Google Analytics | ✔ | ✔ | ✔ |
+| Google BigQuery | ✔ | ✔ | ✔ |
 | Google Tag Manager | ✔ | x | x |
 | Heap Analytics | ✔ | ✔ | ✔ |
 | Hubspot | ✔ | ✔ | ✔ |

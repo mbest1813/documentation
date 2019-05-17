@@ -19,6 +19,7 @@ sidebar: platform_sidebar
 * [PHP](../sources/php.html)
 * [Python](../sources/python.html)
 * [Ruby](../sources/ruby.html)
+* [Segment Webhook](../sources/segment-webhook.html)
 
 > NOTE: Server-side ingestion allows you to send data to MetaRouter directly from your application's server. We recommend using these sources only when client sources will not work, as client sources generally pass additional data about the user's browser and environment.  Use cases will include payment events, data that needs to be calculated from a database query, or sensitive information.
 
@@ -28,10 +29,11 @@ We route all inbound data and translate it into a format that your destination o
 
 
 ## Source/Destination Compatibility Matrix
+<!-- TODO: Figure out how to get EE edition destinations into this matrix -->
 
 Check out the matrix below if you're wondering which sources are compatible with which destinations.
 
-            | Client | Server | Mobile |
+|            | Client | Server | Mobile |
 | ---------- | ------ | ------ | ------ |
 | Acquisio | ✔ | x | x |
 | Adobe Analytics | ✔ | x | x |
@@ -52,6 +54,7 @@ Check out the matrix below if you're wondering which sources are compatible with
 | Facebook Pixel | ✔ | x | x |
 | Google AdWords | ✔ | x | ✔ |
 | Google Analytics | ✔ | ✔ | ✔ |
+| Google BigQuery | ✔ | ✔ | ✔ |
 | Google Tag Manager | ✔ | x | x |
 | Heap Analytics | ✔ | ✔ | ✔ |
 | Hubspot | ✔ | ✔ | ✔ |

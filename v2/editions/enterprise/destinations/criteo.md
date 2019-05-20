@@ -348,10 +348,6 @@ If `integrations.Criteo.viewHome` is not present or is set to `false`, the page 
         </thead>
         <tbody>
             <tr>
-                <td>Products Searched</td>
-                <td>viewListing</td>
-            </tr>
-            <tr>
                 <td>Product List Viewed</td>
                 <td>viewListing</td>
             </tr>

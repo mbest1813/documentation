@@ -153,7 +153,7 @@ And, here's the corresponding payload:
     "name": "Home",
     "properties": {
         "title": "MetaRouter: The Platform for Data Engineering",
-        "url": "https://ww.metarouter.io"
+        "url": "https://www.metarouter.io"
     }
 }
 ```

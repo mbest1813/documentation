@@ -136,6 +136,10 @@ entries:
       url: /v2/editions/enterprise/destinations/pinterest.html
       output: web
 
+    - title: Criteo (Enterprise)
+      url: /v2/editions/enterprise/destinations/criteo.html
+      output: web
+
     - title: Acquisio
       url: /v2/clickstream/destinations/acquisio.html
       output: web

@@ -636,7 +636,7 @@ analytics.track("Custom Event With Products", {
 | ---------| -------------------|
 | `ti` | `order_id` | transaction id | 
 | `ta` | `affiliation` | transaction affiliation | 
-| `tr` | `revenue` | transaction revenue -  although we have a revenue field in Segment as well that field does not include shipping and applied coupons, taxes, promotions etc. GA documentation emphasizes on the fact that this field should comprise of the final cost to the client, including tax, shipping etc. |
+| `tr` | `revenue` | transaction revenue -  although we have a revenue field in Analytics.js as well that field does not include shipping and applied coupons, taxes, promotions etc. GA documentation emphasizes on the fact that this field should comprise of the final cost to the client, including tax, shipping etc. |
 | `ts` | `shipping` | transaction shipping cost | 
 | `tt` | `tax` |  transaction tax | 
 | `tcc` | `coupon` | transaction coupon code |

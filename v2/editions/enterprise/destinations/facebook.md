@@ -88,13 +88,13 @@ For all of the events sent to Facebook Pixel (including your `track()`, `identif
 * `dl` - `fullURL` of the page.
 * `rl` - `referrer` of the page   
 
+### Identify 
+
+We'll map your `page()` calls to the `UserProperties` Pixel Standard event, wihout additional data
+
 ### Page 
 
 We'll map your `page()` calls to the `PageView` Pixel Standard event, wihout additional data.
-
-### Identidy 
-
-We'll map your `page()` calls to the `UserProperties` Pixel Standard event, wihout additional data
 
 ### Default Analytics.js Standard E-commerce events to Pixel Standard Events
 
@@ -191,7 +191,7 @@ All Pixel Standard Events will be mapped with the following properties.
 
 ### Adding your own events
 
-To send *Standard* events, use the Analytitcs.js destination setting (from `integratinons.yaml` ) named `customEventsMapping` . Then, any time Segment receives one of the events in that mapping, it will be sent to Facebook as the standard event you specified. All properties you included in the event will be sent as event properties. 
+To send *Standard* events, use the Analytitcs.js destination setting (from `integratinons.yaml` ) named `customEventsMapping` . Then, any time Analytics.js receives one of the events in that mapping, it will be sent to Facebook as the standard event you specified. All properties you included in the event will be sent as event properties. 
 
 ### Custom events
 

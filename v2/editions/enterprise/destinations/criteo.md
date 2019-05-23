@@ -105,8 +105,13 @@ This configuration file allows you to set your own configuration based on how yo
     * `params` - Object with the following structure:
       * `name` - String - the param name that will be sent to Criteo
       * `type` - String - the param type of values that you want to send to Criteo. These are the accepted values for `type`:
+        * `ps`
+          * will send an Array of Strings representing products IDs
+          * the value will be retrieved from `properties.product` or `properties.products`
+          * if the value type is Array, it will be sent as is
+          * if the value type is String, it will be processed into an Array by splinting the String value by `,`
         * `pid` - will send a String representing the product ID
-        * `pids` - will send an Array of String with all products IDs
+        * `pids` - will send an Array of Strings representing products IDs
         * `products-short` - will send an Array of Objects where each object has the following structure:
           * `id` - String - product id
           * `price` - int / float - product price
@@ -192,40 +197,53 @@ This configuration file allows you to set your own configuration based on how yo
 * `additionalEvents` - Array of Objects, **optional**
   * follows the same structure as `standardEvents` but this will allows you to define events that will be used as additional events fired in groups, attached to specific standard events
   * to populate params with specific values for additional events, you need to pass the values with your track call
-  * Example:
-    Let's assume you will add the following `additionalEvents` value:
+    * by sending Criteo specific properties (see Example 1 below)
+    * by adding the key directly on the `properties` object sent with the event (see Example 2 below)
+  * Let's assume you will add the following `additionalEvents` value:
 
     ```yaml
     additionalEvents:
-      - event: "setHashedEmail"
+      - event: "setZipcode"
         params:
-          - name: "email"
+          - name: "zipcode"
     ```
 
     Your track call should look like this:
 
+    **Example 1:**
+
     ```javascript
     analytics.track('Product Viewed', {
-      {
-        product_id: '507f1f77bcf86cd799439011',
-        name: 'Monopoly: 3rd Edition',
-        price: 18.99,
-        quantity: 1,
-      }, {
-      integrations: {
-        Criteo: {
-          email: "EDD9738967D46927C73AD068CAD486AD"
-        }
+      product_id: '507f1f77bcf86cd799439011',
+      name: 'Monopoly: 3rd Edition',
+      price: 18.99,
+      quantity: 1,
+    }, {
+    integrations: {
+      Criteo: {
+        zipcode: "XXXXXX"
       }
     })
     ```
 
-    The additional event mapped will look like this:
+    **Example 2:**
+
+    ```javascript
+    analytics.track('Product Viewed', {
+      product_id: '507f1f77bcf86cd799439011',
+      name: 'Monopoly: 3rd Edition',
+      price: 18.99,
+      quantity: 1,
+      zipcode: "XXXXXX"
+    })
+    ```
+
+    The additional event mapped for both examples will look like this:
 
     ```json
     {
-      "event": "setHashedEmail",
-      "email": "EDD9738967D46927C73AD068CAD486AD"
+      "event": "setZipcode",
+      "zipcode": "XXXXXX"
     }
     ```
 
@@ -348,6 +366,10 @@ If `integrations.Criteo.viewHome` is not present or is set to `false`, the page 
         </thead>
         <tbody>
             <tr>
+                <td>Products Searched</td>
+                <td>viewListing</td>
+            </tr>
+            <tr>
                 <td>Product List Viewed</td>
                 <td>viewListing</td>
             </tr>
@@ -376,7 +398,9 @@ If `integrations.Criteo.viewHome` is not present or is set to `false`, the page 
 
 #### Setting Emails
 
-It’s easy to associate emails with a user, if there’s an `email` property in the [`track`](https://docs.metarouter.io/v2/clickstream/calls.html#track) call, we’ll include the `setHashedEmail` event to Criteo along with your event. The email value needs to be MD5-hash of the lowercase email (i.e. MD5(user@domain.com) ). To pass the `email` property your `track` call should be trigger similar to this example:
+It’s easy to associate emails with a user, if there’s an `email` property in the [`track`](https://docs.metarouter.io/v2/clickstream/calls.html#track) call, we’ll include the `setHashedEmail` event to Criteo along with your event. The email value needs to be MD5-hash of the lowercase email (i.e. MD5(user@domain.com) ). To pass the `email` property your `track` call should be trigger using one of these two versions:
+
+**Version 1**
 
 ```javascript
 analytics.track('Event Name', EVENT_PROPERTIES_OBJECT, {
@@ -388,11 +412,21 @@ analytics.track('Event Name', EVENT_PROPERTIES_OBJECT, {
 })
 ```
 
+**Version 2**
+
+```javascript
+analytics.track('Event Name', {
+  ...
+  email: "HASHED_EMAIL"
+})
+```
 
 
 #### Setting zip codes
 
-It’s easy to set a zip code to all track calls - if there’s a `zipcode` property in the [`track`](https://docs.metarouter.io/v2/clickstream/calls.html#track) call, we’ll include the `setZipcode` event to Criteo along with your event. To pass the `zipcode` property your `track` call should be trigger similar to this example:
+It’s easy to set a zip code to all track calls - if there’s a `zipcode` property in the [`track`](https://docs.metarouter.io/v2/clickstream/calls.html#track) call, we’ll include the `setZipcode` event to Criteo along with your event. To pass the `zipcode` property your `track` call should be trigger using one of these two versions:
+
+**Version 1**
 
 ```javascript
 analytics.track('Event Name', EVENT_PROPERTIES_OBJECT, {
@@ -404,11 +438,21 @@ analytics.track('Event Name', EVENT_PROPERTIES_OBJECT, {
 })
 ```
 
+**Version 2**
+
+```javascript
+analytics.track('Event Name', {
+  ...
+  zipcode: "ZIPCODE_VALUE"
+})
+```
 
 
 #### Setting store ids
 
-It’s easy to set a store id to all track calls - if there’s a `store_id` property in the [`track`](https://docs.metarouter.io/v2/clickstream/calls.html#track) call, we’ll include the `setStore` event to Criteo along with your event. To pass the `store_id` property your `track` call should be trigger similar to this example:
+It’s easy to set a store id to all track calls - if there’s a `store_id` property in the [`track`](https://docs.metarouter.io/v2/clickstream/calls.html#track) call, we’ll include the `setStore` event to Criteo along with your event. To pass the `store_id` property your `track` call should be trigger using one of these two versions:
+
+**Version 1**
 
 ```javascript
 analytics.track('Event Name', EVENT_PROPERTIES_OBJECT, {
@@ -419,4 +463,11 @@ analytics.track('Event Name', EVENT_PROPERTIES_OBJECT, {
   }
 })
 ```
+**Version 2**
 
+```javascript
+analytics.track('Event Name', {
+  ...
+  store_id: "STORE_ID"
+})
+```

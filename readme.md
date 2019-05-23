@@ -9,7 +9,7 @@
 
 Verify that you have git installed.
 
-`git -v`
+`git version`
 
 Install RVM. Make sure you follow the final instructions to source the rvm command or restart your terminal after installation is complete.
 

@@ -38,8 +38,8 @@ Here is an example of `integrations.yaml`:
   config:
     tagId: 'my UET tag id'
     customActionsMappings:
-      - name: 'Product Viewed'
-        action: 'view'
+      - name: 'Order Completed'
+        action: 'purchase'
       - name: 'Product Added'
         category: 'product'
         action: 'add'
@@ -47,7 +47,7 @@ Here is an example of `integrations.yaml`:
 
 In this configuration, `tagId` represents the ID that you've got from the previous step.
 
-`customActionsMappings` list allows you to define your own custom event actions based on events that you track with `analytics.track()`. Using the config file from the example, when calling `analytics.track('Product Viewed')` we'll send an event with `view` action to Microsoft Advertising. We use the following parameters:
+`customActionsMappings` list allows you to define your own custom event actions based on events that you track with `analytics.track()`. Using the config file from the example, when calling `analytics.track('Order Completed')` we'll send an event with `purchase` action to Microsoft Advertising. We use the following parameters:
 _ `name`: your `track()` event.
 _ `action`: the event send to Microsoft Advertising.
 
@@ -66,7 +66,7 @@ Under Conversion Tracking, click View Conversion Goals Page.
 On the conversion goals page, click Create conversion goal.
 ![microsoftCreateConversionGoal](../../../../images/microsoftCreateConversionGoal.png)
 
-Enter a name for your goal in the Goal name box. When naming your goal, use a descriptive name that makes sense to you. (For example, Product Viewed)
+Enter a name for your goal in the Goal name box. When naming your goal, use a descriptive name that makes sense to you. (For example, Order Completed)
 Choose the Event type of conversion and click Next.
 ![microsoftSelectConversionType](../../../../images/microsoftSelectConversionType.png)
 
@@ -79,14 +79,14 @@ You should be able to see your goal appeared in the goals list:
 
 ```
 // Metarouter event
-analytics.track('Product Viewed', {
-  action: 'view',
+analytics.track('Order Completed', {
+  action: 'purchase',
   revenue: 25,
   ... // additional properties
 });
 ```
 
-Label: Event Name ('Product Viewed' in this case)
+Label: Event Name ('Order Completed' in this case)
 Value: `revenue` property
 Category: `category` property
 

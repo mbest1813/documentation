@@ -67,7 +67,7 @@ On the conversion goals page, click Create conversion goal.
 ![microsoftCreateConversionGoal](../../../../images/microsoftCreateConversionGoal.png)
 
 Enter a name for your goal in the Goal name box. When naming your goal, use a descriptive name that makes sense to you. (For example, Order Completed)
-Choose the Event type of conversion and click Next.
+Choose the `Event` type of conversion and click Next.
 ![microsoftSelectConversionType](../../../../images/microsoftSelectConversionType.png)
 
 Fill in the appropriate values. Make sure to add the Metarouter event name as the label field and to associate the goal to the correct Tag (UET Tag) that is set up in your Metarouter source.

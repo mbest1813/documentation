@@ -127,6 +127,10 @@ entries:
     - title: Adobe Analytics (Enterprise)
       url: /v2/editions/enterprise/destinations/adobe-analytics.html
       output: web
+    
+    - title: AdWords (Enterprise)
+      url: /v2/editions/enterprise/destinations/adwords.html
+      output: web
       
     - title: Bing Ads (Enterprise)
       url: /v2/editions/enterprise/destinations/bing-ads.html
@@ -135,6 +139,10 @@ entries:
     - title: Criteo (Enterprise)
       url: /v2/editions/enterprise/destinations/criteo.html
       output: web
+    
+    - title: DoubleClick Floodlight (Enterprise)
+      url: /v2/editions/enterprise/destinations/double-click.html
+      output: web
 
     - title: Facebook Pixel (Enterprise)
       url: /v2/editions/enterprise/destinations/facebook.html
@@ -142,6 +150,10 @@ entries:
 
     - title: Google Analytics (Enterprise)
       url: /v2/editions/enterprise/destinations/google-analytics.html
+      output: web
+    
+    - title: Media Math (Enterprise)
+      url: /v2/editions/enterprise/destinations/media-math.html
       output: web
 
     - title: Pinterest (Enterprise)

@@ -124,24 +124,28 @@ entries:
       url: /v2/clickstream/destinations/overview.html
       output: web
 
-    - title: Google Analytics (Enterprise)
-      url: /v2/editions/enterprise/destinations/google-analytics.html
+    - title: Adobe Analytics (Enterprise)
+      url: /v2/editions/enterprise/destinations/adobe-analytics.html
+      output: web
+      
+    - title: Bing Ads (Enterprise)
+      url: /v2/editions/enterprise/destinations/bing-ads.html
+      output: web
+    
+    - title: Criteo (Enterprise)
+      url: /v2/editions/enterprise/destinations/criteo.html
       output: web
 
     - title: Facebook Pixel (Enterprise)
       url: /v2/editions/enterprise/destinations/facebook.html
       output: web
 
+    - title: Google Analytics (Enterprise)
+      url: /v2/editions/enterprise/destinations/google-analytics.html
+      output: web
+
     - title: Pinterest (Enterprise)
       url: /v2/editions/enterprise/destinations/pinterest.html
-      output: web
-
-    - title: Bing Ads (Enterprise)
-      url: /v2/editions/enterprise/destinations/bing-ads.html
-      output: web
-
-    - title: Criteo (Enterprise)
-      url: /v2/editions/enterprise/destinations/criteo.html
       output: web
 
     - title: Acquisio

@@ -16,9 +16,6 @@ Using MetaRouter, you can send page views and event data directly to Microsoft A
 Integrating Microsoft Advertising with MetaRouter cuts out any need for additional implementation resources, saving your development team valuable time.
 
 ## Getting Started with Microsoft Tag and MetaRouter
-
-The first step is to make sure Microsoft Advertising supports the source type and connection mode you’ve chosen to implement. You can learn more about what dictates the connection modes we support here.
-
 ### Microsoft Ads Side
 
 To get started sending events to Pinterest, first sign up for [Microsoft Advertising](https://ads.microsoft.com/).
@@ -86,9 +83,9 @@ analytics.track('Order Completed', {
 });
 ```
 
-Label: Event Name ('Order Completed' in this case)
-Value: `revenue` property
-Category: `category` property
+* Label: Event Name ('Order Completed' in this case)
+* Value: `revenue` property
+* Category: `category` property
 
 ### Page
 

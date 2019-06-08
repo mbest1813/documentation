@@ -62,6 +62,7 @@ Check out the matrix below if you're wondering which sources are compatible with
 | Keen IO | ✔ | ✔ | ✔ |
 | Kenshoo | ✔ | x | x |
 | KISSmetrics | ✔ | ✔ | ✔ |
+| Lucky Orange | ✔ | x | x |
 | Lytics | ✔ | ✔ | ✔ |
 | Mixpanel | ✔ | ✔ | ✔ |
 | Netmining | ✔ | x | x |

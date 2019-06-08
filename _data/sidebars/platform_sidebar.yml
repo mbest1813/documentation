@@ -272,6 +272,10 @@ entries:
       url: /v2/clickstream/destinations/kissmetrics.html
       output: web
 
+    - title: Lucky Orange
+      url: /v2/clickstream/destinations/lucky-orange.html
+      output: web
+    
     - title: Lytics
       url: /v2/clickstream/destinations/lytics.html
       output: web

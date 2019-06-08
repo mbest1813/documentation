@@ -42,6 +42,7 @@ Check out our source/destination compatibility matrix below to see which destina
 | Keen IO | ✔ | ✔ | ✔ |
 | Kenshoo | ✔ | x | x |
 | KISSmetrics | ✔ | ✔ | ✔ |
+| Lucky Orange | ✔ | x | x |
 | Lytics | ✔ | ✔ | ✔ |
 | Mixpanel | ✔ | ✔ | ✔ |
 | Netmining | ✔ | x | x |

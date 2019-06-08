@@ -65,6 +65,7 @@ Check out the list below to explore all of the destinations available with MetaR
 * [Intercom](/v2/clickstream/destinations/intercom.html)
 * [Keen IO](/v2/clickstream/destinations/keen-io.html)
 * [KISSmetrics](/v2/clickstream/destinations/kissmetrics.html)
+* [Lucky Orange](/v2/clickstream/destinations/lucky-orange.html)
 * [Lytics](/v2/clickstream/destinations/lytics.html)
 * [Mixpanel](/v2/clickstream/destinations/mixpanel.html)
 * [Optimizely](/v2/clickstream/destinations/optimizely.html)
@@ -113,6 +114,7 @@ Check out the list below to explore all of the destinations available with MetaR
 | Keen IO | ✔ | ✔ | ✔ |
 | Kenshoo | ✔ | x | x |
 | KISSmetrics | ✔ | ✔ | ✔ |
+| Lucky Orange | ✔ | x | x |
 | Lytics | ✔ | ✔ | ✔ |
 | Mixpanel | ✔ | ✔ | ✔ |
 | Netmining | ✔ | x | x |

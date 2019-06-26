@@ -46,8 +46,11 @@ You can now go back into your amplitude account and see your user activity! To s
 Note that MetaRouter will not pass `page` or `screen` calls by default. See the options below for enabling those specific calls.
 
 * `Track All Pages` - Checking this box sends all `page` and `screen` calls to amplitude as `Loaded a Page`. This feature works with all source types.
-* `Track Named Pages`- Checking this box will send all *named* `page` and `screen` calls to Amplitude. In your Amplitude dashboard, these will appear as `Loaded (Category) (Name) Page` or `Loaded (Category) (Name) Screen `. This feature works with Android, Server, and Web sources.
-* `Track Categorized Pages` - Checking this box means that every time you call `page` or `screen` and provide a `category`, an event will be sent. It will appear in Amplitude as `Viewed (Category)Page` or `Viewed (Category) Screen`. This feature works with all source types.
+* `Track Named Pages`- Checking this box will send all *named* `page` and `screen` calls to Amplitude. There are two scenarios, depending on the way you're using `analytics.page()` call:
+  * `analytics.page('(Category)', '(Name)')` will result into `Viewed (Category) (Name) Page` or `Viewed (Category) (Name) Screen` events on your Amplitude dashboard;
+  * `analytics.page('(Name)')` will result into `Viewed (Name) Page` or `Viewed (Name) Screen` events on your Amplitude dashboard.
+  This feature works with Android, Server, and Web sources.
+* `Track Categorized Pages` - Checking this box means that every time you call `page` or `screen` and provide a `category`, an event will be sent. It will appear in Amplitude as `Viewed (Category) Page` or `Viewed (Category) Screen`. This feature works with all source types.
 * `Track UTM Properties` - Checking this box will track UTM properties found in the querystring to Amplitude. This feature is only available for Web sources.
 * `Batch Events` - Checking this box causes events to be batched together and uploaded only if the number of unsent events is greater than or equal to the `Event Upload Threshold` or after the `Event Upload Period Millis` milliseconds have passed since the first unsent event was logged. You can set these parameters in the fields at the bottom of the Destination settings in the UI.
 * `Use logRevenueV2 API` - This allows for the tracking of event properties with the revenue event. For example, you would be able to track a certain event and attach `price` and `quantity` properties to it. This feature will then log total revenue (`price`*`quantity`). 

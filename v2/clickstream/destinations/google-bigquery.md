@@ -57,7 +57,9 @@ If this list looks good, you are ready to jump over to the MetaRouter UI and cre
 
 In the [MetaRouter app](https://app.metarouter.io/), head to the pipeline you will be added BigQuery to, and under `Destinations` click `New Destination`. From there, click on `Google BigQuery` and create a name for your destination (e.g. "Production BigQuery").
 
-Now it is time to input the information from GCP and BigQuery into the *Destination Details*. Under `Project ID`, enter the GCP project you have the desired BigQuery dataset tied to. Then under `BigQuery Dataset`, enter the name of your existing or newly created (step 1) dataset
+Now it is time to input the information from GCP and BigQuery into the *Destination Details*. Under `Project ID`, enter the GCP project you have the desired BigQuery dataset tied to. Then under `BigQuery Dataset`, enter the name of your existing or newly created (step 1) dataset.
+
+***Note**: Make sure you only enter the dataset name, not the full dataset id*
 
 With those details in, you can go on to *Create Connection*. This is where you are granting MetaRouter teh ability to interface with your GCP account using that service account JSON. Under `Friendly Name`, enter in your connection name (e.g. Production GCP Connection). Then, copy the contents of that service account JSON file into the field for `Google Cloud Auth JSON`. Once that is completed, hit `Save` at the bottom of the form.
 

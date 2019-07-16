@@ -144,6 +144,10 @@ entries:
       url: /v2/editions/enterprise/destinations/bing-ads.html
       output: web
 
+    - title: Blueshift (Enterprise)
+      url: /v2/editions/enterprise/destinations/blueshift.html
+      output: web
+    
     - title: Criteo (Enterprise)
       url: /v2/editions/enterprise/destinations/criteo.html
       output: web

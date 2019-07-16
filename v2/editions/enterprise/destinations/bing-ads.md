@@ -19,7 +19,7 @@ Integrating Microsoft Advertising with MetaRouter cuts out any need for addition
 
 ### Microsoft Ads Side
 
-To get started sending events to Pinterest, first sign up for [Microsoft Advertising](https://ads.microsoft.com/).
+To get started sending events to Microsoft Ads, first sign up for [Microsoft Advertising](https://ads.microsoft.com/).
 
 Before you can track conversions or target audiences, you need to [create a UET tag](https://help.bingads.microsoft.com/#apex/3/en/56682/-1) in Microsoft Advertising and then add it to the destination settings as described in the next section. Follow the steps within the Microsoft Advertising documentation to create a UET tag.
 

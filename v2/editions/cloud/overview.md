@@ -48,6 +48,7 @@ Check out the list below to explore all of the destinations available with MetaR
 * [Amplitude](/v2/clickstream/destinations/amplitude.html)
 * [Attribution](/v2/clickstream/destinations/attribution.html)
 * [Bing Ads](/v2/clickstream/destinations/bing-ads.md)
+* [Blueshift](/v2/clickstream/destinations/blueshift.md)
 * [Calq](/v2/clickstream/destinations/calq.html)
 * [Clicky](/v2/clickstream/destinations/clicky.html)
 * [Criteo](/v2/clickstream/destinations/criteo.html)

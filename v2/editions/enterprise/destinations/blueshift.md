@@ -10,9 +10,9 @@ It is modern AI-First platform for Cross-Channel Marketing. AI is the key to unl
 
 ## Why send data to Blueshift using MetaRouter?
 
-This integration can be very complicated to implement without MetaRouter; the base code for each customer is unique and must be obtained from the Blueshift UI. If you want to track custom events, you'll need to familiarize yourself with the Blueshift API to both locate the correct base and event tracking code as well as install it correctly into your own site. It typically needs to be added by a webmaster or developer to prevent errors.
+The base code for each customer is unique and must be obtained from the Blueshift UI. If you want to track custom events, you'll need to familiarize yourself with the Blueshift API to both locate the correct base and event tracking code as well as install it correctly into your own site. It typically needs to be added by a webmaster or developer to prevent errors.
 
-Using MetaRouter, you can send page views and event data directly to Blueshift without needing to manually install any extra JavaScript on your website. Just enable the Blueshift destination in your MetaRouter UI, and we'll automatically take care of mapping a standard set of events to recognized Blueshift events. MetaRouter also allows you to define and map your own events to supported Blueshift events without any custom code. All of this data is immediately available for analysis in your Blueshift dashboard.
+Using MetaRouter, you can send page views and event data directly to Blueshift without needing to manually install any extra JavaScript on your website. Just enable the Blueshift destination in your MetaRouter UI, and we'll automatically take care of mapping a standard set of events to standard Blueshift events. MetaRouter also allows you to define and map your own events to supported Blueshift events without any custom code. All of this data is immediately available for analysis in your Blueshift dashboard.
 
 Integrating Blueshift with MetaRouter cuts out any need for additional implementation resources, saving your development team valuable time.
 
@@ -25,7 +25,7 @@ To get started sending events to Blueshift, first contact [Blueshift](https://bl
 Next you'll need to go to your [Account Page](https://app.getblueshift.com/dashboard#/app/account/api)
 And get your Event API Key.
 
-The easiest way to setup and test the events stream is to, observe events coming to [clickstream events dashboard](https://app.getblueshift.com/dashboard#/app/click_stream/index).
+The easiest way to setup and test the events stream is to observe events coming to [clickstream events dashboard](https://app.getblueshift.com/dashboard#/app/click_stream/index).
 
 ### MetaRouter Side
 
@@ -45,16 +45,17 @@ Here is an example of `integrations.yaml`:
 ```
 
 `mappedEventNames` list allows you to define your own custom event name based on events that you track with `analytics.track()`. Using the config file from the example, when calling `analytics.track('Order Completed')` we'll send an event with `successful_purchase` action to Blueshift. We use the following parameters:
-_ The `Order Completed` property name: your `track()` event.
-_ The `successful_purchase` value: mapped event name sent to the Blueshift.
+
+* The `Order Completed` property name: your `track()` event;
+* The `successful_purchase` value: mapped event name sent to Blueshift.
 
 ### Page
 
-We'll send all of your `analytics.page()` events to the standard Bluesdhift `pageload` event.
+We'll send all of your `analytics.page()` events to the standard Blueshift `pageload` event.
 
 ### Identify
 
-We'll send all of your `analytics.identify()` events to the standard Bluesdhift `identify` event..
+We'll send all of your `analytics.identify()` events to the standard Blueshift `identify` event..
 
 ### Track
 
@@ -62,6 +63,6 @@ Please check the [Blueshift Events API](https://help.blueshift.com/hc/en-us/arti
 
 We've followed Blueshift's naming conventions, so if you fire event named `Order Refunded` that is not a part of Blueshift [standard event list](https://help.blueshift.com/hc/en-us/articles/115002714773-Event-API), you'll be able to see it under `order_refunded` name on your Blueshift clickstream events [dashboard](https://app.getblueshift.com/dashboard#/app/click_stream/index).
 
-The same naming conventions applied to any custom named event. For example: `My Custom Event` will be seen as `my_custom_event`.
+The same naming convention is applied to any custom named event. For example: `My Custom Event` will be sent as `my_custom_event`.
 
 You also have the option to provide your custom event names mapping as described earlier. In this case we do not correct event names using Blueshift naming system.

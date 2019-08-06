@@ -1,4 +1,0 @@
-- release:
-  name: v3.0
-  image: docs.metarouter.io
-  current: true

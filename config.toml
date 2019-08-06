@@ -1,0 +1,70 @@
+baseURL = "/"
+disablePathToLower = true
+languageCode = "en-us"
+title = "Metarouter Documentation"
+themesDir = "themes"
+theme = "hugo-whisper-theme"
+
+pygmentsCodeFences = true
+pygmentsCodefencesGuessSyntax = true
+pygmentsUseClasses = true
+
+[menu]
+
+[[menu.main]]
+    name = "Home"
+    url = "/"
+    weight = 1
+
+[[menu.main]]
+    name = "Docs"
+    identifier = "docs"
+    url = "/docs/"
+    weight = 2
+
+[[menu.main]]
+    name = "Clickstream"
+    url = "/docs/clickstream/"
+    weight = 2.1
+    parent = "docs"
+
+[[menu.main]]
+    name = "Editions"
+    identifier = "editions"
+    url = "/docs/editions/"
+    weight = 2.2
+    parent = "docs"
+
+[[menu.main]]
+    name = "Enterprise"
+    url = "/docs/editions/enterprise"
+    weight = 3.1
+    parent = "editions"
+
+[[menu.main]]
+    name = "Cloud"
+    url = "/docs/editions/cloud"
+    weight = 3.2
+    parent = "editions"
+
+[params]
+  google_analytics_id=""
+  homepage_button_link = '/docs'
+  homepage_button_text = 'Read The Docs'
+  homepage_intro = 'MetaRouter is a fast and secure streaming data platform designed for companies with sensitive data. Whether you’re looking for easy, managed data pipelines, or an end-to-end data router running on your own private cloud… we’ve got you covered.'
+  homepage_image = '/images/terminal.gif'
+
+  [params.homepage_meta_tags]
+    meta_description = "Hugo Whisper is a documentation theme built with Hugo."
+    meta_og_title = "Hugo Whisper Theme"
+    meta_og_type = "website"
+    meta_og_url = "https://hugo-whisper.netlify.com"
+    meta_og_image = "https://raw.githubusercontent.com/JugglerX/hugo-whisper-theme/master/images/tn.png"
+    meta_og_description = "Hugo Whisper is a documentation theme built with Hugo."
+    meta_twitter_card = "summary"
+    meta_twitter_site = "@metarouterio"
+    meta_twitter_creator = "@metarouterio"
+
+  [params.logo]
+      mobile = "/images/logo-mobile.svg"
+      standard  = "/images/logo.svg"

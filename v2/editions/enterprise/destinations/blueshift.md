@@ -42,12 +42,28 @@ Here is an example of `integrations.yaml`:
     mappedEventNames:
       - 'Order Completed': 'successful_purchase'
       - 'Product View': 'engagement'
+    userAttributesMap:
+      birthday: 'dob'
+      firstName: 'fname'
+      lastName: 'lname'
+      anonymousId: 'lead_id'
+      ip: 'ip_address',
+      ...
+    eventAttributesMap:
+      value: 'event_val',
+      category: 'event_cat',
+      id: 'some_important_id',
+      productId: 'product_identifier',
+      promotionId: 'campaign_promo_id',
 ```
 
 `mappedEventNames` list allows you to define your own custom event name based on events that you track with `analytics.track()`. Using the config file from the example, when calling `analytics.track('Order Completed')` we'll send an event with `successful_purchase` action to Blueshift. We use the following parameters:
 
-* The `Order Completed` property name: your `track()` event;
-* The `successful_purchase` value: mapped event name sent to Blueshift.
+- The `Order Completed` property name: your `track()` event;
+- The `successful_purchase` value: mapped event name sent to Blueshift.
+
+`userAttributesMap` list allows you to define your custom user attributes mappings.
+`eventAttributesMap` list allows you to define your custom event attributes mappings respectively.
 
 ### Page
 

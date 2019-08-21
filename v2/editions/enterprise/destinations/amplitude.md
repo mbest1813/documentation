@@ -43,23 +43,27 @@ You can now go back into your amplitude account and see your user activity! To s
 
 ### Additional Features
 
-```yaml
-- name: 'amplitude'
-  config:
-    apiKey: '<yourAmplitudeAPIKey>'
-    trackPages:
-      default: true (can be ommited)
-      custom:
-        sendPageName: true
-        sendPageCategory: true
-    mapQueryParams:
-      myQueryParam: 'myUserProperty'
+```json
+{
+  "name": "amplitude"
+  "apiKey":"<yourAmplitudeAPIKey>",
+  "trackAllPages":true,
+  "trackNamedPages":true,
+  "trackCategorizedPages":true,
+  "mapQueryParams":[
+    {"user_properties":"name"},
+    {"user_properties":"email"},
+    {"event_properties":"source"},
+    {"event_properties":"other"}
+  ],
+  "usePageDetailsForTrackCalls":true
+}
 ```
 
 - `trackPages` - activated by default this setting sends all `page` and `screen` calls to Amplitude as `Loaded a Page`. This feature works with all source types. `default: false` will prevent the integration from sending events.
-- `sendPageName`- Checking this box will send all _named_ `page` and `screen` calls to Amplitude. There are two scenarios, depending on the way you're using `analytics.page()` call:
+- `trackNamedPages`- Checking this box will send all _named_ `page` and `screen` calls to Amplitude. There are two scenarios, depending on the way you're using `analytics.page()` call:
   - `analytics.page('(Category)', '(Name)')` will result into `Viewed (Category) (Name) Page` or `Viewed (Category) (Name) Screen` events on your Amplitude dashboard;
   - `analytics.page('(Name)')` will result into `Viewed (Name) Page` or `Viewed (Name) Screen` events on your Amplitude dashboard.
     This feature works with Android, Server, and Web sources.
-- `sendPageCategory` - Checking this box means that every time you call `page` or `screen` and provide a `category`, an event will be sent. It will appear in Amplitude as `Viewed (Category) Page` or `Viewed (Category) Screen`. This feature works with all source types.
+- `trackCategorizedPages` - Checking this box means that every time you call `page` or `screen` and provide a `category`, an event will be sent. It will appear in Amplitude as `Viewed (Category) Page` or `Viewed (Category) Screen`. This feature works with all source types.
 - `mapQueryParams` - When sending data via server side, you can send the custom query params that are automatically collected by analytics.js (or whatever you manually send under context.page.search), by entering a custom property name you would like to map that under on the left hand side. On the right hand side, please choose whether you want the query params to be set on the user profile or event metadata level. Whatever you put on the left hand side we will map the entire query parameters string from the context.page.url. NOTE: Do not add more than one row. Adding more than one row in this setting will have no effect.

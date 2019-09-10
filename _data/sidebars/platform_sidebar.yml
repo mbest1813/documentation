@@ -172,6 +172,11 @@ entries:
       url: /v2/editions/enterprise/destinations/pinterest.html
       output: web
 
+    - title: S3 (Enterprise)
+      url: /v2/editions/enterprise/destinations/s3.html
+      output: web
+
+
     - title: Acquisio
       url: /v2/clickstream/destinations/acquisio.html
       output: web

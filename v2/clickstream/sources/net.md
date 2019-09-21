@@ -39,7 +39,9 @@ Now you need to initialize the .NET library so that it knows where to send data.
         RouteConfig.RegisterRoutes(RouteTable.Routes);
         BundleConfig.RegisterBundles(BundleTable.Bundles);
         // this is your project's Source ID
-        Astronomer.Analytics.Initialize("1234qwerty");
+        Astronomer.Analytics.Initialize("1234qwerty", new Config()
+            .SetHost("https://e.metarouter.io");
+        );
     }
 
 </script>

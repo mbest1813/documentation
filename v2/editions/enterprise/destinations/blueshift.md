@@ -32,8 +32,8 @@ The easiest way to setup and test the events stream is to observe events coming 
 You can configure the Blueshift account and the event field mappings for our Blueshift Destination, below is the full payload you will need to send to the Platform via Canary. Keep in mind that you will also need to add the configurations of your other destinations as the Platform will overwrite any new instructions over the old one.
 
 ### Config
-#### `eventApiKey`
-*(Required)* The Blueshift Event API Key from your Account Page
+#### `eventApiKey` *(Required)*
+The Blueshift Event API Key from your Account Page
 
 #### `mappedEventNames`
 Replaces the key of your event name into the value specified before sending to Blueshift. For example, by default, when calling `analytics.track('Order Completed')` we'll send an event with the `purchase` action to Blueshift.

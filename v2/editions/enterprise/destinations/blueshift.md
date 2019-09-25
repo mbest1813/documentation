@@ -54,12 +54,12 @@ Below is a full example of the configuration to send into the Platform, with all
          "config":{
             "eventApiKey":"<my Blueshift Event API Key - required>",
             "mappedEventNames":{
-               "ProductViewed":"view",
-               "ProductsSearched":"search",
-               "ProductAdded":"add_to_cart",
-               "ProductRemoved":"remove_from_cart",
-               "CheckoutStarted":"checkout",
-               "OrderCompleted":"purchase"
+               "Product Viewed":"view",
+               "Products Searched":"search",
+               "Product Added":"add_to_cart",
+               "Product Removed":"remove_from_cart",
+               "Checkout Started":"checkout",
+               "Order Completed":"purchase"
             },
             "userAttributesMap":{
                "firstName":"firstname",

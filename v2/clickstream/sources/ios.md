@@ -26,6 +26,12 @@ Then, run a pod install inside your terminal, or from CocoaPods.app. Then, in yo
 SEGAnalyticsConfiguration *configuration = [SEGAnalyticsConfiguration configurationWithWriteKey:@"YOUR_SOURCE_ID"];
 configuration.trackApplicationLifecycleEvents = YES; // Enable this to record certain application events automatically
 configuration.recordScreenViews = YES; // Enable this to record screen views automatically
+configuration.requestFactory = ^(NSURL *url) {
+    NSURLComponents *components = [NSURLComponents componentsWithURL:url resolvingAgainstBaseURL:NO];
+    components.host = @"e.metarouter.io";
+    NSURL *transformedURL = components.URL;
+    return [NSMutableURLRequest requestWithURL:transformedURL];
+};
 [SEGAnalytics setupWithConfiguration:configuration];
 ```
 

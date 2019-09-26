@@ -21,7 +21,7 @@ Initialize this package with the Source ID found in the settings section of your
 
 ```js
 var Analytics = require('astronomer');
-var analytics = new Analytics('METAROUTER_SOURCE_ID');
+var analytics = new Analytics('METAROUTER_SOURCE_ID', {'host':'https://e.metarouter.io'});
 ```
 
 #### Step 3

@@ -35,6 +35,9 @@ In order to create effective Source Configurations, I need to send events to Des
 
 Each configuration for a Destination can be unique per Source, but I cannot have more than one of the same Destination for a single Source. To find out what the `config` parameters are for a Destination, visit the [Destinations section](https://docs.metarouter.io/v2/clickstream/destinations/overview.html) of our Docs and look for Destinations with the _Enterprise_ tag.
 
+## Version Control
+We recommend using version control to save the contents of the configuration JSON file.  The state of the configuration stored inside of the cluster does not maintain a state history.  If a configuration is updated through the process outlined below, it will overwrite the current configuration with the new revision.  In order to roll back a configuration change the pervious version of the previous version of the JSON file will need to be uploaded again.
+
 ## Canary Configuration Management
 Canary is our tool that delegates instructions to the rest of the platform. It has a built-in API that can take updates to Sources and immediately deploy them to the rest of the platform.
 
@@ -48,7 +51,7 @@ Find the pod name of Canary by running `kubectl get pods -n <NAMESPACE>`, fillin
 Using the pod name you copied in Step 1, run the command `kubectl port-forward <POD_NAME> 8080 -n <NAMESPACE>`, replacing the pod name and namespace with the correct values. You should now see the console verify that your local system is not connected to Canary on port 8080.
 
 #### Step 3: POST the Source Configuration to Canary
-You want to send a POST request to `local.metarouter.io:8080/cache/set/WRITEKEY`, where `WRITEKEY` is the Write Key of your Source and the `application/json` body is an object of the Destinations and their configurations.
+You want to send a POST request to `localhost:8080/cache/set/WRITEKEY`, where `WRITEKEY` is the Write Key of your Source and the `application/json` body is an object of the Destinations and their configurations.
 
 Here is an example of the request body:
 
@@ -74,16 +77,19 @@ Here is an example of the request body:
 
 And here is a cURL example of the request:
 
-    curl local.metarouter.io:8080/cache/set/WRITEKEY -X POST --data "{\"google-analytics\": {\"config\": {\"appId\": \"UA-XXXXXXXX-4\"}}}" -H "Content-type: application/json"
+    curl localhost:8080/cache/set/WRITEKEY -X POST --data "{\"google-analytics\": {\"config\": {\"appId\": \"UA-XXXXXXXX-4\"}}}" -H "Content-type: application/json"
 
+Or from a file:
+
+    curl localhost:8080/cache/set/WRITEKEY -X POST --data-binary "@PATH/TO/YOUR-CONFIG-FILE.json" -H "Content-type: application/json"
 
 #### Step 4: Verify Source Configuration
 
-You can also make a GET request to Canary to read the existing Source Configuration by the Source's Write Key. Simply make a GET request to `local.metarouter.io:8080/cache/get/WRITEKEY` and Canary will respond with a JSON playload it has for that configuration.
+You can also make a GET request to Canary to read the existing Source Configuration by the Source's Write Key. Simply make a GET request to `localhost:8080/cache/get/WRITEKEY` and Canary will respond with a JSON playload it has for that configuration.
 
 Here is a cURL example of that request:
 
-    curl local.metarouter.io:8080/cache/get/WRITEKEY
+    curl localhost:8080/cache/get/WRITEKEY
 
 ### Using our Management Tools
 _NOTE: This is a stub of a future feature. Coming Soon._

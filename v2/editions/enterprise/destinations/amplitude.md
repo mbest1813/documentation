@@ -44,7 +44,7 @@ After this application is created, an API Key will be generated and presented in
 
 The Amplitude Event API Key.
 
-#### `trackPages`
+#### `trackAllPages`
 
 Activated by default this setting sends all `page` and `screen` calls to Amplitude as `Loaded a Page`. This feature works with all source types. `default: false` will prevent the integration from sending events.
 
@@ -52,18 +52,13 @@ Activated by default this setting sends all `page` and `screen` calls to Amplitu
 
 Will send all _named_ `page` and `screen` calls to Amplitude. There are two scenarios, depending on the way you're using `analytics.page()` call:
 
-#### `analytics.page('(Category)', '(Name)')`
-
-Will result into `Viewed (Category) (Name) Page` or `Viewed (Category) (Name) Screen` events on your Amplitude dashboard;
-
-#### `analytics.page('(Name)')`
-
-Will result into `Viewed (Name) Page` or `Viewed (Name) Screen` events on your Amplitude dashboard.
-This feature works with Android, Server, and Web sources.
-
 #### `trackCategorizedPages`
 
 Means that every time you call `page` or `screen` and provide a `category`, an event will be sent. It will appear in Amplitude as `Viewed (Category) Page` or `Viewed (Category) Screen`. This feature works with all source types.
+
+#### `usePageDetailsForTrackCalls`
+
+Every time you call the Track event, the page related information will be sent along.
 
 #### `mapQueryParams`
 

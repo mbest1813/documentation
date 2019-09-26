@@ -5,151 +5,361 @@ sidebar: platform_sidebar
 
 MetaRouter makes is easy to send your data to Google Analytics. Once you've set up your source to start tracking data, we'll translate and route that data to Google Analytics.
 
-## What is Google Analytics and how does it work?
+# What is Google Analytics and how does it work?
 
 Google Analytics is a web analytics tool that pools real-time site information for a comprehensive view into user acquisition, audience demographics, and conversion goals. It supports targeted audience and integrates seamlessly with Google AdWords and all DoubleClick products.
 
 Google Analytics requires that you add their snippet to your site. Doing this will give you basic information such as page views, traffic sources, and user location.  If you want to get more detailed user information, you'll need to write custom code in your site. In order to do this, you'll need to have a developer study the Google Analytics API to learn how to implement methods and format data correctly.
 
-## Why send data to Google Analytics using MetaRouter?
+# Why send data to Google Analytics using MetaRouter?
 
 Integrating Google Analytics with MetaRouter means that you do not need to install any Google Analytics code into your site or mobile app. It also greatly eases the processes of tracking more detailed information like what users are doing on a page, e-commerce data, and user attributes. Furthermore, many custom events can be configured directly in the MetaRouter UI, making it easy to track the data that you need.
 
-## Getting Started with Google Analytics and MetaRouter
+# Getting Started with Google Analytics and MetaRouter
 
 *Before you get started, note that you will need to remove Google Analytics snippet from your page if you were using it outside of MetaRouter.*
 
-### Google Analytics Side
+## Google Analytics Side
 
-To start, you'll need your Google Analytics `Tracking ID`. This can be found in the Admin panel and should abide by the following structure: `UA-XXXXXXXX-X`.
+To get started sending events to Google Analytics, first you'll need to [create an account](https://analytics.google.com).
+
+The first step is to get your Google Analytics `Tracking ID`. This can be found in the Admin panel and should abide by the following structure: `UA-XXXXXXXX-X`.
 
 ![google-analytics1](../../../../images/google-analytics1.png)
 
-
-### MetaRouter Side
-
-#### Before starting
-
-Before starting you'll need to enable e-commerce tracking for the view you want to track transactions to.
-This can be done inside of Google Analytics by clicking:
-
-**Admin > View Settings > Ecommerce Settings switch to ON**
+Next, you'll need to enable e-commerce tracking for the view you want to track transactions to.
+This can be done inside of Google Analytics by clicking: **Admin > View Settings > Ecommerce Settings switch to ON**
 
 Without this step transactions will not show up in your reports.
 
 Most of the events are based on Enhanced Ecommerce, which allows you to derive insights by combining impression data, product data, promotion data, and action data. This is required for product-scoped custom dimensions.
-Enable Enhanced Ecommerce inside of Google Analytics by clicking:
+Enable Enhanced Ecommerce inside of Google Analytics by clicking: **Admin > View Settings > Enhanced Ecommerce Settings switch to ON**
 
-**Admin > View Settings > Enhanced Ecommerce Settings switch to ON**
+## MetaRouter Side
 
+You can configure the Google Analytics account and the event field mappings for our Google Analytics Destination, below is the full payload you will need to send to the Platform via Canary. Keep in mind that you will also need to add the configurations of your other destinations as the Platform will overwrite any new instructions over the old one.
 
-You can configure your integrations using a `integrations.yaml` config file, where you define multiple destinations, each one with its custom settings.
+### Config
 
-For Google Analytics, the only mandatory configuration is the `appId`, which represents the `Tracking Id `you've got from the previous step.
+#### `api` *(Required)* - Object
 
-```yaml
-- name: "google-analytics"
-  config:
-      appId: "UA-XXXXXXXX-4"
-      searchParam: "searchRedirect"
-      baseURL: "http://www.metarouter.io/"
+---
+
+The purpose of this section is to allow you to define Google Analytics' specific API information.
+The structure of the `api` property is the following:
+
+* `"endpoint": "https://www.googleanalytics.com/collect"` *(required)* - String
+  * Request's endpoint
+  * ***Note:** This is GA's API endpoint and should not be altered.*
+* `"method": "post"` *(optional)* - String
+  * Request's method
+  * Availavle values: `"get"`, `"post"`
+  * Default value: `"get"`
+  * ***Note:** GA's API is expecting a POST request, this should not be altered.*
+* `"keepAliveAgent": true` *(optional)* - Bool / Object
+  * Request's HttpAgent or HttpsAgent (automatically detected based on endpoint's structure)
+  * Possible values:
+    * `false` => request agent won't be set
+    * `true` => the following default settings will be used as request agent: `{ maxSockets: 100, maxFreeSockets: 10, timeout: 60000, freeSocketTimeout: 30000 }`
+    * Object of agent settings => passed settings will be used as request agent
+  * ***Note:** This should be enabled and set based on your needs and does not affect GA's capabilities.*
+* `"includePayloadInURL": true` *(optional)* - Bool
+  * If this is set to `true`, the request's URL will include the encoded payload
+  * ***Note:** GA's API requires the payload to be included inside the URL.*
+
+#### `events` *(Required)* - Object
+
+---
+
+The purpose of this section is to allow you to define event-specific information based on the event type. Because GA allows you to track `page()` and standard and custom `track()` calls, we divided this into the following sections:
+
+```json
+{
+  "general": [],
+  "page": [],
+  "track": [],
+  "customTrack": []
+}
 ```
 
-For tracking [Product Searched](#products-searched) events make sure that the Google Analytics application has **"site search tracking"** enabled. This can be done inside of Google Analytics by clicking:
+##### `general` section
 
-**Admin > View Settings > Site search Tracking Enabled > set search Query Parameter**.
-  
-Eg: Let's take this usecase: On your webiste, when you search for shirts, you will be redirected to http://yourwebsite.com/searchRedirect=shirts or http://yourwebsite.com/searchRedirect/shirts. 
+All GA API calls require specific properties to be sent regardless of the event type that's being triggered, page or track. This section allows you to define all the properties that are common for all API calls that'll go to GA.
 
-In this case, you should set `searchRedirect` as your **`Query Parameter`** and as your `searchParam:"searchRedirect"` in `integrations.yaml` file. 
+Here's how this section should look like for GA:
 
-
-`baseUrl` should be your domain name, and we'll use these value, alongisde with `searchParam` to build your `Document Location` parameter for [Products Searched](#products-searched) events.
-
-
-## Track
-
-We'll record a Google Analytics event whenever you make a track call. You can see your events inside **Google Analytics under Behavior -> Events -> Overview**. 
-
-#### Required Steps
-
-The most important thing to remember in Google's Universal Analytics is to enable e-commerce tracking for the view you want to track transactions to. This can be done inside of Google Analytics by clicking:
-
-**Admin > View Settings > Ecommerce Settings switch to ON**
-
-Without this step transactions will not show up in your reports.
-
-Enhanced Ecommerce allows you to derive insights by combining impression data, product data, promotion data, and action data. This is required for product-scoped custom dimensions.
-
-Enable Enhanced Ecommerce inside of Google Analytics by clicking
-
-**Admin > View Settings > Enhanced Ecommerce Settings switch to ON**
-
-
-
-### Passing Cookies from Universal Analytics
-
-Universal Analytics (analytics.js) uses the `clientId` to keep track of unique visitors.
-
-A Google Analytics Universal cookie will look like this:
-
-```
-_ga=GA1.2.1033501218.1368477899;
+```json
+"general": [
+  { "input": "1", "output": "v" },
+  { "input": "<TRACKING_ID_HERE>", "output": "tid" },
+  { "input": "properties.currency", "transformations": [{ "type": "assign", "defaultValue": "USD" }, { "type": "toUpperCase" }], "output": "cu" },
+  { "input": "context.page.url", "transformations": [{ "type": "assign" }], "output": "dl" },
+  { "input": "context.page.title", "transformations": [{ "type": "assign" }], "output": "dt" },
+  { "input": "context.page.referrer", "transformations": [{ "type": "assign" }], "output": "dr" },
+  { "input": "context.userAgent", "transformations": [{ "type": "assign" }], "output": "ua" },
+  { "input": "context.ip", "transformations": [{ "type": "assign" }], "output": "uip" },
+  { "input": "userId", "transformations": [{ "type": "assign" }], "output": "uid"}
+]
 ```
 
-The `clientId` is this part: `1033501218.1368477899`
+**Notes**
 
-You can double check that it's your `clientId` by running this script in your javascript console:
+* All GA API calls require the following properties to be sent:
 
-You can double check that it's your clientId by running this script in your javascript console:
+| GA parameter | value | Explanation | Notes |
+| ---- | ---- | --- | --- |
+| `v` | `"1"` | protocol version, currently at version 1 | - |
+| `tid` | your Tracking ID | universal google analytics tracking ID | *please note that you should replace `<TRACKING_ID_HERE>` with your GA Tracking ID* |
+| `cu` | `properties.currency` property | currency uppercase | default value: `"USD"` |
+| `uip` | `context.ip` property | user’s ip | - |
+| `ua` | `context.userAgent` property | user agent | - |
 
+* All other properties included in the `general` section are nice to have.
+
+##### `page` section
+
+All GA API calls require the `t` (hit type) parameter to be sent. For `page()` calls, GA is expecting a hit type `"pageview"`.
+
+Here's how this section should look like for GA:
+
+```json
+"page": [
+  { "input": "pageview", "output": "t" }
+]
 ```
-ga(function (tracker) {
-    var clientId = tracker.get('clientId');
-    console.log('My GA universal client ID is: ' + clientId);
-})
-```
 
-If you want our server-side destination to use your user's clientId, pass it to us in the `integrations['Google Analytics'].clientId` object. You must pass this value manually on every call as we do not store this value for you. If you do not pass this through, we look for the `anonymousID` or a new `uuid()` value to set the required `cid`.
+##### `track` section
 
-Here's an example:
+The purpose of this section is to allow you to define the properties that you want to send over to GA for a specific event.
 
-```javascript
-Analytics.track({
-  user_id: '019mr8mf4r',
-  event: 'Clicked a Link',
-  properties: {
-    linkText     : 'Next'
+Here's how this section should look like for GA for the main standard events:
+
+```json
+"track": [
+  {
+    "event": "Products Searched",
+    "parameters": [
+      { "input": "event", "output": "t" },
+      { "input": "engagement", "output": "ec" },
+      { "input": "search", "output": "ea" },
+      { "input": "properties.query", "transformations": [{ "type": "assign" }] ,"output": "el" }
+    ]
   },
-  integrations: {
-    'Google Analytics': {
-        clientId: '1033501218.1368477899'
-    }
+  {
+    "event": "Product List Viewed",
+    "parameters": [
+      { "input": "event", "output": "t" },
+      { "input": "list", "output": "ec" },
+      { "input": "view", "output": "ea" },
+      { "input": "Product List Viewed", "output": "el" },
+      { "input": "detail", "output": "pa" },
+      { "input": "properties.list_id", "transformations": [{ "type": "assign" }], "output": "il1nm"},
+      {
+        "transformations": [{
+          "type": "toObject",
+          "fields": [{
+            "input": "properties.products",
+            "transformations": [{
+              "type": "toArrayOfObjects",
+              "unfold": "il1pi_INDEX__KEY_",
+              "fields": [
+                { "input": "sku", "transformations": [{ "type": "assign" }], "output": "id" },
+                { "input": "name", "transformations": [{ "type": "assign" }], "output": "nm" },
+                { "input": "brand", "transformations": [{ "type": "assign" }], "output": "br" },
+                { "input": "category", "transformations": [{ "type": "assign" }], "output": "ca" },
+                { "input": "variant", "transformations": [{ "type": "assign" }], "output": "va" },
+                { "input": "position", "transformations": [{ "type": "toInt" }], "output": "ps" },
+                { "input": "price", "transformations": [{ "type": "toFloat" }], "output": "pr" },
+                { "input": "quantity", "transformations": [{ "type": "toInt" }], "output": "qt" }
+              ]
+            }]
+          }]
+        }]
+      }
+    ]
+  },
+  {
+    "event": "Product Viewed",
+    "parameters": [
+      { "input": "event", "output": "t" },
+      { "input": "ordering", "output": "ec" },
+      { "input": "view", "output": "ea" },
+      { "input": "Product Viewed", "output": "el" },
+      { "input": "detail", "output": "pa" },
+      {
+        "transformations": [{
+          "type": "toObject",
+          "fields": [{
+            "input": "properties",
+            "transformations": [{
+              "type": "toArrayOfObjects",
+              "unfold": "pr_INDEX__KEY_",
+              "fields": [
+                { "input": "sku", "transformations": [{ "type": "assign" }], "output": "id" },
+                { "input": "name", "transformations": [{ "type": "assign" }], "output": "nm" },
+                { "input": "brand", "transformations": [{ "type": "assign" }], "output": "br" },
+                { "input": "category", "transformations": [{ "type": "assign" }], "output": "ca" },
+                { "input": "variant", "transformations": [{ "type": "assign" }], "output": "va" },
+                { "input": "position", "transformations": [{ "type": "toInt" }], "output": "ps" },
+                { "input": "price", "transformations": [{ "type": "toFloat" }], "output": "pr" },
+                { "input": "quantity", "transformations": [{ "type": "toInt" }], "output": "qt" }
+              ]
+            }]
+          }]
+        }]
+      }
+    ]
+  },
+  {
+    "event": "Product Added",
+    "parameters": [
+      { "input": "event", "output": "t" },
+      { "input": "ordering", "output": "ec" },
+      { "input": "view", "output": "ea" },
+      { "input": "Product Added", "output": "el" },
+      { "input": "add", "output": "pa" },
+      {
+        "transformations": [{
+          "type": "toObject",
+          "fields": [{
+            "input": "properties",
+            "transformations": [{
+              "type": "toArrayOfObjects",
+              "unfold": "pr_INDEX__KEY_",
+              "fields": [
+                { "input": "sku", "transformations": [{ "type": "assign" }], "output": "id" },
+                { "input": "name", "transformations": [{ "type": "assign" }], "output": "nm" },
+                { "input": "brand", "transformations": [{ "type": "assign" }], "output": "br" },
+                { "input": "category", "transformations": [{ "type": "assign" }], "output": "ca" },
+                { "input": "variant", "transformations": [{ "type": "assign" }], "output": "va" },
+                { "input": "position", "transformations": [{ "type": "toInt" }], "output": "ps" },
+                { "input": "price", "transformations": [{ "type": "toFloat" }], "output": "pr" },
+                { "input": "quantity", "transformations": [{ "type": "toInt" }], "output": "qt" }
+              ]
+            }]
+          }]
+        }]
+      }
+    ]
+  },
+  {
+    "event": "Cart Viewed",
+    "parameters": [
+      { "input": "event", "output": "t" },
+      { "input": "cart", "output": "ec" },
+      { "input": "view", "output": "ea" },
+      { "input": "Cart Viewed", "output": "el" },
+      { "input": "checkout", "output": "pa" },
+      {
+        "transformations": [{
+          "type": "toObject",
+          "fields": [{
+            "input": "properties.products",
+            "transformations": [{
+              "type": "toArrayOfObjects",
+              "unfold": "il1pi_INDEX__KEY_",
+              "fields": [
+                { "input": "sku", "transformations": [{ "type": "assign" }], "output": "id" },
+                { "input": "name", "transformations": [{ "type": "assign" }], "output": "nm" },
+                { "input": "brand", "transformations": [{ "type": "assign" }], "output": "br" },
+                { "input": "category", "transformations": [{ "type": "assign" }], "output": "ca" },
+                { "input": "variant", "transformations": [{ "type": "assign" }], "output": "va" },
+                { "input": "position", "transformations": [{ "type": "toInt" }], "output": "ps" },
+                { "input": "price", "transformations": [{ "type": "toFloat" }], "output": "pr" },
+                { "input": "quantity", "transformations": [{ "type": "toInt" }], "output": "qt" }
+              ]
+            }]
+          }]
+        }]
+      }
+    ]
+  },
+  {
+    "event": "Order Completed",
+    "parameters": [
+      { "input": "transaction", "output": "t" },
+      { "input": "cart", "output": "ec" },
+      { "input": "order_completed", "output": "ea" },
+      { "input": "Order Completed", "output": "el" },
+      { "input": "purchase", "output": "pa" },
+      { "input": "properties.order_id", "transformations": [{ "type": "assign" }], "output": "ti" },
+      { "transformations": [{ "type": "toRevenue", "priorities": ["properties.revenue", "properties.total"] }], "output": "tr" },
+      { "input": "properties.total", "transformations": [{ "type": "toFloat" }], "output": "tt" },
+      {
+        "transformations": [{
+          "type": "toObject",
+          "fields": [{
+            "input": "properties.products",
+            "transformations": [{
+              "type": "toArrayOfObjects",
+              "unfold": "pr_INDEX__KEY_",
+              "fields": [
+                { "input": "sku", "transformations": [{ "type": "assign" }], "output": "id" },
+                { "input": "name", "transformations": [{ "type": "assign" }], "output": "nm" },
+                { "input": "brand", "transformations": [{ "type": "assign" }], "output": "br" },
+                { "input": "category", "transformations": [{ "type": "assign" }], "output": "ca" },
+                { "input": "variant", "transformations": [{ "type": "assign" }], "output": "va" },
+                { "input": "position", "transformations": [{ "type": "toInt" }], "output": "ps" },
+                { "input": "price", "transformations": [{ "type": "toFloat" }], "output": "pr" },
+                { "input": "quantity", "transformations": [{ "type": "toInt" }], "output": "qt" }
+              ]
+            }]
+          }]
+        }]
+      }
+    ]
   }
-});
+]
 ```
 
-### User-agent
+**Notes**
 
-By default, we won't set the user-agent header. If you have your user's user-agent server-side, you can send it to us using the context object. The context object is an optional argument supported by all of our server-side sources.
+* All GA track calls require the following properties to be sent:
 
-### Visitor Geo-Location
+| GA parameter | value | Explanation | Notes |
+| ---- | ---- | --- | --- |
+| `t` | depending on the triggered event, this value will vary | available values: `"event"`, `"transaction"`, `"item"`, `"social"`, `"exception"`, `"timing"` |
+| `ec` | `properties.category` property | event category | - |
+| `ea` | `properties.action` property | event action | - |
 
-Google Analytics uses the IP address of the HTTP request to determine the location of the visitor. For geo-location to work from a server-side call you'll need to include the visitor's ip in your `.track()` call.
+##### `customTrack` section
 
-Here's an example:
+The purpose of this section is to allow you to specify if a custom event (event that is not mapped inside the `track` section) should be triggered or not. It also allows you to add a list of specific properties that should exist for all custom events.
 
+Here's how this section should look like for GA:
+
+```json
+"customTrack": {
+  "allowAnyProperty": true,
+  "mappedProperties": [
+    { "input": "event", "output": "t" },
+    { "input": "properties.category", "transformations": [{ "type": "assign", "defaultValue": "custom" }], "output": "ec" },
+    { "input": "properties.action", "transformations": [{ "type": "assign", "defaultValue": "custom" }], "output": "ea" },
+    { "input": "event", "transformations": [{ "type": "assign", "defaultValue": "Custom Event" }], "output": "el" },
+  ]
+}
 ```
-Analytics.track(
-    user_id: '019mr8mf4r',
-    event: 'Purchased Item',
-    properties: { revenue: 39.95 }
-    context: { ip: '11.1.11.11' })
-```
-  
-### Analytics.js Standard E-commerce Events to GA Enhanced E-commerce events mapping
 
-##### Products Searched
+**Notes**
+
+* `allowAnyProperty` set to `true` will append the track `properties` to the final payload using the same `key: value` structure and naming
+* `mappedProperties` allows you to define properties that you want to add to all your custom track calls
+
+#### `cookies` *(Optional)* - String
+
+---
+
+Our Analytics.js library includes a sync-injector. The purpose of this sync-injector is to load the minimal 3rd party tag in order for it to drop it's first party cookies. It will then grab these values and include those into the event's final structure.
+
+The purpose of this `cookies` section is to flag if first party cookie values should be used and from where to retrieve those values.
+
+There are first party cookies available for Google Analytics, and those can be accessed and automatically added to the API's payload by setting `"cookies": "integrations.googleAnalytics"`.
+
+# Analytics.js Standard E-commerce Events to GA Enhanced E-commerce events mapping
+
+We put together a list with expected properties for each of the Standard E-commerce Events based on [Google Analytics' documentation](https://developers.google.com/analytics/devguides/collection/protocol/v1/parameters).
+
+## Products Searched
 
 This is a simple GA request, not supported out of the box by Enhanced E-Commerce. In order to send the query to the GA server you have to specify a parameter dl (Document Location) that contains the query parameter that you set in site search tracking setting of the app.
 Example query:
@@ -161,7 +371,7 @@ https://www.google-analytics.com/collect?v=1&tid=UA-1234567-1&cid=123e4567-e89b-
 where `searchRedirect` is the set site search query parameter and `trees` is the search query that we got from Analytics.js's Products Searched `query` property.
 
 
-##### Product List Viewed
+## Product List Viewed
 
 This query takes advantage of GA's Enhanced E-Commerce. Besides [the mandatory fields](#mandatory-fields), these other parameters will be used:
 
@@ -175,8 +385,7 @@ This query takes advantage of GA's Enhanced E-Commerce. Besides [the mandatory f
 
 * [Product list fields](#product-list-fields) with `<type>` "pr" and `N` 1, because there's only one product 
 
-
-#### Promotion events
+## Promotion events
 
 Enhanced Ecommerce allows you to go beyond measuring product performance to measure the internal and external marketing efforts that support those products. To take advantage of enhance e-commerce's promotion reports, you can easily collect data about promotion impressions and promotion clicks with Analytics.js, like so:
 
@@ -198,7 +407,7 @@ analytics.track('Clicked Promotion', {
 });
 ```
 
-##### Promotion Viewed
+### Promotion Viewed
 
 Besides [the mandatory fields](#mandatory-fields), the parameters for this call are as follow:
 
@@ -207,7 +416,7 @@ Besides [the mandatory fields](#mandatory-fields), the parameters for this call 
 | `t` | "event" | Hit type  
 - [Promotion fields](#promotion-fields)
   
-##### Promotion Clicked
+### Promotion Clicked
 
 Besides [the mandatory fields](#mandatory-fields), the parameters for this call are as follow:
 
@@ -220,8 +429,9 @@ Besides [the mandatory fields](#mandatory-fields), the parameters for this call 
 
 - [Promotion fields](#promotion-fields)
 
+## Product Events
 
-##### Product Clicked
+### Product Clicked
 
 This query takes advantage of GA's Enhanced E-Commerce. Besides [the mandatory fields](#mandatory-fields), these other parameters will be used:
 
@@ -234,8 +444,7 @@ This query takes advantage of GA's Enhanced E-Commerce. Besides [the mandatory f
 
 * [Product list fields](#product-list-fields) with `<type>` "pr" and `<ProductIndex>` 1, because there's only one product 
 
-
-##### Product Viewed
+### Product Viewed
 
 This query takes advantage of GA's Enhanced E-Commerce. Besides [the mandatory fields](#mandatory-fields), these other parameters will be used:
 
@@ -248,10 +457,9 @@ This query takes advantage of GA's Enhanced E-Commerce. Besides [the mandatory f
 
 * [Product list fields](#product-list-fields) with `<type>` "pr" and `<ProductIndex>` 1, because there's only one product 
 
-#### Cart events
+## Cart events
 
-
-##### Product Added
+### Product Added
 
 This query takes advantage of GA's Enhanced E-Commerce. Besides [the mandatory fields](#mandatory-fields), these other parameters will be used:
 
@@ -264,10 +472,9 @@ This query takes advantage of GA's Enhanced E-Commerce. Besides [the mandatory f
 
 * [Product list fields](#product-list-fields) with `<type>` "pr" and `<ProductIndex>` 1, because there's only one product 
  
-
 **NOTE:** at this stage we can't associate a `cart_id` to send to GA.
 
-##### Product Removed
+### Product Removed
 
 This query takes advantage of GA's Enhanced E-Commerce. Besides [the mandatory fields](#mandatory-fields), these other parameters will be used:
 
@@ -283,7 +490,7 @@ This query takes advantage of GA's Enhanced E-Commerce. Besides [the mandatory f
 
 **NOTE:** at this stage we can't associate a `cart_id` to send to GA.
 
-##### Cart Viewed
+### Cart Viewed
 
 This query takes advantage of GA's Enhanced E-Commerce. Besides [the mandatory fields](#mandatory-fields), these other parameters will be used:
 
@@ -294,16 +501,14 @@ This query takes advantage of GA's Enhanced E-Commerce. Besides [the mandatory f
 | `ec` | "cart" | Event category | 
 | `pa` | "checkout" | Product action |
 
-
 * [Product list fields](#product-list-fields) with `<type>` "list" and `<ProductIndex>` between 1 and products length
 
 
-#### Checkout events
+## Checkout events
 
 The biggest differentiator between e-commerce and enhanced e-commerce is support for checkout steps. To take advantage of tracking your checkout funnel and measuring metrics like cart abandonment, etc, you'll first need to configure your checkout funnel in the Google Analytics admin interface, giving easily readable labels to the numeric checkout steps:
 
 ![checkout-funnel](../../../../images/google-analytics-checkout-funnel.png)
-
 
 Then you'll instrument your checkout flow with `Viewed Checkout Step` and `Completed Checkout Step` for each step of the funnel you configured in the Google Analytics admin interface, passing the step number and step-specific options through as a property of those events:
 
@@ -357,12 +562,12 @@ analytics.track('Completed Checkout Step', {
 });
 
 ```
+
 **Note**: `shipping_method` and `payment_method` are semantic properties so if you want to send that information, please do so in this exact spelling!
 
 You can have as many or as few steps in the checkout funnel as you'd like. The 4 steps above merely serve as an example. Note that you'll still need to track the `Order Completed `event per our standard e-commerce tracking API after you've tracked the checkout steps.
 
-
-##### Checkout Started
+### Checkout Started
 
 This query takes advantage of GA's Enhanced E-Commerce. Besides [the mandatory fields](#mandatory-fields), these other parameters will be used:
 
@@ -375,7 +580,7 @@ This query takes advantage of GA's Enhanced E-Commerce. Besides [the mandatory f
 
 * [Product list fields](#product-list-fields) with `<type>` "list" and `<ProductIndex>` between 1 and products length
 
-##### Checkout Step Viewed
+### Checkout Step Viewed
 
 Before starting down this path, Enhanced E-Commerce needs to be enabled. Furthermore, the checkout steps need to be defined in the admin section of the app.
 
@@ -387,17 +592,7 @@ This query takes advantage of GA's Enhanced E-Commerce. Besides [the mandatory f
 | `pa` | "checkout" | Product action | 
 - [Checkout fields](#checkout-fields)
 
-
-##### Checkout Step Completed
-
-This query takes advantage of GA's Enhanced E-Commerce. Besides [the mandatory fields](#mandatory-fields), these other parameters will be used:
-| GA parameter | value | Explanation |
-| ---- | ---- | --- |
-| `pa` | "checkout_option" | Product action | 
-- [Checkout fields](#checkout-fields)
-
-
-##### Payment Info Entered
+### Checkout Step Completed
 
 This query takes advantage of GA's Enhanced E-Commerce. Besides [the mandatory fields](#mandatory-fields), these other parameters will be used:
 | GA parameter | value | Explanation |
@@ -405,9 +600,17 @@ This query takes advantage of GA's Enhanced E-Commerce. Besides [the mandatory f
 | `pa` | "checkout_option" | Product action | 
 - [Checkout fields](#checkout-fields)
 
-#### Ordering events
+### Payment Info Entered
 
-##### Order Updated
+This query takes advantage of GA's Enhanced E-Commerce. Besides [the mandatory fields](#mandatory-fields), these other parameters will be used:
+| GA parameter | value | Explanation |
+| ---- | ---- | --- |
+| `pa` | "checkout_option" | Product action | 
+- [Checkout fields](#checkout-fields)
+
+## Ordering events
+
+### Order Updated
 
 This query takes advantage of GA's Enhanced E-Commerce. Besides [the mandatory fields](#mandatory-fields), these other parameters will be used:
 
@@ -420,7 +623,7 @@ This query takes advantage of GA's Enhanced E-Commerce. Besides [the mandatory f
 - [Transaction fields](#transaction-fields)
 - [Product list fields](#product-list-fields) with `<type>` "pr" and `<ProductIndex>` between 1 and products length
 
-##### Order Completed
+### Order Completed
 
 This query takes advantage of GA's Enhanced E-Commerce. Besides [the mandatory fields](#mandatory-fields), these other parameters will be used:
 
@@ -476,8 +679,7 @@ analytics.track({
 
 ```
 
-
-##### Order Refunded
+### Order Refunded
 
 This query takes advantage of GA's Enhanced E-Commerce. Besides [the mandatory fields](#mandatory-fields), these other parameters will be used:
 
@@ -490,10 +692,9 @@ This query takes advantage of GA's Enhanced E-Commerce. Besides [the mandatory f
 
 - [Transaction fields](#transaction-fields) for `negative` transasctions
 * [Product list fields](#product-list-fields) with `<type>` "pr" and `<ProductIndex>` between 1 and products length
-  
-
 
 For full refunds, fire this event whenever an order/transaction gets refunded:
+
 ```
 analytics.track('Order Refunded', {
     order_id: '50314b8e9bcf000000000000',
@@ -501,6 +702,7 @@ analytics.track('Order Refunded', {
 ```
 
 For partial refunds, you must include the productId and quantity for the items you want refunded:
+
 ```
 analytics.track('Order Refunded', {
     order_id: '50314b8e9bcf000000000000',
@@ -513,24 +715,9 @@ analytics.track('Order Refunded', {
   });
 ```
 
+## Social events
 
-
-#### Social events
-
-
-
-##### Product Shared
-This query takes advantage of GA's Enhanced E-Commerce. Besides [the mandatory fields](#mandatory-fields), these other parameters will be used:
-
-| GA parameter | value | Explanation |
-| ---- | ---- | --- |
-| `t` | "social" | Hit type  
-| `sa` | "share" | Product action | 
-
-* [Social details fields](#social-details-fields)
-
-
-##### Cart Shared
+### Product Shared
 
 This query takes advantage of GA's Enhanced E-Commerce. Besides [the mandatory fields](#mandatory-fields), these other parameters will be used:
 
@@ -541,8 +728,18 @@ This query takes advantage of GA's Enhanced E-Commerce. Besides [the mandatory f
 
 * [Social details fields](#social-details-fields)
 
+### Cart Shared
 
-##### Product Reviewed
+This query takes advantage of GA's Enhanced E-Commerce. Besides [the mandatory fields](#mandatory-fields), these other parameters will be used:
+
+| GA parameter | value | Explanation |
+| ---- | ---- | --- |
+| `t` | "social" | Hit type  
+| `sa` | "share" | Product action | 
+
+* [Social details fields](#social-details-fields)
+
+### Product Reviewed
 
 This query takes advantage of GA's Enhanced E-Commerce but there is no native support for this type of action. It is recommended that this action be marked as a **social** hit. Besides [the mandatory fields](#mandatory-fields), these other parameters will be used:
 
@@ -553,52 +750,6 @@ This query takes advantage of GA's Enhanced E-Commerce but there is no native su
 * [Review fields](#social-details-fields) with `sn` hardcoded 
 
 
-#### Custom events
-For a custom event,  these event attributes are sent to Google Analytics:
-
-| GA parameter | value | Explanation |
-| ---- | ---- | --- |
-| `t` | "event" | Hit type  
-| `ea` | "custom" | Event action |
-| `ec` | "custom" | Event category | 
-
-and we'll map the following properties: 
-  * `userAgent`
-  *  `userIp`, 
-  * [Product list fields](#product-list-fields) with `<type>` = "il1pi" and `<N>` between 1 and  `products.length + 1`. - if you pass a products array.
-   *  [Product list fields](#product-list-fields) with `<type>` = "pr" and `<N>` = 1. - if you pass a single product.
-    * We'll add all other `properties`, excepting PII (Personally identifiable information)
-
-
-```javascript
-analytics.track("Custom Event With Products", {
-    properties: {
-        products: [
-        {
-            product_id: '507f1f77bcf86cd799439011',
-            sku: '45790-32',
-            name: 'Monopoly: 3rd Edition',
-            price: 19,
-            position: 1,
-            category: `IntegrationUnitTest - ${moment().format('DD-MM-YYYY HH:mm:ss')}`,
-            url: 'https://www.example.com/product/path',
-            image_url: 'https://www.example.com/product/path.jpg',
-        },
-        {
-            product_id: '505bd76785ebb509fc183733',
-            sku: '46493-32',
-            name: 'Uno Card Game',
-            price: 3,
-            position: 2,
-            category: `IntegrationUnitTest - ${moment().format('DD-MM-YYYY HH:mm:ss')}`,
-            variant: 'variant value',
-        },
-    ]}
-});
-```
-
-
-
 ### Fields mapping
 
 ### 1. Mandatory fields
@@ -606,8 +757,7 @@ analytics.track("Custom Event With Products", {
 | Ga field | Mapping  | Explanation  |
 | --------|--------  |  ----------- |  
 | `v` | "1" |protocol version, currently at version 1
-| `tid` | `trackingId` from your `integrations.yaml` | universal google analytics tracking ID. 
-| `cid` | `providers.googleAnalytics.clientId` from your `track()` calls or `annonymousId` or new `uuid()` |  the client ID set or generated by ga.js. This is in UUID (version 4) format. Eg: cid=123e4567-e89b-12d3-a456-426655440000
+| `tid` | `trackingId` from your `integrations.yaml` | universal google analytics tracking ID
 | `t` |  `pageview`, `event`, `social`, `transaction`, `item`, `exception`, `appview` or `timing`.|  hit type
 | `cu` | `currency` property from `track()` calls. Default `USD` | currency |
 | `uip` | `context.ip` property from your `track()` calls | user's ip | 
@@ -679,3 +829,225 @@ Where `<type>` is either `"pr"` - for simple products, or `il1pi` - "il" prefix 
 **Note:** `<ProductIndex>` stands for a product index number. It's an integer from 1 to 200 (limited to 200) and is not an array index. `il1pi1id`, `il1pi2id`, `il1pi3id`...`il1pi200id` are separate parameters that are sent individually.
 
 **Note 2:** besides the hard limit of 200 products do not forget about the 8kb/request hard limit that the GA collect API has.
+
+# Complete GA configurations
+
+---
+
+Here's a full example of the configuration file for Google Analytics with the following functionalities:
+
+* sending page calls
+* mapping standard events according to GA's specifications
+* allows any triggered event that is not mapped to be sent over to GA with the exact `properties` structure with what the track event is being triggered; mandatory properties are appended
+
+```json
+{
+  "api": {
+    "endpoint": "https://www.google-analytics.com/collect",
+    "method": "post",
+    "keepAliveAgent": true,
+    "includePayloadInURL": true
+  },
+  "cookies": "integrations.googleAnalytics",
+  "events": {
+    "general": [
+      { "input": "1", "output": "v" },
+      { "input": "UA-XXXXXXXXX-Y", "output": "tid" },
+      { "input": "properties.currency", "transformations": [{ "type": "assign", "defaultValue": "USD" }, { "type": "toUpperCase" }], "output": "cu" },
+      { "input": "context.page.url", "transformations": [{ "type": "assign" }], "output": "dl" },
+      { "input": "context.page.title", "transformations": [{ "type": "assign" }], "output": "dt" },
+      { "input": "context.page.referrer", "transformations": [{ "type": "assign" }], "output": "dr" },
+      { "input": "context.userAgent", "transformations": [{ "type": "assign" }], "output": "ua" },
+      { "input": "context.ip", "transformations": [{ "type": "assign" }], "output": "uip" },
+      { "input": "userId", "transformations": [{ "type": "assign" }], "output": "uid"}
+    ],
+    "page": [
+      { "input": "pageview", "output": "t" }
+    ],
+    "track": [
+      {
+        "event": "Products Searched",
+        "parameters": [
+          { "input": "event", "output": "t" },
+          { "input": "engagement", "output": "ec" },
+          { "input": "search", "output": "ea" },
+          { "input": "properties.query", "transformations": [{ "type": "assign" }] ,"output": "el" }
+        ]
+      },
+      {
+        "event": "Product List Viewed",
+        "parameters": [
+          { "input": "event", "output": "t" },
+          { "input": "list", "output": "ec" },
+          { "input": "view", "output": "ea" },
+          { "input": "Product List Viewed", "output": "el" },
+          { "input": "detail", "output": "pa" },
+          { "input": "properties.list_id", "transformations": [{ "type": "assign" }], "output": "il1nm"},
+          {
+            "transformations": [{
+              "type": "toObject",
+              "fields": [{
+                "input": "properties.products",
+                "transformations": [{
+                  "type": "toArrayOfObjects",
+                  "unfold": "il1pi_INDEX__KEY_",
+                  "fields": [
+                    { "input": "sku", "transformations": [{ "type": "assign" }], "output": "id" },
+                    { "input": "name", "transformations": [{ "type": "assign" }], "output": "nm" },
+                    { "input": "brand", "transformations": [{ "type": "assign" }], "output": "br" },
+                    { "input": "category", "transformations": [{ "type": "assign" }], "output": "ca" },
+                    { "input": "variant", "transformations": [{ "type": "assign" }], "output": "va" },
+                    { "input": "position", "transformations": [{ "type": "toInt" }], "output": "ps" },
+                    { "input": "price", "transformations": [{ "type": "toFloat" }], "output": "pr" },
+                    { "input": "quantity", "transformations": [{ "type": "toInt" }], "output": "qt" }
+                  ]
+                }]
+              }]
+            }]
+          }
+        ]
+      },
+      {
+        "event": "Product Viewed",
+        "parameters": [
+          { "input": "event", "output": "t" },
+          { "input": "ordering", "output": "ec" },
+          { "input": "view", "output": "ea" },
+          { "input": "Product Viewed", "output": "el" },
+          { "input": "detail", "output": "pa" },
+          {
+            "transformations": [{
+              "type": "toObject",
+              "fields": [{
+                "input": "properties",
+                "transformations": [{
+                  "type": "toArrayOfObjects",
+                  "unfold": "pr_INDEX__KEY_",
+                  "fields": [
+                    { "input": "sku", "transformations": [{ "type": "assign" }], "output": "id" },
+                    { "input": "name", "transformations": [{ "type": "assign" }], "output": "nm" },
+                    { "input": "brand", "transformations": [{ "type": "assign" }], "output": "br" },
+                    { "input": "category", "transformations": [{ "type": "assign" }], "output": "ca" },
+                    { "input": "variant", "transformations": [{ "type": "assign" }], "output": "va" },
+                    { "input": "position", "transformations": [{ "type": "toInt" }], "output": "ps" },
+                    { "input": "price", "transformations": [{ "type": "toFloat" }], "output": "pr" },
+                    { "input": "quantity", "transformations": [{ "type": "toInt" }], "output": "qt" }
+                  ]
+                }]
+              }]
+            }]
+          }
+        ]
+      },
+      {
+        "event": "Product Added",
+        "parameters": [
+          { "input": "event", "output": "t" },
+          { "input": "ordering", "output": "ec" },
+          { "input": "view", "output": "ea" },
+          { "input": "Product Added", "output": "el" },
+          { "input": "add", "output": "pa" },
+          {
+            "transformations": [{
+              "type": "toObject",
+              "fields": [{
+                "input": "properties",
+                "transformations": [{
+                  "type": "toArrayOfObjects",
+                  "unfold": "pr_INDEX__KEY_",
+                  "fields": [
+                    { "input": "sku", "transformations": [{ "type": "assign" }], "output": "id" },
+                    { "input": "name", "transformations": [{ "type": "assign" }], "output": "nm" },
+                    { "input": "brand", "transformations": [{ "type": "assign" }], "output": "br" },
+                    { "input": "category", "transformations": [{ "type": "assign" }], "output": "ca" },
+                    { "input": "variant", "transformations": [{ "type": "assign" }], "output": "va" },
+                    { "input": "position", "transformations": [{ "type": "toInt" }], "output": "ps" },
+                    { "input": "price", "transformations": [{ "type": "toFloat" }], "output": "pr" },
+                    { "input": "quantity", "transformations": [{ "type": "toInt" }], "output": "qt" }
+                  ]
+                }]
+              }]
+            }]
+          }
+        ]
+      },
+      {
+        "event": "Cart Viewed",
+        "parameters": [
+          { "input": "event", "output": "t" },
+          { "input": "cart", "output": "ec" },
+          { "input": "view", "output": "ea" },
+          { "input": "Cart Viewed", "output": "el" },
+          { "input": "checkout", "output": "pa" },
+          {
+            "transformations": [{
+              "type": "toObject",
+              "fields": [{
+                "input": "properties.products",
+                "transformations": [{
+                  "type": "toArrayOfObjects",
+                  "unfold": "il1pi_INDEX__KEY_",
+                  "fields": [
+                    { "input": "sku", "transformations": [{ "type": "assign" }], "output": "id" },
+                    { "input": "name", "transformations": [{ "type": "assign" }], "output": "nm" },
+                    { "input": "brand", "transformations": [{ "type": "assign" }], "output": "br" },
+                    { "input": "category", "transformations": [{ "type": "assign" }], "output": "ca" },
+                    { "input": "variant", "transformations": [{ "type": "assign" }], "output": "va" },
+                    { "input": "position", "transformations": [{ "type": "toInt" }], "output": "ps" },
+                    { "input": "price", "transformations": [{ "type": "toFloat" }], "output": "pr" },
+                    { "input": "quantity", "transformations": [{ "type": "toInt" }], "output": "qt" }
+                  ]
+                }]
+              }]
+            }]
+          }
+        ]
+      },
+      {
+        "event": "Order Completed",
+        "parameters": [
+          { "input": "transaction", "output": "t" },
+          { "input": "cart", "output": "ec" },
+          { "input": "order_completed", "output": "ea" },
+          { "input": "Order Completed", "output": "el" },
+          { "input": "purchase", "output": "pa" },
+          { "input": "properties.order_id", "transformations": [{ "type": "assign" }], "output": "ti" },
+          { "transformations": [{ "type": "toRevenue", "priorities": ["properties.revenue", "properties.total"] }], "output": "tr" },
+          { "input": "properties.total", "transformations": [{ "type": "toFloat" }], "output": "tt" },
+          {
+            "transformations": [{
+              "type": "toObject",
+              "fields": [{
+                "input": "properties.products",
+                "transformations": [{
+                  "type": "toArrayOfObjects",
+                  "unfold": "pr_INDEX__KEY_",
+                  "fields": [
+                    { "input": "sku", "transformations": [{ "type": "assign" }], "output": "id" },
+                    { "input": "name", "transformations": [{ "type": "assign" }], "output": "nm" },
+                    { "input": "brand", "transformations": [{ "type": "assign" }], "output": "br" },
+                    { "input": "category", "transformations": [{ "type": "assign" }], "output": "ca" },
+                    { "input": "variant", "transformations": [{ "type": "assign" }], "output": "va" },
+                    { "input": "position", "transformations": [{ "type": "toInt" }], "output": "ps" },
+                    { "input": "price", "transformations": [{ "type": "toFloat" }], "output": "pr" },
+                    { "input": "quantity", "transformations": [{ "type": "toInt" }], "output": "qt" }
+                  ]
+                }]
+              }]
+            }]
+          }
+        ]
+      }
+    ],
+    "customTrack": {
+      "allowAnyProperty": true,
+      "mappedProperties": [
+        { "input": "event", "output": "t" },
+        { "input": "properties.category", "transformations": [{ "type": "assign", "defaultValue": "custom" }], "output": "ec" },
+        { "input": "properties.action", "transformations": [{ "type": "assign", "defaultValue": "custom" }], "output": "ea" },
+        { "input": "event", "transformations": [{ "type": "assign", "defaultValue": "Custom Event" }], "output": "el" },
+      ]
+    }
+  }
+}
+```

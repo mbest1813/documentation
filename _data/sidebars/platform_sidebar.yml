@@ -52,6 +52,10 @@ entries:
           url: /v2/editions/enterprise/destinations/adwords.html
           output: web
 
+        - title: Amplitude
+          url: /v2/editions/enterprise/destinations/amplitude.html
+          output: web
+
         - title: Bing Ads
           url: /v2/editions/enterprise/destinations/bing-ads.html
           output: web

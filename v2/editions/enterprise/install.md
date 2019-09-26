@@ -9,16 +9,13 @@ sidebar: platform_sidebar
 ## Cloud Provider Prerequisites
 
 ### Google Cloud (GCP)
-#### Networking
 For a proper DNS setup, our platform will require a Static IP to be assigned to it. First, reserve a Static IP (Found in GCP > Networking > VPC Network > External IP Addresses) and note the IP Address. This will be needed during the installation process.
 
 ### Amazon Web Services (AWS)
-#### Networking
 _NOTE: This is a stub of an existing feature. Details coming soon._
 
 ## Kubernetes Prerequisites
-### Create the namespace for the platform
-We recommend creating a namespace that will be used solely by the MetaRouter Platform:
+Create the namespace for the platform. We recommend creating a namespace that will be used solely by the MetaRouter Platform:
 
     kubectl create namespace mr-ee
 

@@ -44,6 +44,120 @@ Replaces the key of an event payload's property object into the value specified 
 #### `eventAttributesMap`
 Replaces the key of an event payload's property object into the value specified before sending to Blueshift, specifically for properties that define event values
 
+
+####  `fallbackToDefault`
+Allows you to control the default fall-back behaviour.
+Possible fields to control:
+* "customer_id": [boolean],
+* "username": [boolean],
+* "currency": [boolean],
+* "phones": [boolean],
+* "websites": [boolean],
+
+If following properties are enabled in  `config.fallbackToDefault` , next behavior should be expected:
+
+* `customer_id` falls back to ⇒ `user_id` ⇒ `anonymous_id` ⇒ `session_id`
+* `username` falls back to `traits.username` ⇒ `properties.username`⇒ `userId` ⇒`anonymousId`
+* `session_id` falls back to `anonymous_id`
+* `currency` falls back to `'USD'` 
+* `phones` falls back to single `phone`
+* `websites`  falls back to `website`
+
+Except the `session_id`. It is disabled totally in request payload/config, since it is the same as `anonymous_id` . If you want to send `session_id` , simply place it to `properties`.
+
+Also anything can be overwritten if placed directly inside `properties` object.
+
+## Examples:
+
+Given the following config: 
+
+    config: {
+    	fallbackToDefault: {
+    		customer_id: true,
+    	}
+    }
+
+Calling event with `customer_id`
+
+    analytics.track(‘event’, {
+      ...
+    	anonymousId: 'Anonumous ID value',
+    	properties: {
+    		customerId: 'My Customer Id',	
+    	}
+      ...
+    })
+
+will result in payload that contains:
+
+    {
+    	...
+    	anonymous_id: 'Anonymous ID value',
+    	customer_id: 'My Customer Id'
+    	...
+    } 
+
+Calling event without `customer_id`
+
+    analytics.track(‘event’, {
+      ...
+    	anonymousId: 'Anonymous ID value',
+      ...
+    })
+
+will result the payload that contains:
+
+    {
+    	...
+    	anonymous_id: 'Anonymous ID value',
+    	customer_id: 'Anonymous ID value'
+    	...
+    } 
+
+Given the following config: 
+
+    config: {
+    	fallbackToDefault: {
+    		customer_id: false, // or if it's missing
+    	}
+    }
+
+Calling event with `customer_id`
+
+    analytics.track(‘event’, {
+      ...
+    	anonymousId: 'Anonymous ID value',
+    	properties: {
+    		customerId: 'My Customer Id',	
+    	}
+      ...
+    })
+
+will result in payload that contains `customer_id` and it's value from `properties`:
+
+    {
+    	...
+    	anonymous_id: 'Anonymous ID value',
+    	customer_id: 'My Customer Id'
+    	...
+    } 
+
+Calling event without `customer_id`
+
+    analytics.track(‘event’, {
+      ...
+    	anonymousId: 'Anonymous ID value',
+      ...
+    })
+
+will result in payload that is missing the `customer_id`:
+
+    {
+    	...
+    	anonymous_id: 'Anonymous ID value',
+    	...
+    }
+    
 ---
 Below is a full example of the configuration to send into the Platform, with all of the defaults specified. Ensure to customize to match the data that you send as part of your analyitcs event.
 
@@ -53,6 +167,13 @@ Below is a full example of the configuration to send into the Platform, with all
       "blueshift":{
          "config":{
             "eventApiKey":"<my Blueshift Event API Key - required>",
+            "fallbackToDefault": {
+               "customer_id": true,
+               "username": true,
+               "currency": true,
+               "phones": true,
+               "websites": true,
+            },
             "mappedEventNames":{
                "Product Viewed":"view",
                "Products Searched":"search",

@@ -51,6 +51,8 @@ Once completed, you should have the following items ready to go:
 
 If this list looks good, you are ready to jump over to the MetaRouter UI and create the destination!
 
+Ensure that you give the Service Account the `BigQuery Editor` role in roder for us to have proper permissions to load data into your cloud.
+
 ---
 
 ## Activating your BigQuery integration on MetaRouter

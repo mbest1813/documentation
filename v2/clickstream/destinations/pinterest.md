@@ -28,34 +28,66 @@ To get started sending events to Pinterest, first sign up for [Pinterest for Bus
 
 ### Pinterest Side
 
-Begin by logging into your [Pinterest for Business](https://business.pinterest.com/en) account. Create your conversion tracking tags by choosing from the `Ads` dropdown and selecting `Conversion Tracking`.
+Begin by logging into your [Pinterest for Business Ads account](https://ads.pinterest.com) account. Create your conversion tracking tags by choosing from the `Ads` dropdown and selecting `Conversion Tracking`.
 
-![pinterest1](../../../images/pinterest1.png)
+![pinterest1](../../../images/pinterest-tag-1.png)
 
-On the next page, choose `Create a Pinterest tag`.
+On the next page, click `Create Pinterest Tag`.
 
-![pinterest2](../../../images/pinterest2.png)
+![pinterest2](../../../images/pinterest-tag-2.png)
 
-Give your new tag a custom name, and choose `Next`. This next page will show your Pinterest conversion tag for that custom event name.
+This next page will show your Pinterest Tag Id (shown in red in the image below - copy this value) and allows you to choose a custom name for it.
 
-![pinterest3](../../../images/pinterest3.png)
+![pinterest3](../../../images/pinterest-tag-3.png)
 
-The generated Pinterest tag contains a value shown in red in two places. Copy this value.
-
-***Note:** we will fire `page` views for you, but you'll need to map in your custom events in order to fire those off.*
+***Note:** We will fire `page` views for you, but you'll need to map in your custom events in order to fire those off.*
 
 ### MetaRouter Side
 
-Back in the MetaRouter UI, select Pinterest Conversion Tracking as a destination and give your new Pinterest pipeline a unique name.
+Back in the MetaRouter UI, select Pinterest Tag as a destination and give your new Pinterest pipeline a unique name.
 
-Then, provide your custom event name and paste the value for that event.
+The next mandatory step is to add you Pinterest Tag Id as the connection of the current pipeline. Clicking `Save` will activate your pipeline and you're ready to go with the basic functionalities.
 
-Finally, click `Save` to activate your pipeline.
+In addition, you can choose to customize your destination using the following fields available on our UI, under _Destination Details_ section:
 
-![pinterest4](../../../images/pinterest4v2.png)
+![pinterest4](../../../images/pinterest-tag-4.png)
 
-With that, you're all set! Get ready for insights.
+#### `Pinterest Custom Properties`
 
-### Things to note.
+If you wish to send any extra custom properties to Pinterest - in addition to the [standard Pinterest properties](https://help.pinterest.com/sites/help/files/pinterest_tag_instructions.pdf) - then add them to this section. These properties are case-insensitive, and can be nested. For example, if you want to send `analytics.track('Event', {myObject: { myProperty: true }})` then input `myObject.myProperty`.
 
-Generate page views and trigger your custom event inside your website with `analytics.track('your event name');`. You should see confirmation of those tags sent to Pinterest inside your Pinterest for Business dashboard, under `Conversion Tracking.`
+MetaRouter automatically binds the following properties to Pinterest Event Data:
+
+| Analytics Spec Property | Pinterest Tag Event Data |
+| --- | --- | --- |
+| query | search_query |
+| order_id | order_id |
+| coupon | coupon |
+| value | value |
+| currency | currency |
+| *nested within the e-commerce products array:* name | product_name |
+| *nested within the e-commerce products array:* product_id | product_id |
+| *nested within the e-commerce products array:* sku | product_id |
+| *nested within the e-commerce products array:* category | product_category |
+| *nested within the e-commerce products array:* variant | product_variant |
+| *nested within the e-commerce products array:* price | product_price |
+| *nested within the e-commerce products array:* quantity | product_quantity |
+| *nested within the e-commerce products array:* brand | product_brand |
+
+#### `Map Your Events to Pinterest`
+
+Enter your event on the left, and map it to one of the [standard Pinterest events](https://help.pinterest.com/sites/help/files/pinterest_tag_instructions.pdf) on the right. Some Pinterest events, such as `AddToCart` are already mapped to the Analytics Spec (in this case, to `Product Added`). In the MetaRouter Pinterest Tag destination settings, one can define their own events for Pinterest Tag’s `Signup`, `Lead`, and `Custom` events. Any events sent that aren’t bound to any of these events will still be sent as a *Partner-defined* event. However, they will not be available for conversion tracking; only for audience creation.
+
+| Analytics Spec Event | Pinterest Tag Event Type |
+| --- | --- | --- |
+| Products Searched | Search |
+| Product List Filtered | Search |
+| Product Added | AddToCart |
+| Order Completed | Checkout |
+| Video Playback Started | WatchVideo |
+| `.page()` call with no `category` | PageVisit |
+| `.page()` call with `category` | ViewCategory |
+
+### Things to note
+
+Generate page views and trigger your custom event inside your website with `analytics.track('your event name');`. You should see confirmation of those tags sent to Pinterest inside your Pinterest for Business dashboard, under `Ads > Conversions`

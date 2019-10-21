@@ -47,15 +47,6 @@ Add the following S3 bucket policy, which will grant MetaRouter permission to co
     "Id": "Policy1475027027703",
     "Statement": [
         {
-            "Sid": "Stmt1475027024994",
-            "Effect": "Allow",
-            "Principal": {
-                "AWS": "arn:aws:iam::213824691356:user/s3-copy"
-            },
-            "Action": "s3:PutObject",
-            "Resource": "arn:aws:s3:::YOUR_BUCKET_NAME/*"
-        },
-        {
             "Sid": "MetaRouterCopyAccess",
             "Effect": "Allow",
             "Principal": {

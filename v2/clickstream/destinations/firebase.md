@@ -55,8 +55,8 @@ SEGAnalyticsConfiguration *configuration = [SEGAnalyticsConfiguration configurat
 
 configuration.requestFactory = ^(NSURL *url) {
     NSURLComponents *components = [NSURLComponents componentsWithURL:url resolvingAgainstBaseURL:NO];
-    // Replace YOUR_PROXY_HOST with the address of your proxy, e.g. aba64da6.ngrok.io.
-    components.host = @"YOUR_PROXY_HOST";
+    // Replace http://e.metarouter.io/ with the address of your proxy, e.g. aba64da6.ngrok.io.
+    components.host = @"http://e.metarouter.io/";
     NSURL *transformedURL = components.URL;
     return [NSMutableURLRequest requestWithURL:transformedURL];
 };
@@ -166,8 +166,8 @@ Analytics analytics = new Analytics.Builder(this, ANALYTICS_WRITE_KEY) //
         .connectionFactory(new ConnectionFactory() {
           @Override protected HttpURLConnection openConnection(String url) throws IOException {
             String path = Uri.parse(url).getPath();
-            // Replace YOUR_PROXY_HOST with the address of your proxy, e.g. https://aba64da6.ngrok.io.
-            return super.openConnection("YOUR_PROXY_HOST" + path);
+            // Replace http://e.metarouter.io/ with the address of your proxy, e.g. https://aba64da6.ngrok.io.
+            return super.openConnection("http://e.metarouter.io/" + path);
           }
         })
         .build();

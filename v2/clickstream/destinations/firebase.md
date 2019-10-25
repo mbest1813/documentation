@@ -83,6 +83,7 @@ configuration.requestFactory = { url in
 ```
 *objC*
 
+```
 configuration.requestFactory = ^(NSURL *url) {
         NSURLComponents *components = [NSURLComponents componentsWithURL:url resolvingAgainstBaseURL:NO];
         NSString* host = components.host;
@@ -94,6 +95,7 @@ configuration.requestFactory = ^(NSURL *url) {
         NSURL *transformedURL = components.URL;
         return [NSMutableURLRequest requestWithURL:transformedURL];
     };
+```
 
 **Firebase for Android**
 
@@ -144,7 +146,7 @@ Add these permissions to your AndroidManifest.xml:
 ```
 Finally, register the dependency with the Segment SDK in your application subclass, as seen here in [Segment's Android library documentation](https://segment.com/docs/sources/mobile/android/#packaging-device-based-destination-sdks).
 
-Periodically, Firebase updates the Android configuration requirements for loading their SDK in your app. To validate that your Android configuration is sufficient for your version of Firebase, please consult Google’s [Firebase release notes](https://firebase.google.com/support/release-notes/android#). You can find the corresponding version of the Firebase SDK Segment required in each of the Segment-Firebase SDK versions by consulting the Segment-Firebase changelog. For example, Segment-Firebase 1.3.1 includes Firebase Core 17.0.1 as a dependency.
+Periodically, Firebase updates the Android configuration requirements for loading their SDK in your app. To validate that your Android configuration is sufficient for your version of Firebase, please consult Google’s [Firebase release notes](https://firebase.google.com/support/release-notes/android#). You can find the corresponding version of the Firebase SDK Segment required in each of the Segment-Firebase SDK versions by consulting the [Segment-Firebase changelog](https://github.com/segment-integrations/analytics-android-integration-firebase/blob/master/CHANGELOG.md). For example, Segment-Firebase 1.3.1 includes Firebase Core 17.0.1 as a dependency.
 
 ```
 Analytics analytics = new Analytics.Builder(context, writeKey)
@@ -225,10 +227,10 @@ Analytics analytics = new Analytics.Builder(this, ANALYTICS_WRITE_KEY) //
 ```
 
 #### Identify
-When you call `identify` MetaRouter will map to the corresponding Firebase Analytics calls:
+When you call `identify` the library will map to the corresponding Firebase Analytics calls:
 
-- If there is a `userId` on your `identify call`, Segment triggers `setUserId` via the Firebase SDK
-- If there are traits included, Segment will set user properties for each trait you include on the `identify` call
+- If there is a `userId` on your `identify call`, the library triggers `setUserId` via the Firebase SDK
+- If there are traits included, the library will set user properties for each trait you include on the `identify` call
 
 You can use these traits to create audiences and views to analyze your users’ behavior.
 
@@ -261,7 +263,7 @@ Firebase has a limit of 500 distinctly named events so you should be intentional
 
 When you call `track`, MetaRouter maps from the MetaRouter spec to those that match Firebase’s spec. For anything that does not match, MetaRouter will pass the event to Firebase as a custom event. Custom parameters cannot be seen directly in the Firebase Analytics dashboard but they can be used as filters in **Audiences**.
 
-Like with user properties, Segment will perform the following transformations on both your event names and event parameters. Unlike user properties, you do not need to pre-define event parameters in your Firebase dashboard.
+Like with user properties, the library will perform the following transformations on both your event names and event parameters. Unlike user properties, you do not need to pre-define event parameters in your Firebase dashboard.
 
 - Trims leading and trailing whitespace from property names
 - Replaces spaces with underscores
@@ -291,7 +293,7 @@ MetaRouter adheres to Firebase’s semantic event specification and maps the fol
 MetaRouter maps the followed Segment specced properties (left) to the corresponding Firebase event parameters (right):
 
 | MetaRouter Property	| Firebase Property | Accepted Value(s) | 
-| ----------- | ----------- |
+| ----------- | ----------- | ----------- |
 | category | item_category | (String) “kitchen supplies” | 
 | product_id | item_id | (String) “p1234” | 
 | name | item_name | (String) “Le Creuset pot” | 
@@ -307,7 +309,7 @@ MetaRouter maps the followed Segment specced properties (left) to the correspond
 
 ##### Passing Revenue and Currency
 
-Ecommerce events containing “revenue” or “total” must also include the appropriate ISO 4217 “currency” string for revenue data to populate to the Firebase dashboard. If a “currency” value is not included, Segment default to “USD”.
+Ecommerce events containing “revenue” or “total” must also include the appropriate ISO 4217 “currency” string for revenue data to populate to the Firebase dashboard. If a “currency” value is not included, the library defaults to “USD”.
 
 ```
 Properties properties = new Properties()
@@ -339,7 +341,7 @@ pod 'Firebase/DynamicLinks'
 
 ##### Conversion Tracking and Adwords Conversions
 
-Firebase is now Google’s recommended method for reporting conversions to Adwords! To do so, simply track the conversion events as you normally would with Segment and Segment will send them through to Firebase! Follow [this documentation from Firebase to set up your conversions in Firebase and to have them forwarded to Adwords](https://firebase.google.com/docs/adwords/).
+Firebase is now Google’s recommended method for reporting conversions to Adwords! To do so, simply track the conversion events as you normally would with the mobile library and it will will send them through to Firebase! Follow [this documentation from Firebase to set up your conversions in Firebase and to have them forwarded to Adwords](https://firebase.google.com/docs/adwords/).
 
 ##### Troubleshooting
 

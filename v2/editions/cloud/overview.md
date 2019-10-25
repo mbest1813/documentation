@@ -61,6 +61,7 @@ Check out the list below to explore all of the destinations available with MetaR
 * [Google Analytics](/v2/clickstream/destinations/google-analytics.html)
 * [Google BigQuery](/v2/clickstream/destinations/google-bigquery.html)
 * [Google Tag Manager](/v2/clickstream/destinations/google-tag-manager.html)
+* [Google Firebase](/v2/clickstream/destinations/firebase.html)
 * [Heap Analytics](/v2/clickstream/destinations/heap-analytics.html)
 * [Hubspot](/v2/clickstream/destinations/hubspot.html)
 * [Intercom](/v2/clickstream/destinations/intercom.html)
@@ -109,6 +110,7 @@ Check out the list below to explore all of the destinations available with MetaR
 | Google Analytics | ✔ | ✔ | ✔ |
 | Google BigQuery | ✔ | ✔ | ✔ |
 | Google Tag Manager | ✔ | x | x |
+| Google Firebase | x | x | ✔ |
 | Heap Analytics | ✔ | ✔ | ✔ |
 | Hubspot | ✔ | ✔ | ✔ |
 | Intercom | ✔ | ✔ | ✔ |

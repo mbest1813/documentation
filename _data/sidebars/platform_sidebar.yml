@@ -209,6 +209,10 @@ entries:
           url: /v2/clickstream/destinations/google-tagmanager.html
           output: web
 
+        - title: Google Firebase
+          url: /v2/editions/enterprise/destinations/firebase.html
+          output: web
+
         - title: Heap Analytics
           url: /v2/clickstream/destinations/heap-analytics.html
           output: web

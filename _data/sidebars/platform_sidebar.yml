@@ -210,7 +210,7 @@ entries:
           output: web
 
         - title: Google Firebase
-          url: /v2/editions/enterprise/destinations/firebase.html
+          url: /v2/clickstream/destinations/firebase.html
           output: web
 
         - title: Heap Analytics

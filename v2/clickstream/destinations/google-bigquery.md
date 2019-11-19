@@ -10,11 +10,11 @@ MetaRouter makes it easy to send your data to Google BigQuery. Once you follow t
 
 Now, to the good stuff!
 
-## What is Google BigQuery?
+# What is Google BigQuery?
 
 BigQuery is Google Cloud Platform's custom take on a traditional Postgres database. In Google's words, "[Google BigQuery is an enterprise data warehouse that solves this problem by enabling super-fast SQL queries using the processing power of Google's infrastructure.](https://cloud.google.com/bigquery/what-is-bigquery)" It's cost-effective at nearly any level, capable of scaling from gigabytes to petabytes without a loss in performance.
 
-## Why send data to Google BigQuery using MetaRouter?
+# Why send data to Google BigQuery using MetaRouter?
 
 This guide will explain how to integrate BigQuery into MetaRouter's platform as a destination, allowing you to leverage Google's technology to access, store, and query your customer data.
 
@@ -69,3 +69,7 @@ With those details in, you can go on to *Create Connection*. This is where you a
 That's it! You'll now be receiving a livestream of data from your application into your BigQuery dataset.
 
 If you run into any issues using this or any of our destinations, feel free to reach out to us at [support@metarouter.io](mailto:support@metarouter.io). Happy routing!
+
+# Additional Notes
+## Whitelisting Access
+Your Bigquery Database will need to be free to receive traffic from our IP Addresses: `35.245.140.149` and `35.236.193.215`. Please ensure that if you are restircting traffic, to allow access from those IPs for proper loading of data.

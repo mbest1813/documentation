@@ -27,9 +27,11 @@ Make sure to set the content-type header to `application/json`.
 
 ### Calls in HTTP API
 
-Check out our 'Calls' section for information on when you should use each call. Below are some examples of how you'd call specific objects in HTTP API.
+Check out the below calls and their use cases to determine the calls that you need to make. We have also included examples of how you'd call specific objects in HTTP API.
 
 #### Identify
+
+The `identify` method helps you associate your users and their actions to a unique and recognizable `userID` and any optional `traits` that you know about them. We recommend calling an `identify` a single time - when the user's account is first created and only again when their traits change.
 
 Post `https://e.metarouter.io/v1/identify`
 
@@ -47,6 +49,8 @@ Post `https://e.metarouter.io/v1/identify`
 ```
 
 #### Track
+
+To get to a more complete event tracking analytics setup, you can add a `track` call to your website. This will tell MetaRouter which actions you are performing on your site. With `track`, each user action triggers an “event,” which can also have associated properties.
 
 Post `https://e.metarouter.io/v1/track`
 
@@ -66,6 +70,8 @@ Post `https://e.metarouter.io/v1/track`
 
 #### Page
 
+The `page` method allows you to record page views on your website. It also allows you to pass addtional information about the pages people are viewing.
+
 Post `https://e.metarouter.io/v1/page`
 
 ```
@@ -82,6 +88,8 @@ Post `https://e.metarouter.io/v1/page`
 
 #### Group
 
+The `group` method associates an identified user with a company, organization, project, etc.
+
 Post `https://e.metarouter.io/v1/group`
 
 ```
@@ -97,6 +105,8 @@ Post `https://e.metarouter.io/v1/group`
 ```
 
 #### Alias
+
+The `alias` method combines two unassociated User IDs.
 
 Post  `https://e.metarouter.io/v1/alias`
 

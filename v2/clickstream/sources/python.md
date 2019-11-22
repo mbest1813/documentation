@@ -33,9 +33,11 @@ analytics.app_id = ‘metarouter_source_id’
 
 ### Calls in Python
 
-Check out our [Calls](../calls.md) section for information on when you should use each call. Below are some examples of how you'd call specific objects in Python.
+Check out the below calls and their use cases to determine the calls that you need to make. We have also included examples of how you'd call specific objects in Python.
 
 #### Identify
+
+The `identify` method helps you associate your users and their actions to a unique and recognizable `userID` and any optional `traits` that you know about them. We recommend calling an `identify` a single time - when the user's account is first created and only again when their traits change.
 
 ~~~ python
 analytics.identify('userID' : '1234qwerty', {
@@ -47,11 +49,15 @@ analytics.identify('userID' : '1234qwerty', {
 
 #### Track
 
+To get to a more complete event tracking analytics setup, you can add a `track` call to your website. This will tell MetaRouter which actions you are performing on your site. With `track`, each user action triggers an “event,” which can also have associated properties.
+
 ~~~ python
 analytics.track('userID' : '1234qwerty', 'Signed Up')
 ~~~
 
 #### Page
+
+The `page` method allows you to record page views on your website. It also allows you to pass addtional information about the pages people are viewing.
 
 ~~~ python
 analytics.page('user_id', 'Docs', 'Python', {
@@ -61,6 +67,8 @@ analytics.page('user_id', 'Docs', 'Python', {
 
 #### Group
 
+The `group` method associates an identified user with a company, organization, project, etc.
+
 ~~~ python
 analytics.group('user_id', 'group_id', {
   'name': 'MetaRouter',
@@ -69,6 +77,8 @@ analytics.group('user_id', 'group_id', {
 ~~~
 
 #### Alias
+
+The `alias` method combines two unassociated User IDs.
 
 ~~~ python
 analytics.alias(previous_id, user_id)

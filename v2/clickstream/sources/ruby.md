@@ -42,9 +42,11 @@ analytics = Segment::Analytics.new({
 
 ### Calls in Ruby
 
-Check out our [Calls](../calls.md) section for information on when you should use each call. Below are some examples of how you'd call specific objects in Ruby.
+Check out the below calls and their use cases to determine the calls that you need to make. We have also included examples of how you'd call specific objects in Ruby.
 
 #### Identify
+
+The `identify` method helps you associate your users and their actions to a unique and recognizable `userID` and any optional `traits` that you know about them. We recommend calling an `identify` a single time - when the user's account is first created and only again when their traits change.
 
 ```ruby
 analytics.identify(
@@ -57,6 +59,8 @@ analytics.identify(
 
 #### Track
 
+To get to a more complete event tracking analytics setup, you can add a `track` call to your website. This will tell MetaRouter which actions you are performing on your site. With `track`, each user action triggers an “event,” which can also have associated properties.
+
 ```ruby
 analytics.track(
     user_id: `1234qwerty`,
@@ -66,6 +70,8 @@ analytics.track(
 ```
 
 #### Page
+
+The `page` method allows you to record page views on your website. It also allows you to pass addtional information about the pages people are viewing.
 
 ```ruby
 analytics.page(
@@ -78,6 +84,8 @@ analytics.page(
 
 #### Group
 
+The `group` method associates an identified user with a company, organization, project, etc.
+
 ```ruby
 analytics.group(
     user_id: '1234qwerty'
@@ -87,6 +95,8 @@ analytics.group(
 ```
 
 #### Alias
+
+The `alias` method combines two unassociated User IDs.
 
 ```ruby
 analytics.alias(previous_id: 'previous id', user_id: 'new id')

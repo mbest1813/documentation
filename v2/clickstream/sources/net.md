@@ -57,9 +57,11 @@ You will only need to perform this initialization once.
 
 ### Calls in .NET
 
-Check out our [Calls](../calls.md) section for information on when you should use each call. Below are some examples of how you'd call specific objects in .NET.
+Check out the below calls and their use cases to determine the calls that you need to make. We have also included examples of how you'd call specific objects in .NET.
 
 #### Identify
+
+The `identify` method helps you associate your users and their actions to a unique and recognizable `userID` and any optional `traits` that you know about them. We recommend calling an `identify` a single time - when the user's account is first created and only again when their traits change.
 
 ```c#
 Analytics.Client.Identify("1234qwerty", new Traits() {
@@ -71,6 +73,8 @@ Analytics.Client.Identify("1234qwerty", new Traits() {
 
 #### Track
 
+To get to a more complete event tracking analytics setup, you can add a `track` call to your website. This will tell MetaRouter which actions you are performing on your site. With `track`, each user action triggers an “event,” which can also have associated properties.
+
 ```
 Analytics.Client.Track("1234qwerty", "Add to Cart", new Properties() {
     { "price", 50.00 },
@@ -79,6 +83,8 @@ Analytics.Client.Track("1234qwerty", "Add to Cart", new Properties() {
 ```
 
 #### Page
+
+The `page` method allows you to record page views on your website. It also allows you to pass addtional information about the pages people are viewing.
 
 ```c#
 Analytics.Client.Page("1234qwerty", "Login", new Properties() {
@@ -89,6 +95,8 @@ Analytics.Client.Page("1234qwerty", "Login", new Properties() {
 
 #### Group
 
+The `group` method associates an identified user with a company, organization, project, etc.
+
 ```c#
 Analytics.Client.Group("userId", "groupId", new Traits() {
     { "name", "MetaRouter" },
@@ -97,6 +105,8 @@ Analytics.Client.Group("userId", "groupId", new Traits() {
 ```
 
 #### Alias
+
+The `alias` method combines two unassociated User IDs.
 
 ```c#
 Analytics.Client.Alias("previousId", "userId")

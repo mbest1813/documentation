@@ -42,7 +42,7 @@ Here, you'll need to place "YOUR_SOURCE_ID" with the Source ID for this particul
 And of course, import the SDK in the files that you use it with:
 
 ```
-#import <Astronomeranalytics/SEGAnaltyics.h>
+#import <Analytics/SEGAnalytics.h>
 ```
 
 Now that you have the SDK installed and setup, you are ready to start building out functionality. Keep reading to learn how to use the `identify` call on your app.

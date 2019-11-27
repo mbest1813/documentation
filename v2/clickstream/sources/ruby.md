@@ -7,24 +7,24 @@ sidebar: platform_sidebar
 
 This library lets you record analytics data from your Ruby code. You can use this library in your web server controller code. It is high-performing in that it uses an internal queue to make 'identify' and 'track' calls non-blocking and fast. It also batches messages and flushes asynchronously to our servers.
 
-Check out our `astronomer` [Ruby gem](https://rubygems.org/gems/astronomer/) to see the library.
+Check out [this Github repo](https://github.com/segmentio/analytics-ruby) to see the library.
 
 ### Getting Started with Ruby
 
 #### Step 1
 
-Install `astronomer` either:
+Install the Gem by either of these two methods:
 
 * Directly into a Gemfile
 
-```ruby
-gem 'astronomer', :require => "segment"
+```
+gem 'analytics-ruby', '~> 2.0.0', :require => 'segment/analytics'
 ```
 
 * Directly into environment gems
 
 ```ruby
-gem install astronomer
+gem install analytics-ruby
 ```
 
 #### Step 2
@@ -32,6 +32,8 @@ gem install astronomer
 Inside your Ruby application, you'll want to set your `Source ID` inside an instance of the Analytics object:
 
 ```ruby
+require 'segment/analytics'
+
 analytics = Segment::Analytics.new({
   app_id: 'YOUR_SOURCE_ID',
   host: 'e.metarouter.io'

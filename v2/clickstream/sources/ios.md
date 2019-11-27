@@ -17,7 +17,7 @@ We recommend installing Analytics-iOS via [Cocoapods](https://cocoapods.org/pods
 Just add the Analytics dependency to your Podfile with:
 
 ```
-	Pod `AstronomerAnalytics`, `~> 3.6.9`
+	Pod `'Analytics', '~> 3.0'`
 ```
 
 Then, run a pod install inside your terminal, or from CocoaPods.app. Then, in your applicaton delegate's `application:didFinishLaunchingWithOptions:` method, set up the SDK like this:

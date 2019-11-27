@@ -5,7 +5,7 @@ sidebar: platform_sidebar
 
 ## Node.js
 
-This library lets you record all analytics data from your node code. You can check out it's open source code [here](https://github.com/astronomerio/analytics-node). You can use this library in your web server controller code. It is high-performing in that it uses an internal queue to make `identify` and `track` calls non-blocking and fast. It also batches messages and flushes asynchronously to our servers.
+This library lets you record all analytics data from your node code. You can check out it's open source code [here](https://github.com/segmentio/analytics-node). You can use this library in your web server controller code. It is high-performing in that it uses an internal queue to make `identify` and `track` calls non-blocking and fast. It also batches messages and flushes asynchronously to our servers.
 
 ### Getting Started with Node.js
 
@@ -13,14 +13,14 @@ This library lets you record all analytics data from your node code. You can che
 Install the astronomer npm module.
 
 ```js
-npm install --save astronomer
+npm install --save analytics-node
 ```
 
 #### Step 2
 Initialize this package with the Source ID found in the settings section of your MetaRouter account.
 
 ```js
-var Analytics = require('astronomer');
+var Analytics = require('analytics-node');
 var analytics = new Analytics('METAROUTER_SOURCE_ID', {'host':'https://e.metarouter.io'});
 ```
 

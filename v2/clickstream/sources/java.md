@@ -7,7 +7,7 @@ sidebar: platform_sidebar
 
 This library lets you record analytics data from your Java code. Once installed, the requests will hit our servers and then be routed to the destinations of your choice. 
 
-You can install the library [here](https://mvnrepository.com/artifact/io.metarouter.analytics.java/analytics-core/2.0.0-RC5).
+You can install the library [here](https://github.com/segmentio/analytics-java).
 
 You can use this library in your web server controller code- it is built for high performance and uses and internal queue to make all calls non-blocking and fast. It will batch messages and flush asynchronously to our servers.
 
@@ -22,9 +22,9 @@ The library is distributed as a `jar` dependency via [Maven Central](http://sear
 Add to `pom.xml`:
 ```xml
 <dependency>
-    <groupId>io.metarouter.analytics.java</groupId>
-    <artifactId>analytics-core</artifactId>
-    <version>2.0.0-RC5</version>
+    <groupId>com.segment.analytics.java</groupId>
+    <artifactId>analytics</artifactId>
+    <version>LATEST</version>
 </dependency>
 ```
 

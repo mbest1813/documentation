@@ -19,7 +19,7 @@ Just add the `analytics` module to your `build.gradle` with:
 
 ```
 dependencies {
-  compile 'io.astronomer.analytics.android:analytics:4.+'
+  compile 'com.segment.analytics.android:analytics:4.+'
 }
 ```
 

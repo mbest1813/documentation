@@ -15,7 +15,7 @@ This library lets you record analytics data from your PHP code. It is a little d
 Clone the PHP integration into your application directory.
 
 ```php
-git clone https://github.com/astronomerio/analytics-php
+git clone https://github.com/segmentio/analytics-php /my/app/folders/
 ```
 
 #### Step 2
@@ -23,7 +23,7 @@ git clone https://github.com/astronomerio/analytics-php
 Add the following to your code to load in the library.
 
 ```php
-require_once(\"/path/to/analytics-php/lib/Segment.php\");
+require_once("/path/to/analytics-php/lib/Segment.php");
 ```
 
 #### Step 3
@@ -31,8 +31,8 @@ require_once(\"/path/to/analytics-php/lib/Segment.php\");
 Initialize the module with the Source ID found in the setting sections of your MetaRouter account. Note that you are only required to do this initialization once.
 
 ```php
-class_alias('Segment', 'analytics');
-analytics::init("METAROUTER_APP_ID", array(
+class_alias('Segment', 'Analytics');
+Segment::init("METAROUTER_APP_ID", array(
   "host" => "e.metarouter.io"
 ));
 ```
@@ -55,7 +55,7 @@ In composer.json, add the GitHub url to the repositories section and then requir
     "repositories": [
         {
             "type": "vcs",
-            "url": "https://github.com/astronomerio/analytics-php"
+            "url": "https://github.com/segmentio/analytics-php"
         }
     ],
 
@@ -68,9 +68,11 @@ In composer.json, add the GitHub url to the repositories section and then requir
 
 ### Calls in PHP
 
-Check out our [Calls](../calls.md) section for information on when you should use each call. Below are some examples of how you'd call specific objects in PHP.
+Check out the below calls and their use cases to determine the calls that you need to make. We have also included examples of how you'd call specific objects in PHP.
 
 #### Identify
+
+The `identify` method helps you associate your users and their actions to a unique and recognizable `userID` and any optional `traits` that you know about them. We recommend calling an `identify` a single time - when the user's account is first created and only again when their traits change.
 
 ```php
 analytics::identify(array(
@@ -83,6 +85,8 @@ analytics::identify(array(
 ```
 
 #### Track
+
+To get to a more complete event tracking analytics setup, you can add a `track` call to your website. This will tell MetaRouter which actions you are performing on your site. With `track`, each user action triggers an “event,” which can also have associated properties.
 
 ```php
 analytics::track(array(
@@ -98,6 +102,8 @@ analytics::track(array(
 
 #### Page
 
+The `page` method allows you to record page views on your website. It also allows you to pass addtional information about the pages people are viewing.
+
 ```php
 analytics::page(array(
         "userId" => "1234qwerty",
@@ -111,6 +117,8 @@ analytics::page(array(
 
 #### Group
 
+The `group` method associates an identified user with a company, organization, project, etc.
+
 ```php
 analytics::group(array(
         "userId" => "1234qwerty",
@@ -123,6 +131,8 @@ analytics::group(array(
 ```
 
 #### Alias
+
+The `alias` method combines two unassociated User IDs.
 
 ```php
 analytics::alias(array(

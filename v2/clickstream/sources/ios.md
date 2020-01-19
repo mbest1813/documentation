@@ -17,7 +17,7 @@ We recommend installing Analytics-iOS via [Cocoapods](https://cocoapods.org/pods
 Just add the Analytics dependency to your Podfile with:
 
 ```
-	Pod `AstronomerAnalytics`, `~> 3.6.9`
+	Pod `'Analytics', '~> 3.0'`
 ```
 
 Then, run a pod install inside your terminal, or from CocoaPods.app. Then, in your applicaton delegate's `application:didFinishLaunchingWithOptions:` method, set up the SDK like this:
@@ -27,11 +27,16 @@ SEGAnalyticsConfiguration *configuration = [SEGAnalyticsConfiguration configurat
 configuration.trackApplicationLifecycleEvents = YES; // Enable this to record certain application events automatically
 configuration.recordScreenViews = YES; // Enable this to record screen views automatically
 configuration.requestFactory = ^(NSURL *url) {
-    NSURLComponents *components = [NSURLComponents componentsWithURL:url resolvingAgainstBaseURL:NO];
-    components.host = @"e.metarouter.io";
-    NSURL *transformedURL = components.URL;
-    return [NSMutableURLRequest requestWithURL:transformedURL];
-};
+        NSURLComponents *components = [NSURLComponents componentsWithURL:url resolvingAgainstBaseURL:NO];
+        NSString* host = components.host;
+        if ([host isEqualToString:@"cdn-settings.segment.com"]) {
+            components.host = @"cdn.metarouter.io";
+        } else if ([host isEqualToString:@"api.segment.io"]) {
+            components.host = @"e.metarouter.io";
+        }
+        NSURL *transformedURL = components.URL;
+        return [NSMutableURLRequest requestWithURL:transformedURL];
+    };
 [SEGAnalytics setupWithConfiguration:configuration];
 ```
 
@@ -42,7 +47,7 @@ Here, you'll need to place "YOUR_SOURCE_ID" with the Source ID for this particul
 And of course, import the SDK in the files that you use it with:
 
 ```
-#import <Astronomeranalytics/SEGAnaltyics.h>
+#import <Analytics/SEGAnalytics.h>
 ```
 
 Now that you have the SDK installed and setup, you are ready to start building out functionality. Keep reading to learn how to use the `identify` call on your app.

@@ -7,24 +7,24 @@ sidebar: platform_sidebar
 
 This library lets you record analytics data from your Ruby code. You can use this library in your web server controller code. It is high-performing in that it uses an internal queue to make 'identify' and 'track' calls non-blocking and fast. It also batches messages and flushes asynchronously to our servers.
 
-Check out our `astronomer` [Ruby gem](https://rubygems.org/gems/astronomer/) to see the library.
+Check out [this Github repo](https://github.com/segmentio/analytics-ruby) to see the library.
 
 ### Getting Started with Ruby
 
 #### Step 1
 
-Install `astronomer` either:
+Install the Gem by either of these two methods:
 
 * Directly into a Gemfile
 
-```ruby
-gem 'astronomer', :require => "segment"
+```
+gem 'analytics-ruby', '~> 2.0.0', :require => 'segment/analytics'
 ```
 
 * Directly into environment gems
 
 ```ruby
-gem install astronomer
+gem install analytics-ruby
 ```
 
 #### Step 2
@@ -32,6 +32,8 @@ gem install astronomer
 Inside your Ruby application, you'll want to set your `Source ID` inside an instance of the Analytics object:
 
 ```ruby
+require 'segment/analytics'
+
 analytics = Segment::Analytics.new({
   app_id: 'YOUR_SOURCE_ID',
   host: 'e.metarouter.io'
@@ -42,9 +44,11 @@ analytics = Segment::Analytics.new({
 
 ### Calls in Ruby
 
-Check out our [Calls](../calls.md) section for information on when you should use each call. Below are some examples of how you'd call specific objects in Ruby.
+Check out the below calls and their use cases to determine the calls that you need to make. We have also included examples of how you'd call specific objects in Ruby.
 
 #### Identify
+
+The `identify` method helps you associate your users and their actions to a unique and recognizable `userID` and any optional `traits` that you know about them. We recommend calling an `identify` a single time - when the user's account is first created and only again when their traits change.
 
 ```ruby
 analytics.identify(
@@ -57,6 +61,8 @@ analytics.identify(
 
 #### Track
 
+To get to a more complete event tracking analytics setup, you can add a `track` call to your website. This will tell MetaRouter which actions you are performing on your site. With `track`, each user action triggers an “event,” which can also have associated properties.
+
 ```ruby
 analytics.track(
     user_id: `1234qwerty`,
@@ -66,6 +72,8 @@ analytics.track(
 ```
 
 #### Page
+
+The `page` method allows you to record page views on your website. It also allows you to pass addtional information about the pages people are viewing.
 
 ```ruby
 analytics.page(
@@ -78,6 +86,8 @@ analytics.page(
 
 #### Group
 
+The `group` method associates an identified user with a company, organization, project, etc.
+
 ```ruby
 analytics.group(
     user_id: '1234qwerty'
@@ -87,6 +97,8 @@ analytics.group(
 ```
 
 #### Alias
+
+The `alias` method combines two unassociated User IDs.
 
 ```ruby
 analytics.alias(previous_id: 'previous id', user_id: 'new id')

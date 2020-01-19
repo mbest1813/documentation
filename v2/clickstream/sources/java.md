@@ -7,7 +7,7 @@ sidebar: platform_sidebar
 
 This library lets you record analytics data from your Java code. Once installed, the requests will hit our servers and then be routed to the destinations of your choice. 
 
-You can install the library [here](https://mvnrepository.com/artifact/io.metarouter.analytics.java/analytics-core/2.0.0-RC5).
+You can install the library [here](https://github.com/segmentio/analytics-java).
 
 You can use this library in your web server controller code- it is built for high performance and uses and internal queue to make all calls non-blocking and fast. It will batch messages and flush asynchronously to our servers.
 
@@ -22,9 +22,9 @@ The library is distributed as a `jar` dependency via [Maven Central](http://sear
 Add to `pom.xml`:
 ```xml
 <dependency>
-    <groupId>io.metarouter.analytics.java</groupId>
-    <artifactId>analytics-core</artifactId>
-    <version>2.0.0-RC5</version>
+    <groupId>com.segment.analytics.java</groupId>
+    <artifactId>analytics</artifactId>
+    <version>LATEST</version>
 </dependency>
 ```
 
@@ -42,11 +42,13 @@ The `Analytics` class has a method called `enqueue` that takes a `MessageBuilder
 
 ### Calls in Java
 
-Check out our [API Calls doc](../calls.html) for more information about when you should use each call. Below are some specfic examples of how you'd call specific objects in Java.
+Check out the below calls and their use cases to determine the calls that you need to make. We have also included examples of how you'd call specific objects in Java.
 
 **Note**: Thee following examples use the [Guava](https://github.com/google/guava) immutable map style, but feel free to use standard Java maps instead.
 
 #### Identify
+
+The `identify` method helps you associate your users and their actions to a unique and recognizable `userID` and any optional `traits` that you know about them. We recommend calling an `identify` a single time - when the user's account is first created and only again when their traits change.
 
 ```java
 analytics.enqueue(IdentifyMessage.builder()
@@ -64,6 +66,9 @@ The above call identifies Buzz by his unique `userID` and labels him with `name`
 
 
 #### Track
+
+To get to a more complete event tracking analytics setup, you can add a `track` call to your website. This will tell MetaRouter which actions you are performing on your site. With `track`, each user action triggers an “event,” which can also have associated properties.
+
 ```java
 analytics.enqueue(TrackMessage.builder("Item Purchased")
     .userId("qwerty1234")
@@ -98,6 +103,7 @@ The above call tells us that someone has viewed a `MoonLanding` page that is cat
 
 #### Group
 
+The `group` method associates an identified user with a company, organization, project, etc.
 
 ```java
 analytics.enqueue(GroupMessage.builder("some-group-id")
@@ -114,6 +120,8 @@ analytics.enqueue(GroupMessage.builder("some-group-id")
 The above call assigns the user with the "MetaRouter" group and gives that group the "size" and "website" traits. 
 
 #### Alias
+
+The `alias` method combines two unassociated User IDs.
 
 ```java
 analytics.enqueue(AliasMessage.builder("previousId")

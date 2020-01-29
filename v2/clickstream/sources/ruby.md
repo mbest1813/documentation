@@ -53,7 +53,7 @@ The `identify` method helps you associate your users and their actions to a uniq
 ```ruby
 analytics.identify(
     user_id: '1234qwerty',
-    traits: { email: "#{} user,email }", fingers: 10 },
+    traits: { email: "user@email.com", fingers: 10 },
     context: {ip: '0.0.0.0'})
 
 )
@@ -65,9 +65,9 @@ To get to a more complete event tracking analytics setup, you can add a `track` 
 
 ```ruby
 analytics.track(
-    user_id: `1234qwerty`,
+    user_id: '1234qwerty',
     event: 'Add to cart',
-    properties: {price: 50.00, color, 'Medium'}
+    properties: { price: 50.00, size: 'Medium'}
 )
 ```
 
@@ -77,8 +77,8 @@ The `page` method allows you to record page views on your website. It also allow
 
 ```ruby
 analytics.page(
-    user_id: user_id,
-    category: Prod site,
+    user_id: 'user_id',
+    category: 'Prod site',
     name: 'Landing page',
     properties: { url: 'https://metarouter.io'}
 )
@@ -90,7 +90,7 @@ The `group` method associates an identified user with a company, organization, p
 
 ```ruby
 analytics.group(
-    user_id: '1234qwerty',
+    user_id: 'user_id',
     group_id: '10',
     traits: { name: 'MetaRouter', description: 'Data Engineering Platform'}
 )

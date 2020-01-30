@@ -12,12 +12,12 @@ Using our analytics-iOS library, you can start sending customer data from your a
 After logging in with your MetaRouter credentials, add a new `Source → iOS`. Give your source a friendly name and copy that `Source ID` for the next step.
 
 ### Install the SDK
-We recommend installing Analytics-iOS via [Cocoapods](https://cocoapods.org/pods/AstronomerAnalytics) as it allows you to create a build with specific destinations and makes it simple to install and upgrade.
+We recommend installing Analytics-iOS via [Cocoapods](https://cocoapods.org/pods/Analytics) as it allows you to create a build with specific destinations and makes it simple to install and upgrade.
 
 Just add the Analytics dependency to your Podfile with:
 
 ```
-	Pod `'Analytics', '~> 3.0'`
+pod 'Analytics', '~> 3.7.0'
 ```
 
 Then, run a pod install inside your terminal, or from CocoaPods.app. Then, in your applicaton delegate's `application:didFinishLaunchingWithOptions:` method, set up the SDK like this:

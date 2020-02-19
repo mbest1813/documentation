@@ -7,6 +7,8 @@ sidebar: platform_sidebar
 
 Using our analytics-react-native library, you can start sending customer data from your app to MetaRouter, giving you valuable user data that yields actionable insights for your business. Follow the steps below to get started in only a few minutes.
 
+<em>Please keep in mind that</em> ***React Native is a Beta feature***. <em>Please let us know if you have any issues!</em>
+
 ### Create an iOS Source in the MetaRouter UI
 
 After logging in with your MetaRouter credentials, add a new `Source → Client-Side`. Give your source a friendly name and copy that `Source ID` for the next step.
